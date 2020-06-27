@@ -126,3 +126,88 @@ client.on("error", e => {
 
 client.login(ayarlar.token);
 
+//Discord Code Share
+
+//Discord Code Share
+
+//Discord Code Share
+
+//Discord Code Share
+
+//Discord Code Share
+
+//Discord Code Share
+
+//Discord Code Share
+
+//Discord Code Share
+
+//Discord Code Share
+
+//Discord Code Share
+
+//........MESAJ ISTATISTIK........//
+
+client.on("message", async message => {
+  if (message.author.bot === false){
+await db.add(`puan_${message.guild.id}_${message.author.id}`, 1); //MESAJ BAŞINA VERİLECEK PUAN ÜYE  //Discord Code Share
+
+await db.add(`puanc_${message.guild.id}_${message.channel.id}`, 1); //MESAJ BAŞINA VERİLECEK PUAN KANAL   //Discord Code Share
+
+await db.add(`puanuc_${message.author.id}_${message.channel.id}`, 1); //EN COK MESAJ ATILAN KANAL UYE  //Discord Code Share
+
+}
+});
+
+
+
+//........SES ISTATISTIK........//
+
+client.on("voiceStateUpdate", async (oldMember, newMember) => {
+  if(!oldMember.user.bot){
+  let oldChannel = oldMember.voiceChannel;
+  let newChannel = newMember.voiceChannel;
+  if (oldChannel === undefined && newChannel !== undefined) {
+    db.set(`girisses.${oldMember.user.id}.${oldMember.guild.id}`, Date.now());
+  } else if (newChannel === undefined) {
+    let ilksessüre = await db.fetch(
+      `girisses.${oldMember.user.id}.${oldMember.guild.id}`
+    );  
+    let time = Date.now() - ilksessüre;
+    await db.add(
+      "voicei_" + oldMember.guild.id + "_" + oldMember.user.id,
+      time
+    );  //Discord Code Share
+
+    await db.add(
+      "voicec_" + oldMember.guild.id + "_" + oldMember.voiceChannelID,
+      time
+    );  //Discord Code Share
+
+    await db.add(
+      "voiceuc_" + oldMember.user.id + "_" + oldMember.voiceChannelID,
+      time
+    );   //Discord Code Share
+
+  }}
+});
+
+//Discord Code Share
+
+//Discord Code Share
+
+//Discord Code Share
+
+//Discord Code Share
+
+//Discord Code Share
+
+//Discord Code Share
+
+//Discord Code Share
+
+//Discord Code Share
+
+//Discord Code Share
+
+//Discord Code Share
