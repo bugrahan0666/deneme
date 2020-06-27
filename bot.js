@@ -1,130 +1,237 @@
-const Discord = require("discord.js");
-const client = new Discord.Client();
-const ayarlar = require("./ayarlar.json");
-const chalk = require("chalk");
-const moment = require("moment");
-var Jimp = require("jimp");
-const { Client, Util } = require("discord.js");
-const weather = require("weather-js");
-const fs = require("fs");
-const db = require("quick.db");
-const http = require("http");
-const express = require("express");
-require("./util/eventLoader")(client);
-const path = require("path");
-const request = require("request");
-const snekfetch = require("snekfetch");
-const queue = new Map();
-const YouTube = require("simple-youtube-api");
-const ytdl = require("ytdl-core");
+const Discord = require("discord.js");//Discord Code Share
 
-const app = express();
-app.get("/", (request, response) => {
-  console.log(Date.now() + " Ping tamamdır.");
-  response.sendStatus(200);
+const client = new Discord.Client();//Discord Code Share
+
+const ayarlar = require("./ayarlar.json");//Discord Code Share
+
+const chalk = require("chalk");//Discord Code Share
+
+const moment = require("moment");//D//Discord Code Share
+
+var Jimp = require("jimp");//Discord Code Share
+
+const { Client, Util } = require("discord.js");//Discord Code Share
+
+const weather = require("weather-js");//Discord Code Share
+
+const fs = require("fs");//Discord Code Share
+
+const db = require("quick.db");//Discord Code Share
+
+const http = require("http");//Discord Code Share
+
+const express = require("express");//Discord Code Share
+
+require("./util/eventLoader")(client);//Discord Code Share
+
+const path = require("path");//Discord Code Share
+
+const request = require("request");//Discord Code Share
+
+const snekfetch = require("snekfetch");//Discord Code Share
+
+const queue = new Map();//Discord Code Share
+
+const YouTube = require("simple-youtube-api");//Discord Code Share
+
+const ytdl = require("ytdl-core");//Discord Code Share
+
+//Discord Code Share
+
+const app = express();//Discord Code Share
+
+app.get("/", (request, response) => {//Discord Code Share
+
+  console.log(Date.now() + " Ping tamamdır.");//Discord Code Share
+
+  response.sendStatus(200);//Discord Code Share
+
 });
-app.listen(process.env.PORT);
-setInterval(() => {
-  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-}, 280000);
+app.listen(process.env.PORT);//Discord Code Share
 
-var prefix = ayarlar.prefix;
+setInterval(() => {//Discord Code Share
 
-const log = message => {
-  console.log(`${message}`);
+  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);//Discord Code Share
+
+}, 280000);//Discord Code Share
+
+//Discord Code Share
+
+var prefix = ayarlar.prefix;//Discord Code Share
+
+
+const log = message => {//Discord Code Share
+
+  console.log(`${message}`);//Discord Code Share
+
 };
+//Discord Code Share
 
-client.commands = new Discord.Collection();
-client.aliases = new Discord.Collection();
-fs.readdir("./komutlar/", (err, files) => {
-  if (err) console.error(err);
-  log(`${files.length} komut yüklenecek.`);
-  files.forEach(f => {
-    let props = require(`./komutlar/${f}`);
-    log(`Yüklenen komut: ${props.help.name}.`);
-    client.commands.set(props.help.name, props);
-    props.conf.aliases.forEach(alias => {
-      client.aliases.set(alias, props.help.name);
-    });
+client.commands = new Discord.Collection();//Discord Code Share
+
+client.aliases = new Discord.Collection();//Discord Code Share
+
+fs.readdir("./komutlar/", (err, files) => {//Discord Code Share
+
+  if (err) console.error(err);//Discord Code Share
+
+  log(`${files.length} komut yüklenecek.`);//Discord Code Share
+
+  files.forEach(f => {//Discord Code Share
+
+    let props = require(`./komutlar/${f}`);//Discord Code Share
+
+    log(`Yüklenen komut: ${props.help.name}.`);//Discord Code Share
+
+    client.commands.set(props.help.name, props);//Discord Code Share
+
+    props.conf.aliases.forEach(alias => {//Discord Code Share
+
+      client.aliases.set(alias, props.help.name);//Discord Code Share
+
+    });//Discord Code Share
+
   });
-});
+});//Discord Code Share
 
-client.reload = command => {
-  return new Promise((resolve, reject) => {
-    try {
-      delete require.cache[require.resolve(`./komutlar/${command}`)];
-      let cmd = require(`./komutlar/${command}`);
-      client.commands.delete(command);
-      client.aliases.forEach((cmd, alias) => {
-        if (cmd === command) client.aliases.delete(alias);
+
+client.reload = command => {//Discord Code Share
+
+  return new Promise((resolve, reject) => {//Discord Code Share
+
+    try {//Discord Code Share
+
+      delete require.cache[require.resolve(`./komutlar/${command}`)];  //Discord Code Share
+
+      let cmd = require(`./komutlar/${command}`);//Discord Code Share
+
+      client.commands.delete(command);//Discord Code Share
+
+      client.aliases.forEach((cmd, alias) => {  //Discord Code Share
+
+        if (cmd === command) client.aliases.delete(alias);//Discord Code Share
+
       });
-      client.commands.set(command, cmd);
-      cmd.conf.aliases.forEach(alias => {
-        client.aliases.set(alias, cmd.help.name);
-      });
-      resolve();
-    } catch (e) {
-      reject(e);
+      client.commands.set(command, cmd);//Discord Code Share
+
+      cmd.conf.aliases.forEach(alias => {//Discord Code Share
+
+        client.aliases.set(alias, cmd.help.name);//Discord Code Share
+
+      });  //Discord Code Share
+
+      resolve();//Discord Code Share
+
+    } catch (e) {//Discord Code Share
+
+      reject(e);//Discord Code Share
+
+    }//Discord Code Share
+
+  });//Discord Code Share
+
+};//Discord Code Share
+
+
+client.load = command => {//Discord Code Share
+
+  return new Promise((resolve, reject) => {//Discord Code Share
+
+    try {  //Discord Code Share
+
+      let cmd = require(`./komutlar/${command}`);//Discord Code Share
+
+      client.commands.set(command, cmd);//Discord Code Share
+
+      cmd.conf.aliases.forEach(alias => {//Discord Code Share
+
+        client.aliases.set(alias, cmd.help.name);//Discord Code Share
+
+      });  //Discord Code Share
+
+      resolve();//Discord Code Share
+
+    } catch (e) {//Discord Code Share
+
+      reject(e);//Discord Code Share
+
     }
-  });
+  });  //Discord Code Share
+
 };
 
-client.load = command => {
-  return new Promise((resolve, reject) => {
+client.unload = command => {  //Discord Code Share
+
+  return new Promise((resolve, reject) => {//Discord Code Share
+
     try {
-      let cmd = require(`./komutlar/${command}`);
-      client.commands.set(command, cmd);
-      cmd.conf.aliases.forEach(alias => {
-        client.aliases.set(alias, cmd.help.name);
-      });
-      resolve();
-    } catch (e) {
-      reject(e);
-    }
-  });
+      delete require.cache[require.resolve(`./komutlar/${command}`)];//Discord Code Share
+
+      let cmd = require(`./komutlar/${command}`);//Discord Code Share
+
+      client.commands.delete(command);  //Discord Code Share
+
+      client.aliases.forEach((cmd, alias) => {//Discord Code Share
+
+        if (cmd === command) client.aliases.delete(alias);  //Discord Code Share
+
+      });//Discord Code Share
+
+      resolve();//Discord Code Share
+
+    } catch (e) {  //Discord Code Share
+
+      reject(e);//Discord Code Share
+
+    }//Discord Code Share
+
+  });//Discord Code Share
+
 };
+//Discord Code Share
 
-client.unload = command => {
-  return new Promise((resolve, reject) => {
-    try {
-      delete require.cache[require.resolve(`./komutlar/${command}`)];
-      let cmd = require(`./komutlar/${command}`);
-      client.commands.delete(command);
-      client.aliases.forEach((cmd, alias) => {
-        if (cmd === command) client.aliases.delete(alias);
-      });
-      resolve();
-    } catch (e) {
-      reject(e);
-    }
-  });
+client.elevation = message => {//Discord Code Share
+
+  if (!message.guild) {//Discord Code Share
+
+    return;//Discord Code Share
+
+  }//Discord Code Share
+
+  let permlvl = 0;  //Discord Code Share
+
+  if (message.member.hasPermission("BAN_MEMBERS")) permlvl = 2;//Discord Code Share
+
+  if (message.member.hasPermission("ADMINISTRATOR")) permlvl = 3;//Discord Code Share
+
+  if (message.author.id === ayarlar.sahip) permlvl = 4;//Discord Code Share
+
+  return permlvl //Discord Code Share
+
 };
+//Discord Code Share
 
-client.elevation = message => {
-  if (!message.guild) {
-    return;
-  }
-  let permlvl = 0;
-  if (message.member.hasPermission("BAN_MEMBERS")) permlvl = 2;
-  if (message.member.hasPermission("ADMINISTRATOR")) permlvl = 3;
-  if (message.author.id === ayarlar.sahip) permlvl = 4;
-  return permlvl;
-};
+var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;//Discord Code Share
 
-var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g;
-// client.on('debug', e => {
-//   console.log(chalk.bgBlue.green(e.replace(regToken, 'that was redacted')));
-// });
 
-client.on("warn", e => {
-  console.log(chalk.bgYellow(e.replace(regToken, "that was redacted")));
-});
+client.on("warn", e => {//Discord Code Share
 
-client.on("error", e => {
-  console.log(chalk.bgRed(e.replace(regToken, "that was redacted")));
-});
+  console.log(chalk.bgYellow(e.replace(regToken, "that was redacted")));//Discord Code Share
 
-client.login(ayarlar.token);
+});//Discord Code Share
+
+//Discord Code Share
+
+client.on("error", e => {//Discord Code Share
+
+  console.log(chalk.bgRed(e.replace(regToken, "that was redacted")));//Discord Code Share
+
+});//Discord Code Share
+
+//Discord Code Share
+
+client.login(ayarlar.token);//Discord Code Share
+
 
 //Discord Code Share
 
@@ -165,14 +272,17 @@ await db.add(`puanuc_${message.author.id}_${message.channel.id}`, 1); //EN COK M
 
 client.on("voiceStateUpdate", async (oldMember, newMember) => {
   if(!oldMember.user.bot){
-  let oldChannel = oldMember.voiceChannel;
-  let newChannel = newMember.voiceChannel;
+  let oldChannel = oldMember.voiceChannel;   //Discord Code Share
+
+  let newChannel = newMember.voiceChannel;   //Discord Code Share
+
   if (oldChannel === undefined && newChannel !== undefined) {
     db.set(`girisses.${oldMember.user.id}.${oldMember.guild.id}`, Date.now());
   } else if (newChannel === undefined) {
     let ilksessüre = await db.fetch(
       `girisses.${oldMember.user.id}.${oldMember.guild.id}`
-    );  
+    );  //Discord Code Share
+
     let time = Date.now() - ilksessüre;
     await db.add(
       "voicei_" + oldMember.guild.id + "_" + oldMember.user.id,
@@ -184,13 +294,19 @@ client.on("voiceStateUpdate", async (oldMember, newMember) => {
       time
     );  //Discord Code Share
 
-    await db.add(
-      "voiceuc_" + oldMember.user.id + "_" + oldMember.voiceChannelID,
-      time
+    await db.add( 
+
+
+      "voiceuc_" + oldMember.user.id + "_" + oldMember.voiceChannelID, 
+
+      time//Discord Code Share
+
     );   //Discord Code Share
 
-  }}
-});
+  }}//Discord Code Share
+
+});//Discord Code Share
+
 
 //Discord Code Share
 
