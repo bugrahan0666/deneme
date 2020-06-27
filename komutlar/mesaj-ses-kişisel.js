@@ -3,7 +3,7 @@ const db = require("quick.db");
 const moment = require('moment')
 require("moment-duration-format")
 exports.run = async (client, message, args) => {
-  const us = message.member || message.mentions.members.first() || message.guild.members.get(args[0]);
+  const us = message.mentions.members.first() || message.guild.members.get(args[0]) || message.author
 
   const puan = await db.get("puan_" + message.guild.id + "_" + us.id);
 
@@ -23,18 +23,17 @@ exports.run = async (client, message, args) => {
     })
     .slice(0, 3);
     
-   let sayii = 1
-    let top4c = message.guild.channels
+   let sayi4 = 1
+  let top4c = message.guild.channels
     .array()
     .sort((a, b) => {
       return (
-        (db.get(`puanuc_${us.id}_${b.id}`) || 0) -
-        (db.get(`puanuc_${us.id}_${a.id}`) || 0)
+        (db.get(`voiceuc_${us.id}_${b.id}`) || 0) -
+        (db.get(`voiceuc_${us.id}_${a.id}`) || 0)
       );
     })
     .map(x => {
-      return `\n${sayii++}.  <#${x.id}>:  \`${moment.duration(db.get('voiceuc_'+us.id+'_'+x.id).format("D [gün] H [saat] m [dakika]"))
-       || 0}\``;
+      return `\n\`${sayi4++}.\` <#${x.id}>:  \`${moment.duration(db.get('voiceuc_'+us.id+'_'+x.id)).format("D [Gün] H [Saat] m [Dakika] s [Saniye]")}\``;
     })
     .slice(0, 3);
     
@@ -46,7 +45,7 @@ exports.run = async (client, message, args) => {
     .setThumbnail(us.avatarURL || message.author.avatarURL)
     .setFooter(client.user.username)
     .setDescription(
-      `**Mesaj İstatistikleri:** \`${puan}\`\n**En Çok Mesaj Attığı 3 Kanal**\n${top3c}\n\n**Seste Kalma Süresi:** \`${ses}\`\n**En Çok Seste Durduğu 3 Kanal**\n${top4c}`)
+      `**Mesaj İstatistikleri:** \`${puan}\`\n**En Çok Mesaj Attığı 3 Kanal**${top3c}\n\n**Seste Kalma Süresi:** \`${ses}\`\n**En Çok Seste Durduğu 3 Kanal**${top4c}`)
     .setColor("GREEN");
   message.channel.send(embed)
  //Discord Code Shâre
