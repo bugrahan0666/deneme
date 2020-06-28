@@ -3,7 +3,7 @@ const db = require("quick.db");
 const moment = require('moment')
 require("moment-duration-format")
 exports.run = async (client, message, args) => {
-  const us = message.mentions.members.first() || message.guild.members.get(args[0]) || message.author
+  const us = message.mentions.users.first() || client.users.get(args[0]) || message.author
 
   const puan = await db.get("puan_" + message.guild.id + "_" + us.id);
 
@@ -40,7 +40,7 @@ exports.run = async (client, message, args) => {
     const sess = await db.get('voicei_'+message.guild.id+'_'+us.id)
     const ses = moment.duration(sess).format("D [gün] H [saat] m [dakika]");
   const embed = new Discord.RichEmbed()
-    .setTitle(`${message.member.displayName} İSTATİSTİKLERİ`)
+    .setTitle(`${us.username} İSTATİSTİKLERİ`)
     .setTimestamp()
     .setThumbnail(us.avatarURL || message.author.avatarURL)
     .setFooter(client.user.username)
