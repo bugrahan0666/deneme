@@ -88,7 +88,7 @@ const içerik = `**__Message | Top 5 - Channels__\n\n${mesaj_kanal}\n\n__Message
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: [],
+  aliases: ["top"],
   permLevel: 0
 };
 exports.help = {
