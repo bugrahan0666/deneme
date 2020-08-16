@@ -35,7 +35,7 @@ exports.run = async (client, message, args) => {
         (db.get(`voicei_${message.guild.id}_${a.user.id}`) || 0)
       );
     })
-    .slice(0, 3)
+    .slice(0, 5)
     .map(member => {
       return `\n\`${sayi2++}.\`  <@${member.user.id}>:  \`${moment.duration(db.get('voicei_'+message.guild.id+'_'+member.user.id)).format("D [Gün] H [Saat] m [Dakika] s [Saniye]")}\``;
     });
@@ -70,7 +70,7 @@ let sayi4 = 1
     .map(x => {
       return `\n\`${sayi4++}.\` <#${x.id}>:  \`${moment.duration(db.get('voicec_'+message.guild.id+'_'+x.id)).format("D [Gün] H [Saat] m [Dakika] s [Saniye]")}\``;
     })
-    .slice(0, 3);
+    .slice(0, 5);
     
 //////////////////////////////////////////////////
 
@@ -80,7 +80,7 @@ let sayi4 = 1
       .addField("Ses | Top 3 - Üyeler",`${ses_kişi}`)
      .addBlankField()
      .addField("Mesaj | Top 5 - Kanal",`${mesaj_kanal}`)
-      .addField("Ses | Top 3 - Kanal",`${ses_kanal}`)
+      .addField("Ses | Top 5 - Kanal",`${ses_kanal}`)
       .setTitle(message.guild.name+' İstatistik')
       .setThumbnail(message.guild.iconURL)
       .setColor("BLUE")
