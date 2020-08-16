@@ -3,6 +3,57 @@ const db = require("quick.db");
 const moment = require('moment')
 require("moment-duration-format")
 exports.run = async (client, message, args) => {
+  let simdikitarih = moment.utc(message.createdAt).format('DD MM YYYY');
+        let user = message.mentions.users.first() || message.author;
+        let userinfo = {};
+        userinfo.avatar= user.displayAvatarURL;
+        userinfo.id = user.id;
+        userinfo.od1 = message.guild.members.get(user.id).user.presence.game || "``Oynadığı Bir Oyun Yok``"
+        userinfo.status = user.presence.status.toString()
+        .replace("dnd", `Rahatsız Etmeyin`)
+        .replace("online", `Çevrimiçi`)
+        .replace("idle", `Boşta`)
+        .replace("offline", `Çevrimdışı`)
+        userinfo.dctarih = moment.utc(message.guild.members.get(user.id).user.createdAt).format('**DD** MMMM **YYYY** dddd **[Günü]** **[Saat:]** __**HH:mm:ss**__')
+        .replace("Monday", `**Pazartesi**`)
+        .replace("Tuesday", `**Salı**`)
+        .replace("Wednesday", `**Çarşamba**`)
+        .replace("Thursday", `**Perşembe**`)
+        .replace("Friday", `**Cuma**`)
+        .replace("Saturday", `**Cumartesi**`)
+        .replace("Sunday", `**Pazar**`)
+        .replace("January", `**Ocak**`)
+        .replace("February", `**Şubat**`)
+        .replace("March", `**Mart**`)
+        .replace("April", `**Nisan**`)
+        .replace("May", `**Mayıs**`)
+        .replace("June", `**Haziran**`)
+        .replace("July", `**Temmuz**`)
+        .replace("August", `**Ağustos**`)
+        .replace("September", `**Eylül**`)
+        .replace("October", `**Ekim**`)
+        .replace("November", `**Kasım**`)
+        .replace("December", `**Aralık**`)
+        userinfo.dctarihkatilma = moment.utc(message.guild.members.get(user.id).joinedAt).format('**DD** MMMM **YYYY** dddd **[Günü]** **[Saat:]** __**HH:mm:ss**__')
+        .replace("Monday", `**Pazartesi**`)
+        .replace("Tuesday", `**Salı**`)
+        .replace("Wednesday", `**Çarşamba**`)
+        .replace("Thursday", `**Perşembe**`)
+        .replace("Friday", `**Cuma**`)
+        .replace("Saturday", `**Cumartesi**`)
+        .replace("Sunday", `**Pazar**`)
+        .replace("January", `**Ocak**`)
+        .replace("February", `**Şubat**`)
+        .replace("March", `**Mart**`)
+        .replace("April", `**Nisan**`)
+        .replace("May", `**Mayıs**`)
+        .replace("June", `**Haziran**`)
+        .replace("July", `**Temmuz**`)
+        .replace("August", `**Ağustos**`)
+        .replace("September", `**Eylül**`)
+        .replace("October", `**Ekim**`)
+        .replace("November", `**Kasım**`)
+        .replace("December", `**Aralık**`)
   const us = message.mentions.users.first() || client.users.get(args[0]) || message.author
 
   const puan = await db.get("puan_" + message.guild.id + "_" + us.id);
@@ -46,6 +97,12 @@ exports.run = async (client, message, args) => {
     .setFooter(client.user.username)
     .setDescription(`**Mesaj İstatistikleri:** \`${puan}\`\n**En Çok Mesaj Attığı 3 Kanal**${top3c}\n\n**Seste Kalma Süresi:** \`${ses}\`\n**En Çok Seste Durduğu 3 Kanal**${top4c}`)
     .addField("Mesaj İstatistikleri",`> Toplam Mesaj: **${puan}**\n`)
+    .setDescription(`Bu Listede Gösterilen Oranlar Toplam ve Anlık Olarak Gösterilmektedir
+
+Kullanıcı: ${message.author.tag}
+Kullanıcı ID: ${message.author.id}
+Hesap Açılış Tarihi: 
+`)
   .setColor("GREEN");
   message.channel.send(embed)
 };

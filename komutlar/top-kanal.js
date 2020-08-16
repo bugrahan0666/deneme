@@ -37,9 +37,9 @@ exports.run = async (client, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["mesajtop"],
+  aliases: ["kanaltop"],
   permLevel: 0
 };
 exports.help = {
-  name: "mesajtops"
+  name: "kanaltops"
 };
