@@ -3,7 +3,12 @@ const db = require("quick.db");
 const moment = require('moment')
 require("moment-duration-format")
 exports.run = async (client, message, args) => {
-  let simdikitarih = moment.utc(message.createdAt).format('DD MM YYYY');
+        let kişi = message.mentions.users.first()
+        if(!args[0]) {
+        const data = await db.fetch(`erkek.${message.author.id}.${message.guild.id}`)
+        const datae = await db.fetch(`kız.${message.author.id}.${message.guild.id}`)
+        
+        let simdikitarih = moment.utc(message.createdAt).format('DD MM YYYY');
         let user = message.mentions.users.first() || message.author;
         let userinfo = {};
         userinfo.avatar= user.displayAvatarURL;
@@ -54,16 +59,8 @@ exports.run = async (client, message, args) => {
         .replace("October", `**Ekim**`)
         .replace("November", `**Kasım**`)
         .replace("December", `**Aralık**`)
-
-
-
-
-
-
   const us = message.mentions.users.first() || client.users.get(args[0]) || message.author
-
   const puan = await db.get("puan_" + message.guild.id + "_" + us.id);
-
   let sayi22 = 1;
   let top3c = message.guild.channels
     .array()
@@ -96,7 +93,7 @@ exports.run = async (client, message, args) => {
     
     const sess = await db.get('voicei_'+message.guild.id+'_'+us.id)
     const ses = moment.duration(sess).format("D [Gün] H [Saat] m [Dakika]");
-  const embed = new Discord.RichEmbed()
+    const embed = new Discord.RichEmbed()
     .setTitle(`${us.username} İSTATİSTİKLERİ`)
     .setTimestamp()
     .setThumbnail(us.avatarURL || message.author.avatarURL)
@@ -109,10 +106,14 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
   .addBlankField()
   .addField("Aktif Olduğu Ses Kanalları",`${top4c}`)
   .addField("Aktif Olduğu Metin Kanalları",`${top3c}`)
-  .addField("Toplam İstatistikler",`Toplam Ses: **${ses}** \nToplam Mesaj: **${puan}**`)
+  .addField("Aktiflik İstatistikleri",`Toplam Ses: **${ses}** \nToplam Mesaj: **${puan}**`,true)
+  .addField("Kayıt İstatistikleri",`Toplam Erkek Kayıt: **${data ? data : '0'}** \nToplam Kız Kayıt: **${datae ? datae : '0'}**`,true)
+  .addField("Ban İstatistikleri",`Toplam Ban: \nToplam Unban: `)
   .setFooter(client.user.username)
   .setColor("GREEN");
   message.channel.send(embed)
+}
+
 };
 
 exports.conf = {
