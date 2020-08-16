@@ -83,7 +83,7 @@ exports.run = async (client, message, args) => {
         `puanuc_${us.id}_${x.id}`
       ) || 0}\``;
     })
-    .slice(0, 3);
+    .slice(0, 5);
     
    let sayi4 = 1
   let top4c = message.guild.channels
@@ -97,7 +97,7 @@ exports.run = async (client, message, args) => {
     .map(x => {
       return `\n\`${sayi4++}.\` <#${x.id}>:  \`${moment.duration(db.get('voiceuc_'+us.id+'_'+x.id)).format("D [Gün] H [Saat] m [Dakika] s [Saniye]")}\``;
     })
-    .slice(0, 3);
+    .slice(0, 5);
     
     const sess = await db.get('voicei_'+message.guild.id+'_'+us.id)
     const ses = moment.duration(sess).format("D [Gün] H [Saat] m [Dakika]");
@@ -112,13 +112,15 @@ Kullanıcı ID: **${message.author.id}**
 Hesap Kuruluş Tarihi: ${userinfo.dctarih}
 Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`) 
   .addBlankField()
-  .addField("Aktif Olduğu Ses Kanalları",`${top4c}`)
-  .addField("Aktif Olduğu Metin Kanalları",`${top3c}`)
+  .addField("Aktif Olduğu Ses Kanalları (5)",`${top4c}`)
+  .addField("Aktif Olduğu Metin Kanalları (5)",`${top3c}`)
   .addField("Aktiflik İstatistikleri",`Toplam Ses: **${ses}** \nToplam Mesaj: **${puan}**`,true)
   .addField("Attığı Ban ve Unban İstatistikleri",`Toplam Ban: **${dataee ? dataee : '0'}**\nToplam Unban: **${dataeee ? dataeee : '0'}**`,true)
+  .addBlankField()
   .addField("Ceza İşlem İstatistikleri",`Toplam Chat Mute: **${dataee ? dataee : '0'}**\nToplam Ses Mute: **${dataeee ? dataeee : '0'}**`,true)
-  .addField("Jail İstatistikleri",`Toplam Jail: **${datajail ? datajail: '0'}**\nToplam Unjail: **${dataunjail ? dataunjail : '0'}**` )
-  .setFooter(client.user.username)
+  .addField("Jail İstatistikleri",`Toplam Jail: **${datajail ? datajail: '0'}**\nToplam Unjail: **${dataunjail ? dataunjail : '0'}**`,true)
+  .addField("∻ The Sky",`[∻ The Sky İnvite](https://discord.gg/YpgZcC9) [Destek]`)
+  .setFooter('∻ THE SKY STATS / Developed by Salvatore')
   .setColor("GREEN");
   message.channel.send(embed)
 }
