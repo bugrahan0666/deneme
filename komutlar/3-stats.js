@@ -122,7 +122,7 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
   .addField("Ceza İşlem İstatistikleri",`Toplam Chat Mute: **${datacmute ? datacmute : '0'}**\nToplam Ses Mute: **${datavmute ? datavmute : '0'}**`,true)
   .addField("Jail İstatistikleri",`Toplam Jail: **${datajail ? datajail: '0'}**\nToplam Unjail: **${dataunjail ? dataunjail : '0'}**`,true)
   .setFooter('∻ The Sky Stats / Developed by Salvatore')
-  .setColor("GREEN");
+  .setColor("RANDOM");
   message.channel.send(embed)
 }
   }
