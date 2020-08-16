@@ -22,7 +22,7 @@ exports.run = (client, message, args) => {
 
   if (!message.guild.member(user).bannable)
     return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hatalı Kullanım` , `<a:particals:692108121518112909> Yetkilileri Banlayamasınız`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
-  message.guild.ban(user, 2);
+  message.guild.ban(user, {reason: reason})
   const embed = new Discord.RichEmbed()
     .setColor("RANDOM")
     .setTimestamp()
