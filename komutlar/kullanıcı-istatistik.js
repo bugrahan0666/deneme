@@ -2,8 +2,7 @@ const Discord = require("discord.js");
 const db = require("quick.db");
 const moment = require('moment')
 require("moment-duration-format")
-exports.run = async (client, message, args) => {
-        
+exports.run = async (client, message, args, tools) => {        
   const us = message.mentions.users.first() || client.users.get(args[0]) || message.author
   const puan = await db.get("puan_" + message.guild.id + "_" + us.id);
   let sayi22 = 1;
@@ -101,6 +100,26 @@ exports.run = async (client, message, args) => {
         .replace("October", `**Ekim**`)
         .replace("November", `**Kasım**`)
         .replace("December", `**Aralık**`)
+         let kişi;
+  if (message.mentions.members.first()) {
+    kişi = message.mentions.members.first();
+  } else {
+    kişi = message.author;
+  }
+
+  let bilgi = await db.fetch(`davet_${kişi.id}_${message.guild.id}`);
+  let sayı2;
+  if (!bilgi) {
+    sayı2 = 0;
+  } else {
+    sayı2 = await db.fetch(`davet_${kişi.id}_${message.guild.id}`);
+  }
+  let veri = await db.fetch(`rol1_${message.guild.id}`);
+  let veri12 = await db.fetch(`roldavet1_${message.guild.id}`);
+  let veri21 = await db.fetch(`roldavet2_${message.guild.id}`);
+  let veri2 = await db.fetch(`rol2_${message.guild.id}`);
+            if (!message.member.roles.has(veri)) {
+           if (!veri) {
     const embed = new Discord.RichEmbed()
     .setTitle(`${us.username} İSTATİSTİKLERİ`)
     .setTimestamp()
@@ -119,14 +138,16 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
   .addBlankField()
   .addField("Ceza İşlem İstatistikleri",`Toplam Chat Mute: **${dataee ? dataee : '0'}**\nToplam Ses Mute: **${dataeee ? dataeee : '0'}**`,true)
   .addField("Jail İstatistikleri",`Toplam Jail: **${datajail ? datajail: '0'}**\nToplam Unjail: **${dataunjail ? dataunjail : '0'}**`,true)
-  .addField("İnvite İstatistikleri",`Toplam İnvite: **${datajail ? datajail: '0'}**`,true)
+  .addField("İnvite İstatistikleri",`Toplam İnvite: **${sayı2}**`,true)
   .setFooter('∻ THE SKY STATS / Developed by Salvatore')
   .setColor("GREEN");
   message.channel.send(embed)
 }
   }
     }
-      };
+      }
+        }
+        };
 
 exports.conf = {
   enabled: true,
