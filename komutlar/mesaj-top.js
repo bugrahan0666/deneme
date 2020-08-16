@@ -28,7 +28,7 @@ exports.run = async (client, message, args) => {
     new Discord.RichEmbed()
       .setTitle('Mesaj Top 10')
       .setThumbnail(message.guild.iconURL)
-      .addField("TOP 10 MESAJ AKTİFLİĞİ",`${mesaj_kişi}`)
+      .addField("TOP 10 MESAJ AKTİFLİĞİ",`${mesaj_kişi} Mesaj`)
       .setColor("RANDOM")
       .setFooter('Developed by Salvatore')
       .setTimestamp()
