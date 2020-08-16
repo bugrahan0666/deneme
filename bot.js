@@ -103,124 +103,110 @@ client.reload = command => {
     try {
       //Discord Code Share
 
-      delete require.cache[require.resolve(`./komutlar/${command}`)]; //Discord Code Share
+      delete require.cache[require.resolve(`./komutlar/${command}`)];
 
-      let cmd = require(`./komutlar/${command}`); //Discord Code Share
+      let cmd = require(`./komutlar/${command}`);
 
-      client.commands.delete(command); //Discord Code Share
+      client.commands.delete(command); 
 
       client.aliases.forEach((cmd, alias) => {
-        //Discord Code Share
 
-        if (cmd === command) client.aliases.delete(alias); //Discord Code Share
+        if (cmd === command) client.aliases.delete(alias); 
       });
-      client.commands.set(command, cmd); //Discord Code Share
+      client.commands.set(command, cmd); 
 
       cmd.conf.aliases.forEach(alias => {
-        //Discord Code Share
 
-        client.aliases.set(alias, cmd.help.name); //Discord Code Share
-      }); //Discord Code Share
+        client.aliases.set(alias, cmd.help.name); 
+      }); 
 
-      resolve(); //Discord Code Share
+      resolve(); 
     } catch (e) {
-      //Discord Code Share
 
-      reject(e); //Discord Code Share
-    } //Discord Code Share
-  }); //Discord Code Share
-}; //Discord Code Share
+      reject(e);
+    } 
+  }); 
+}; 
 
 client.load = command => {
-  //Discord Code Share
+
 
   return new Promise((resolve, reject) => {
-    //Discord Code Share
 
     try {
-      //Discord Code Share
 
-      let cmd = require(`./komutlar/${command}`); //Discord Code Share
+      let cmd = require(`./komutlar/${command}`);
 
-      client.commands.set(command, cmd); //Discord Code Share
+      client.commands.set(command, cmd);
 
       cmd.conf.aliases.forEach(alias => {
-        //Discord Code Share
 
-        client.aliases.set(alias, cmd.help.name); //Discord Code Share
-      }); //Discord Code Share
+        client.aliases.set(alias, cmd.help.name);
+      });
 
-      resolve(); //Discord Code Share
+      resolve();
     } catch (e) {
-      //Discord Code Share
 
-      reject(e); //Discord Code Share
+      reject(e);
     }
-  }); //Discord Code Share
+  }); 
 };
 
 client.unload = command => {
-  //Discord Code Share
+  
 
   return new Promise((resolve, reject) => {
-    //Discord Code Share
 
     try {
-      delete require.cache[require.resolve(`./komutlar/${command}`)]; //Discord Code Share
+      delete require.cache[require.resolve(`./komutlar/${command}`)]; 
 
-      let cmd = require(`./komutlar/${command}`); //Discord Code Share
+      let cmd = require(`./komutlar/${command}`); 
 
-      client.commands.delete(command); //Discord Code Share
+      client.commands.delete(command); 
 
       client.aliases.forEach((cmd, alias) => {
-        //Discord Code Share
+        
 
-        if (cmd === command) client.aliases.delete(alias); //Discord Code Share
-      }); //Discord Code Share
+        if (cmd === command) client.aliases.delete(alias); 
+      }); 
 
-      resolve(); //Discord Code Share
+      resolve(); 
     } catch (e) {
-      //Discord Code Share
+      
 
-      reject(e); //Discord Code Share
-    } //Discord Code Share
-  }); //Discord Code Share
+      reject(e); 
+    } 
+  });
 };
-//Discord Code Share
+
 
 client.elevation = message => {
-  //Discord Code Share
+ 
 
   if (!message.guild) {
-    //Discord Code Share
 
-    return; //Discord Code Share
-  } //Discord Code Share
 
-  let permlvl = 0; //Discord Code Share
+    return; 
+  }
+  let permlvl = 0; 
 
-  if (message.member.hasPermission("BAN_MEMBERS")) permlvl = 2; //Discord Code Share
+  if (message.member.hasPermission("BAN_MEMBERS")) permlvl = 2;
 
-  if (message.member.hasPermission("ADMINISTRATOR")) permlvl = 3; //Discord Code Share
+  if (message.member.hasPermission("ADMINISTRATOR")) permlvl = 3;
 
-  if (message.author.id === ayarlar.sahip) permlvl = 4; //Discord Code Share
+  if (message.author.id === ayarlar.sahip) permlvl = 4; 
 
-  return permlvl; //Discord Code Share
+  return permlvl; 
 };
-//Discord Code Share
 
-var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g; //Discord Code Share
+var regToken = /[\w\d]{24}\.[\w\d]{6}\.[\w\d-_]{27}/g; 
 
 client.on("warn", e => {
-  //Discord Code Share
+  console.log(chalk.bgYellow(e.replace(regToken, "that was redacted")));
+}); 
 
-  console.log(chalk.bgYellow(e.replace(regToken, "that was redacted"))); //Discord Code Share
-}); //Discord Code Share
-
-//Discord Code Share
 
 client.on("error", e => {
-  //Discord Code Share
 
   console.log(chalk.bgRed(e.replace(regToken, "that was redacted")));
 });
