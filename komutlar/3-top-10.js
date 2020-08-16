@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
     })
     .slice(0, 5)
     .map(member => {
-      return `\n\`${sayi2++}.\`  <@${member.user.id}>:  \`${moment.duration(db.get('voicei_'+message.guild.id+'_'+member.user.id)).format("D [Gün] H [Saat] m [Dakika] s [Saniye]")}\``;
+      return `\n\`${sayi2++}.\`  <@${member.user.id}>:  \`\n${moment.duration(db.get('voicei_'+message.guild.id+'_'+member.user.id)).format("D [Gün] H [Saat] m [Dakika] s [Saniye]")}\``;
     });
     
   let sayi3 = 1
