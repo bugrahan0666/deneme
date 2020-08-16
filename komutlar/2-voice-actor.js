@@ -1,100 +1,72 @@
-const Discord = require("discord.js");
-const db = require("quick.db");
-const moment = require('moment')
-require("moment-duration-format")
-let ms = require("parse-ms");
+const Discord = require('discord.js');
+const ayarlar = require('../ayarlar.json');
+const db = require("quick.db")
+var prefix = ayarlar.prefix;
+const fs = require('fs');
+let yazı = JSON.parse(fs.readFileSync("./log.json", "utf8"));
 exports.run = async (client, message, args) => {
-//Discord Code Shâre
-//////////////////////////////////////////////////
+  if(message.author.bot || message.channel.type === "dm") return;
+ if (!message.member.roles.has('693095716943298701') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:discordneon:692108209946886186> Bilgilendirme` , `<a:red_1:692108234273718433> Bu Komutu Kullanmak İçin <@&693095716943298701> Yetkisine Sahip Olmalısın`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
 
-  let sayi = 1
-  let mesaj_kişi = message.guild.members
-    .filter(mem => !mem.user.bot)
-    .array()
-    .sort((a, b) => {
-      return (
-        (db.get(`puan_${message.guild.id}_${b.user.id}`) || 0) -
-        (db.get(`puan_${message.guild.id}_${a.user.id}`) || 0)
-      );
-    })
-    .slice(0, 5)
-    .map(member => {
-      return `\n\`${sayi++}.\`  <@${member.user.id}>:  \`${db.get(
-        `puan_${message.guild.id}_${member.user.id}`
-      )}\``;
-    });
-    
-    //////////////////////////////////////////////////
-   let sayi2 = 1
-  let ses_kişi = message.guild.members
-    .filter(mem => !mem.user.bot)
-    .array()
-    .sort((a, b) => {
-      return (
-        (db.get(`voicei_${message.guild.id}_${b.user.id}`) || 0) -
-        (db.get(`voicei_${message.guild.id}_${a.user.id}`) || 0)
-      );
-    })
-    .slice(0, 5)
-    .map(member => {
-      return `\n\`${sayi2++}.\`  <@${member.user.id}>:  \`${moment.duration(db.get('voicei_'+message.guild.id+'_'+member.user.id)).format("D [Gün] H [Saat] m [Dakika] s [Saniye]")}\``;
-    });
-    
-//////////////////////////////////////////////////
-  let sayi3 = 1
-  let mesaj_kanal = message.guild.channels
-    .array()
-    .sort((a, b) => {
-      return (
-        (db.get(`puanc_${message.guild.id}_${b.id}`) || 0) -
-        (db.get(`puanc_${message.guild.id}_${a.id}`) || 0)
-      );
-    })
-    .map(x => {
-      return `\n\`${sayi3++}.\`  <#${x.id}>:  \`${db.get(
-        `puanc_${message.guild.id}_${x.id}`
-      )}\``;
-    })
-    .slice(0, 5);
-    
-//////////////////////////////////////////////////
-let sayi4 = 1
-  let ses_kanal = message.guild.channels
-    .array()
-    .sort((a, b) => {
-      return (
-        (db.get(`voicec_${message.guild.id}_${b.id}`) || 0) -
-        (db.get(`voicec_${message.guild.id}_${a.id}`) || 0)
-      );
-    })
-    .map(x => {
-      return `\n\`${sayi4++}.\` <#${x.id}>:  \`${moment.duration(db.get('voicec_'+message.guild.id+'_'+x.id)).format("D [Gün] H [Saat] m [Dakika] s [Saniye]")}\``;
-    })
-    .slice(0, 5);
-    
-//////////////////////////////////////////////////
+  
+  var user = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 
-  message.channel.send(
-    new Discord.RichEmbed()
-      .addField("Mesaj | Top 5 - Üyeler",`${mesaj_kişi}`,true)
-      .addField("Ses | Top 3 - Üyeler",`${ses_kişi}`,true)
-     .addBlankField()
-     .addField("Mesaj | Top 5 - Kanal",`${mesaj_kanal}`,true)
-      .addField("Ses | Top 5 - Kanal",`${ses_kanal}`,true)
-      .setTitle(message.guild.name+' İstatistik')
-      .setThumbnail(message.guild.iconURL)
-      .setColor("BLUE")
-    .setFooter('Salvatore ait adamı sikerler sdjkljdsjksd')
-      .setTimestamp()
-  );
-};
+  var rol   = message.guild.roles.get("692861442524971048")
+  
+if(!user) return message.reply ("**Lütfen bir kullanıcı etiketleyiniz**").then(m => m.delete(5000));
+
+  
+        if(!rol) return message.channel.send ("**Voice Actor Rolü Yok**").then(m => m.delete(5000));
+
+
+  if(!user.roles.has(rol.id)){
+  
+    await (user.addRole(rol.id))
+    
+  
+   message.react('693067238613188639')
+    let embed = new Discord.RichEmbed()
+    .setColor(rol.color)
+    .setDescription(`${user.user} Kullanıcısına <@&${rol.id}> Rolü Verildi.`)
+    .setFooter(`${message.author.tag}` , `${message.author.displayAvatarURL}`)
+  .setTimestamp()  
+    message.channel.send(embed).then(message =>message.delete(10000))
+
+
+
+  }
+  else {
+    
+    await (user.removeRole(rol.id));
+    
+ 
+
+    
+    message.react('693067238613188639')
+     let embed0= new Discord.RichEmbed()
+    .setColor(rol.color)
+    .setDescription(`${user.user} Kullanıcısından <@&${rol.id}> Rolü Alındı.`)
+   .setFooter(`${message.author.tag}` , `${message.author.displayAvatarURL}`)
+  .setTimestamp()  
+    message.channel.send(embed0).then(message =>message.delete(10000))
+
+    
+  }
+ 
+}
+
+
+
+
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["top"],
+  aliases: [],
   permLevel: 0
 };
+
 exports.help = {
-  name: "tops"
-  //Discord Code Shâre
+  name: 'voiceactor',
+  description: 'voiceactor rolü verir.',
+  usage: 'voiceactor'
 };
