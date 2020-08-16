@@ -3,7 +3,42 @@ const db = require("quick.db");
 const moment = require('moment')
 require("moment-duration-format")
 exports.run = async (client, message, args) => {
-        let kişi = message.mentions.users.first()
+        
+  const us = message.mentions.users.first() || client.users.get(args[0]) || message.author
+  const puan = await db.get("puan_" + message.guild.id + "_" + us.id);
+  let sayi22 = 1;
+  let top3c = message.guild.channels
+    .array()
+    .sort((a, b) => {
+      return (
+        (db.get(`puanuc_${us.id}_${b.id}`) || 0) -
+        (db.get(`puanuc_${us.id}_${a.id}`) || 0)
+      );
+    })
+    .map(x => {
+      return `\n${sayi22++}.  <#${x.id}>:  \`${db.get(
+        `puanuc_${us.id}_${x.id}`
+      ) || 0}\``;
+    })
+    .slice(0, 5);
+    
+   let sayi4 = 1
+  let top4c = message.guild.channels
+    .array()
+    .sort((a, b) => {
+      return (
+        (db.get(`voiceuc_${us.id}_${b.id}`) || 0) -
+        (db.get(`voiceuc_${us.id}_${a.id}`) || 0)
+      );
+    })
+    .map(x => {
+      return `\n\`${sayi4++}.\` <#${x.id}>:  \`${moment.duration(db.get('voiceuc_'+us.id+'_'+x.id)).format("D [Gün] H [Saat] m [Dakika] s [Saniye]")}\``;
+    })
+    .slice(0, 5);
+    
+    const sess = await db.get('voicei_'+message.guild.id+'_'+us.id)
+    const ses = moment.duration(sess).format("D [Gün] H [Saat] m [Dakika]");
+  let kişi = message.mentions.users.first()
         if(!args[0]) {
         const data = await db.fetch(`erkek.${message.author.id}.${message.guild.id}`)
         const datae = await db.fetch(`kız.${message.author.id}.${message.guild.id}`)
@@ -66,40 +101,6 @@ exports.run = async (client, message, args) => {
         .replace("October", `**Ekim**`)
         .replace("November", `**Kasım**`)
         .replace("December", `**Aralık**`)
-  const us = message.mentions.users.first() || client.users.get(args[0]) || message.author
-  const puan = await db.get("puan_" + message.guild.id + "_" + us.id);
-  let sayi22 = 1;
-  let top3c = message.guild.channels
-    .array()
-    .sort((a, b) => {
-      return (
-        (db.get(`puanuc_${us.id}_${b.id}`) || 0) -
-        (db.get(`puanuc_${us.id}_${a.id}`) || 0)
-      );
-    })
-    .map(x => {
-      return `\n${sayi22++}.  <#${x.id}>:  \`${db.get(
-        `puanuc_${us.id}_${x.id}`
-      ) || 0}\``;
-    })
-    .slice(0, 5);
-    
-   let sayi4 = 1
-  let top4c = message.guild.channels
-    .array()
-    .sort((a, b) => {
-      return (
-        (db.get(`voiceuc_${us.id}_${b.id}`) || 0) -
-        (db.get(`voiceuc_${us.id}_${a.id}`) || 0)
-      );
-    })
-    .map(x => {
-      return `\n\`${sayi4++}.\` <#${x.id}>:  \`${moment.duration(db.get('voiceuc_'+us.id+'_'+x.id)).format("D [Gün] H [Saat] m [Dakika] s [Saniye]")}\``;
-    })
-    .slice(0, 5);
-    
-    const sess = await db.get('voicei_'+message.guild.id+'_'+us.id)
-    const ses = moment.duration(sess).format("D [Gün] H [Saat] m [Dakika]");
     const embed = new Discord.RichEmbed()
     .setTitle(`${us.username} İSTATİSTİKLERİ`)
     .setTimestamp()
@@ -118,7 +119,7 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
   .addBlankField()
   .addField("Ceza İşlem İstatistikleri",`Toplam Chat Mute: **${dataee ? dataee : '0'}**\nToplam Ses Mute: **${dataeee ? dataeee : '0'}**`,true)
   .addField("Jail İstatistikleri",`Toplam Jail: **${datajail ? datajail: '0'}**\nToplam Unjail: **${dataunjail ? dataunjail : '0'}**`,true)
-  .addField("İnvite İstatistikleri",`Toplam İnvite: **${datajail ? datajail: '0'}`,true)
+  .addField("İnvite İstatistikleri",`Toplam İnvite: **${datajail ? datajail: '0'}**`,true)
   .setFooter('∻ THE SKY STATS / Developed by Salvatore')
   .setColor("GREEN");
   message.channel.send(embed)
