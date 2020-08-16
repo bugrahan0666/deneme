@@ -7,6 +7,10 @@ exports.run = async (client, message, args) => {
         if(!args[0]) {
         const data = await db.fetch(`erkek.${message.author.id}.${message.guild.id}`)
         const datae = await db.fetch(`kız.${message.author.id}.${message.guild.id}`)
+         let ceza = message.mentions.users.first()
+        if(!args[0]) {
+        const dataee = await db.fetch(`ban.${message.author.id}.${message.guild.id}`)
+        const dataeee = await db.fetch(`unban.${message.author.id}.${message.guild.id}`)
         
         let simdikitarih = moment.utc(message.createdAt).format('DD MM YYYY');
         let user = message.mentions.users.first() || message.author;
@@ -108,12 +112,13 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
   .addField("Aktif Olduğu Metin Kanalları",`${top3c}`)
   .addField("Aktiflik İstatistikleri",`Toplam Ses: **${ses}** \nToplam Mesaj: **${puan}**`,true)
   .addField("Kayıt İstatistikleri",`Toplam Erkek Kayıt: **${data ? data : '0'}** \nToplam Kız Kayıt: **${datae ? datae : '0'}**`,true)
-  .addField("Ban İstatistikleri",`Toplam Ban: \nToplam Unban: `)
+  .addField("Ban İstatistikleri",`Toplam Ban: **${dataee ? dataee : '0'}**\nToplam Unban: **${dataeee ? dataeee : '0'}**`)
+  .addField("Ceza İşlem İstatistikleri",`Toplam Mute: **${dataee ? dataee : '0'}**\nToplam Unban: **${dataeee ? dataeee : '0'}**`)
   .setFooter(client.user.username)
   .setColor("GREEN");
   message.channel.send(embed)
 }
-
+        }
 };
 
 exports.conf = {
