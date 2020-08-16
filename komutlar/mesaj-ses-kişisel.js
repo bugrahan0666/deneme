@@ -38,17 +38,16 @@ exports.run = async (client, message, args) => {
     .slice(0, 3);
     
     const sess = await db.get('voicei_'+message.guild.id+'_'+us.id)
-    const ses = moment.duration(sess).format("D [gün] H [saat] m [dakika]");
+    const ses = moment.duration(sess).format("D [Gün] H [Saat] m [Dakika]");
   const embed = new Discord.RichEmbed()
     .setTitle(`${us.username} İSTATİSTİKLERİ`)
     .setTimestamp()
     .setThumbnail(us.avatarURL || message.author.avatarURL)
     .setFooter(client.user.username)
-    .setDescription(
-      `**Mesaj İstatistikleri:** \`${puan}\`\n**En Çok Mesaj Attığı 3 Kanal**${top3c}\n\n**Seste Kalma Süresi:** \`${ses}\`\n**En Çok Seste Durduğu 3 Kanal**${top4c}`)
-    .setColor("GREEN");
+    .setDescription(`**Mesaj İstatistikleri:** \`${puan}\`\n**En Çok Mesaj Attığı 3 Kanal**${top3c}\n\n**Seste Kalma Süresi:** \`${ses}\`\n**En Çok Seste Durduğu 3 Kanal**${top4c}`)
+    .addField("Mesaj İstatistikleri",`> Toplam Mesaj: **${puan}**\n`)
+  .setColor("GREEN");
   message.channel.send(embed)
- //Discord Code Shâre
 };
 
 exports.conf = {
