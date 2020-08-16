@@ -47,13 +47,15 @@ exports.run = async (client, message, args, tools) => {
         const dataeee = await db.fetch(`unban.${message.author.id}.${message.guild.id}`)
         let jail = message.mentions.users.first()
         if(!args[0]) {
+        const datavmute = await db.fetch(`vmute.${message.author.id}.${message.guild.id}`)
+        const datacmute = await db.fetch(`cmute.${message.author.id}.${message.guild.id}`)
+        if(!args[0]) {
         const datajail = await db.fetch(`jail.${message.author.id}.${message.guild.id}`)
         const dataunjail = await db.fetch(`unjail.${message.author.id}.${message.guild.id}`)
         
         let simdikitarih = moment.utc(message.createdAt).format('DD MM YYYY');
         let user = message.mentions.users.first() || message.author;
         let userinfo = {};
-        userinfo.avatar= user.displayAvatarURL;
         userinfo.id = user.id;
         userinfo.status = user.presence.status.toString()
         .replace("dnd", `Rahatsız Etmeyin`)
@@ -102,7 +104,7 @@ exports.run = async (client, message, args, tools) => {
         .replace("December", `**Aralık**`)
 
     const embed = new Discord.RichEmbed()
-    .setTitle(`${us.username} İSTATİSTİKLERİ`)
+    .setTitle(`∻ The Sky Stats`)
     .setTimestamp()
     .setThumbnail(us.avatarURL || message.author.avatarURL)
     .setDescription(`Bu Listede Gösterilen Oranlar Toplam ve Anlık Olarak Gösterilmektedir
@@ -117,7 +119,7 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
   .addField("Aktiflik İstatistikleri",`Toplam Ses: **${ses}** \nToplam Mesaj: **${puan}**`,true)
   .addField("Attığı Ban ve Unban İstatistikleri",`Toplam Ban: **${dataee ? dataee : '0'}**\nToplam Unban: **${dataeee ? dataeee : '0'}**`,true)
   .addBlankField()
-  .addField("Ceza İşlem İstatistikleri",`Toplam Chat Mute: **${dataee ? dataee : '0'}**\nToplam Ses Mute: **${dataeee ? dataeee : '0'}**`,true)
+  .addField("Ceza İşlem İstatistikleri",`Toplam Chat Mute: **${datacmute ? datacmute : '0'}**\nToplam Ses Mute: **${datavmute ? datavmute : '0'}**`,true)
   .addField("Jail İstatistikleri",`Toplam Jail: **${datajail ? datajail: '0'}**\nToplam Unjail: **${dataunjail ? dataunjail : '0'}**`,true)
   .setFooter('∻ The Sky Stats / Developed by Salvatore')
   .setColor("GREEN");
@@ -125,6 +127,7 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
 }
   }
     }
+      }
         };
 
 exports.conf = {
@@ -137,5 +140,5 @@ exports.conf = {
 exports.help = {
   name: "stats",
   description: "İstediğiniz kişinin istatistiklerini verir",
-  usage: "statsl"
+  usage: "stats"
 };
