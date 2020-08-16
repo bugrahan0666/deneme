@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
         .replace("online", `Çevrimiçi`)
         .replace("idle", `Boşta`)
         .replace("offline", `Çevrimdışı`)
-        userinfo.dctarih = moment.utc(message.guild.members.get(user.id).user.createdAt).format('**DD** MMMM **YYYY** dddd **[Günü]** **[Saat:]** __**HH:mm:ss**__')
+        userinfo.dctarih = moment.utc(message.guild.members.get(user.id).user.createdAt).format('**DD** MMMM **YYYY** **[Saat:]** __**HH:mm:ss**__')
         .replace("Monday", `**Pazartesi**`)
         .replace("Tuesday", `**Salı**`)
         .replace("Wednesday", `**Çarşamba**`)
@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
         .replace("October", `**Ekim**`)
         .replace("November", `**Kasım**`)
         .replace("December", `**Aralık**`)
-        userinfo.dctarihkatilma = moment.utc(message.guild.members.get(user.id).joinedAt).format('**DD** MMMM **YYYY** dddd **[Günü]** **[Saat:]** __**HH:mm:ss**__')
+        userinfo.dctarihkatilma = moment.utc(message.guild.members.get(user.id).joinedAt).format('**DD** MMMM **YYYY** **[Saat:]** __**HH:mm:ss**__')
         .replace("Monday", `**Pazartesi**`)
         .replace("Tuesday", `**Salı**`)
         .replace("Wednesday", `**Çarşamba**`)
@@ -101,7 +101,8 @@ exports.run = async (client, message, args) => {
 
 Kullanıcı: ${message.author.tag}
 Kullanıcı ID: ${message.author.id}
-Hesap Açılış Tarihi: 
+Hesap Kuruluş Tarihi: ${userinfo.dctarih}
+Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}
 `)
   .setColor("GREEN");
   message.channel.send(embed)
