@@ -27,7 +27,6 @@ exports.run = async (client, message, args) => {
   message.channel.send(
     new Discord.RichEmbed()
       .setTitle('Mesaj Top 10')
-      .setThumbnail(message.guild.iconURL)
       .addField("TOP 10 MESAJ AKTİFLİĞİ",`${mesaj_kişi}`)
       .setColor("RANDOM")
       .setFooter('Developed by Salvatore')
@@ -37,7 +36,7 @@ exports.run = async (client, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["mesajtop"],
+  aliases: ["mesajtop","mesaj-top"],
   permLevel: 0
 };
 exports.help = {

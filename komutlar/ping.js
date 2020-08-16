@@ -6,8 +6,8 @@ exports.run = (client, message) => {
     const ozelmesajkontrol = new Discord.RichEmbed()
     .setColor('BLACK')
     .setAuthor(message.author.username, message.author.avatarURL)
-    .setDescription('**Kayıt Botu Ping ** = **`' + client.ping + '`** **ms**')
-    .setFooter('Salvo Code / Kayıt Botu');
+    .setDescription('**∻ The Sky Moderasyon Ping ** = **`' + client.ping + '`** **ms**')
+    .setFooter('∻ The Sky - Salvatore ∻#7172');
       message.delete()
     message.channel.sendEmbed(ozelmesajkontrol) }
 };
