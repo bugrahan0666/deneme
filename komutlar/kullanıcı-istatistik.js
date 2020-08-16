@@ -21,7 +21,6 @@ exports.run = async (client, message, args) => {
         let userinfo = {};
         userinfo.avatar= user.displayAvatarURL;
         userinfo.id = user.id;
-        userinfo.od1 = message.guild.members.get(user.id).user.presence.game || "``Oynadığı Bir Oyun Yok``"
         userinfo.status = user.presence.status.toString()
         .replace("dnd", `Rahatsız Etmeyin`)
         .replace("online", `Çevrimiçi`)
@@ -119,7 +118,7 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
   .addBlankField()
   .addField("Ceza İşlem İstatistikleri",`Toplam Chat Mute: **${dataee ? dataee : '0'}**\nToplam Ses Mute: **${dataeee ? dataeee : '0'}**`,true)
   .addField("Jail İstatistikleri",`Toplam Jail: **${datajail ? datajail: '0'}**\nToplam Unjail: **${dataunjail ? dataunjail : '0'}**`,true)
-  .addField("∻ The Sky",`**[∻ The Sky İnvite](https://discord.gg/YpgZcC9) | [Destek](https://discord.gg/YpgZcC9)**`)
+  .addField("İnvite İstatistikleri",`Toplam İnvite: **${datajail ? datajail: '0'}`,true)
   .setFooter('∻ THE SKY STATS / Developed by Salvatore')
   .setColor("GREEN");
   message.channel.send(embed)
