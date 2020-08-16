@@ -4,8 +4,6 @@ const moment = require('moment')
 require("moment-duration-format")
 let ms = require("parse-ms");
 exports.run = async (client, message, args) => {
-//Discord Code Shâre
-//////////////////////////////////////////////////
 
   let sayi = 1
   let mesaj_kişi = message.guild.members
@@ -24,7 +22,6 @@ exports.run = async (client, message, args) => {
       )}\``;
     });
     
-    //////////////////////////////////////////////////
    let sayi2 = 1
   let ses_kişi = message.guild.members
     .filter(mem => !mem.user.bot)
@@ -40,7 +37,6 @@ exports.run = async (client, message, args) => {
       return `\n\`${sayi2++}.\`  <@${member.user.id}>:  \`${moment.duration(db.get('voicei_'+message.guild.id+'_'+member.user.id)).format("D [Gün] H [Saat] m [Dakika] s [Saniye]")}\``;
     });
     
-//////////////////////////////////////////////////
   let sayi3 = 1
   let mesaj_kanal = message.guild.channels
     .array()
@@ -57,7 +53,6 @@ exports.run = async (client, message, args) => {
     })
     .slice(0, 5);
     
-//////////////////////////////////////////////////
 let sayi4 = 1
   let ses_kanal = message.guild.channels
     .array()
@@ -68,12 +63,10 @@ let sayi4 = 1
       );
     })
     .map(x => {
-      return `\n\`${sayi4++}.\` <#${x.id}>:  \`${moment.duration(db.get('voicec_'+message.guild.id+'_'+x.id)).format("D [Gün] H [Saat] m [Dakika] s [Saniye]")}\``;
+      return `\n\`${sayi4++}.\` <#${x.id}>:  \`\n${moment.duration(db.get('voicec_'+message.guild.id+'_'+x.id)).format("D [Gün] H [Saat] m [Dakika] s [Saniye]")}\``;
     })
     .slice(0, 5);
     
-//////////////////////////////////////////////////
-
   message.channel.send(
     new Discord.RichEmbed()
       .addField("Mesaj | Top 5 - Üyeler",`${mesaj_kişi}`,true)
@@ -91,10 +84,9 @@ let sayi4 = 1
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["top"],
+  aliases: ["top-10"],
   permLevel: 0
 };
 exports.help = {
-  name: "tops"
-  //Discord Code Shâre
+  name: "top-10"
 };
