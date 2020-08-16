@@ -81,7 +81,7 @@ const içerik = `**__Message | Top 5 - Channels__\n\n${mesaj_kanal}\n\n__Message
       .setTitle(message.guild.name+' İstatistik')
       .setThumbnail(message.guild.iconURL)
       .setColor("BLUE")
-    .setFooter('Discord Code Shâre Aittir!')
+    .setFooter('Salvatore ait adamı sikerler sdjkljdsjksd')
       .setTimestamp()
   );
 };
