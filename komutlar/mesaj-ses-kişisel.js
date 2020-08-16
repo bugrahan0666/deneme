@@ -104,6 +104,11 @@ Kullanıcı ID: ${message.author.id}
 Hesap Kuruluş Tarihi: ${userinfo.dctarih}
 Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}
 `)
+  .addBlankField()
+  .addField("Aktif Olduğu Ses Kanalları"`${top4c}`,true)
+  .addField("Aktif Olduğu Metin Kanalları"`${top3c}`,true)
+  .addField("Toplam İstatistikler"`Toplam Ses: ${ses} \nToplam Mesaj: **${puan}**\n`,true)
+  .addField("Aktif Olduğu Metin Kanalları"`${top3c}`,true)
   .setColor("GREEN");
   message.channel.send(embed)
 };
