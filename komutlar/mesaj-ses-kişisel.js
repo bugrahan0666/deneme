@@ -54,6 +54,12 @@ exports.run = async (client, message, args) => {
         .replace("October", `**Ekim**`)
         .replace("November", `**Kasım**`)
         .replace("December", `**Aralık**`)
+
+
+
+
+
+
   const us = message.mentions.users.first() || client.users.get(args[0]) || message.author
 
   const puan = await db.get("puan_" + message.guild.id + "_" + us.id);
@@ -94,21 +100,17 @@ exports.run = async (client, message, args) => {
     .setTitle(`${us.username} İSTATİSTİKLERİ`)
     .setTimestamp()
     .setThumbnail(us.avatarURL || message.author.avatarURL)
-    .setFooter(client.user.username)
-    .setDescription(`**Mesaj İstatistikleri:** \`${puan}\`\n**En Çok Mesaj Attığı 3 Kanal**${top3c}\n\n**Seste Kalma Süresi:** \`${ses}\`\n**En Çok Seste Durduğu 3 Kanal**${top4c}`)
-    .addField("Mesaj İstatistikleri",`> Toplam Mesaj: **${puan}**\n`)
     .setDescription(`Bu Listede Gösterilen Oranlar Toplam ve Anlık Olarak Gösterilmektedir
 
-Kullanıcı: ${message.author.tag}
-Kullanıcı ID: ${message.author.id}
+Kullanıcı: **${message.author.tag}**
+Kullanıcı ID: **${message.author.id}**
 Hesap Kuruluş Tarihi: ${userinfo.dctarih}
-Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}
-`)
+Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`) 
   .addBlankField()
-  .addField("Aktif Olduğu Ses Kanalları"`${top4c}`,true)
-  .addField("Aktif Olduğu Metin Kanalları"`${top3c}`,true)
-  .addField("Toplam İstatistikler"`Toplam Ses: ${ses} \nToplam Mesaj: **${puan}**\n`,true)
-  .addField("Aktif Olduğu Metin Kanalları"`${top3c}`,true)
+  .addField("Aktif Olduğu Ses Kanalları",`${top4c}`)
+  .addField("Aktif Olduğu Metin Kanalları",`${top3c}`)
+  .addField("Toplam İstatistikler",`Toplam Ses: **${ses}** \nToplam Mesaj: **${puan}**`)
+  .setFooter(client.user.username)
   .setColor("GREEN");
   message.channel.send(embed)
 };
