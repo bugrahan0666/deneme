@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
-const momert = require("moment");
+const moment = require("moment");
 require("moment-duration-format")
 const ayarlar = require("../ayarlar.json");
 const db = require("quick.db");
@@ -20,12 +20,18 @@ exports.run = async (client, message, args) => {
     );
     })
 
-    .slice(0,10)
+    .slice(0, 10)
   .map(member => {
-    return `${top10++} <@!${member.user.id}> : ${moment.duration(db.get('top10_'+))}`
+    return `${top10++} <@!${member.user.id}> : ${moment.duration(db.get('top10_'+message.guild.id+'_'+member.user.id))}`
     
-  })
-  }   
+  });
+  message.channel.send(
+    new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .setDescription(kayıtkisi)
+    .setFooter("ANAN")
+    .setTimestamp()
+);  
 }
 
 module.exports.conf = {
