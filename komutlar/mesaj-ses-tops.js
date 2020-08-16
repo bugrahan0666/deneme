@@ -73,11 +73,14 @@ let sayi4 = 1
     .slice(0, 3);
     
 //////////////////////////////////////////////////
-const içerik = `**__Message | Top 5 - Channels__\n\n${mesaj_kanal}\n\n__Message | Top 5 - Members__\n\n${mesaj_kişi}\n\n\n__Voice | Top 3 - Channels__\n\n${ses_kanal}\n\n__Voice | Top 3 - Members__\n\n${ses_kişi}\n\n__Sunucudaki Toplam Üye:__ \`${message.guild.memberCount}\`**`
 
   message.channel.send(
     new Discord.RichEmbed()
-      .setDescription(içerik)
+      .addField("Mesaj | Top 5 - Üyeler",`${mesaj_kişi}`)
+      .addField("Ses | Top 3 - Üyeler",`${ses_kişi}`)
+     .addBlankField()
+     .addField("Mesaj | Top 5 - Kanal",`${mesaj_kanal}`)
+      .addField("Ses | Top 3 - Kanal",`${ses_kanal}`)
       .setTitle(message.guild.name+' İstatistik')
       .setThumbnail(message.guild.iconURL)
       .setColor("BLUE")
