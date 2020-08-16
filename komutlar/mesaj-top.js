@@ -6,27 +6,29 @@ let ms = require("parse-ms");
 exports.run = async (client, message, args) => {
 
     //////////////////////////////////////////////////
-   let sayi2 = 1
-  let ses_kişi = message.guild.members
+ let sayi = 1
+  let mesaj_kişi = message.guild.members
     .filter(mem => !mem.user.bot)
     .array()
     .sort((a, b) => {
       return (
-        (db.get(`voicei_${message.guild.id}_${b.user.id}`) || 0) -
-        (db.get(`voicei_${message.guild.id}_${a.user.id}`) || 0)
+        (db.get(`puan_${message.guild.id}_${b.user.id}`) || 0) -
+        (db.get(`puan_${message.guild.id}_${a.user.id}`) || 0)
       );
     })
-    .slice(0, 10)
+    .slice(0, 5)
     .map(member => {
-      return `\n\`${sayi2++}.\`  <@${member.user.id}>:  \`${moment.duration(db.get('voicei_'+message.guild.id+'_'+member.user.id)).format("D [Gün] H [Saat] m [Dakika] s [Saniye]")}\``;
+      return `\n\`${sayi++}.\`  <@${member.user.id}>:  \`${db.get(
+        `puan_${message.guild.id}_${member.user.id}`
+      )}\``;
     });
     
 
   message.channel.send(
     new Discord.RichEmbed()
-      .setTitle('Ses Top 10')
+      .setTitle('Mesaj Top 10')
       .setThumbnail(message.guild.iconURL)
-      .addField("TOP 10 SES AKTİFLİĞİ",`${ses_kişi}`)
+      .addField("TOP 10 MESAJ AKTİFLİĞİ",`${mesaj_kişi}`)
       .setColor("RANDOM")
       .setFooter('Developed by Salvatore')
       .setTimestamp()
@@ -35,9 +37,9 @@ exports.run = async (client, message, args) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["sestop"],
+  aliases: ["mesajtop"],
   permLevel: 0
 };
 exports.help = {
-  name: "sestops"
+  name: "mesajtops"
 };
