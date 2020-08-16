@@ -130,12 +130,12 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: [],
+  aliases: ["ses","ak"],
   permLevel: 0
 };
 
 exports.help = {
   name: "statsall",
   description: "İstediğiniz kişinin istatistiklerini verir",
-  usage: "statsall & stastall <@kişi-etiket>"
+  usage: "statsall"
 };
