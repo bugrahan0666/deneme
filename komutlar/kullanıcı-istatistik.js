@@ -115,10 +115,9 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
   .addField("Aktif Olduğu Ses Kanalları",`${top4c}`)
   .addField("Aktif Olduğu Metin Kanalları",`${top3c}`)
   .addField("Aktiflik İstatistikleri",`Toplam Ses: **${ses}** \nToplam Mesaj: **${puan}**`,true)
-  .addField("Kayıt İstatistikleri",`Toplam Erkek Kayıt: **${data ? data : '0'}** \nToplam Kız Kayıt: **${datae ? datae : '0'}**`,true)
-  .addField("Attığı Ban ve Unban İstatistikleri",`Toplam Ban: **${dataee ? dataee : '0'}**\nToplam Unban: **${dataeee ? dataeee : '0'}**`)
+  .addField("Attığı Ban ve Unban İstatistikleri",`Toplam Ban: **${dataee ? dataee : '0'}**\nToplam Unban: **${dataeee ? dataeee : '0'}**`,true)
   .addField("Ceza İşlem İstatistikleri",`Toplam Chat Mute: **${dataee ? dataee : '0'}**\nToplam Ses Mute: **${dataeee ? dataeee : '0'}**`,true)
-  .addField("Jail İstatistikleri",`Toplam Jail: **${datajail ? datajail: '0'}**\nToplam Unjail: **${dataunjail ? dataunjail : '0'}**`,true)
+  .addField("Jail İstatistikleri",`Toplam Jail: **${datajail ? datajail: '0'}**\nToplam Unjail: **${dataunjail ? dataunjail : '0'}**` )
   .setFooter(client.user.username)
   .setColor("GREEN");
   message.channel.send(embed)
@@ -135,7 +134,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: "mesaj",
+  name: "statsall",
   description: "İstediğiniz kişinin istatistiklerini verir",
-  usage: "mesaj & mesaj <@kişi-etiket>"
+  usage: "statsall & stastall <@kişi-etiket>"
 };
