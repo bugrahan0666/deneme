@@ -103,7 +103,7 @@ exports.run = async (client, message, args, tools) => {
         .replace("December", `**Aralık**`)
 
     const embed = new Discord.RichEmbed()
-    .setTitle(`∻ The Sky Stats`)
+    .setTitle(`ﾅ Anatolia Stats`)
     .setTimestamp()
     .setThumbnail(us.avatarURL || message.author.avatarURL)
     .setDescription(`Bu Listede Gösterilen Oranlar Toplam ve Anlık Olarak Gösterilmektedir
@@ -120,7 +120,7 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
   .addBlankField()
   .addField("Ceza İşlem İstatistikleri",`Toplam Mute: **${data1 ? data1 : '0'}**\nToplam Ses Mute: **X**`,true)
   .addField("Jail İstatistikleri",`Toplam Jail: **${datajail ? datajail: '0'}**\nToplam Unjail: **${dataunjail ? dataunjail : '0'}**`,true)
-  .setFooter('∻ The Sky Stats / Developed by Salvatore')
+  .setFooter('ﾅ Anatolia Stats / Developed by Salvatore')
   .setColor("RANDOM");
   message.channel.send(embed)
 }

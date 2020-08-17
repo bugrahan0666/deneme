@@ -4,7 +4,7 @@ const db = require('quick.db')
 
 exports.run = (client, message, args) => {
   
-     if (!message.member.roles.has('692842107970387984') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Yasak Kaldırma Yetkiniz Yok` , `<a:loading:692108268557828188> Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+     if (!message.member.roles.has('744630179225403393') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Yasak Kaldırma Yetkiniz Yok` , `<a:loading:692108268557828188> Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   if (!message.guild) {
     const ozelmesajuyari = new Discord.RichEmbed()
       .setColor("BLACK")

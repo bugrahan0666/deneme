@@ -7,30 +7,29 @@ exports.run = (client, message, args) => {
     const ozelmesajuyari = new Discord.RichEmbed()
       .setColor("BLACK")
       .setTimestamp() 
-      .addField(`<a:unlem:693080241282744391> Hatalı Kullanım` , `<a:particals:692108121518112909> Bu Komutu Özel Mesajlarda Kullanamazsınız Lütfen Sunucu İçerisinde Herhangi Bir Kanalı Kullanınız`)
+      .addField(`<a:dikkat:697499533516603545> Hatalı Kullanım` , `<a:yukleniyor:741424786433114172> Bu Komutu Özel Mesajlarda Kullanamazsınız Lütfen Sunucu İçerisinde Herhangi Bir Kanalı Kullanınız`)
       .setFooter('∻ The Sky - Ban Sistemi');
     return message.author.sendEmbed(ozelmesajuyari);
   }
-   if (!message.member.roles.has('692842107970387984') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Kullanıcı Yasaklama Yetkiniz Yok` , `<a:loading:692108268557828188> Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+   if (!message.member.roles.has('744630179225403393') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Kullanıcı Yasaklama Yetkiniz Yok` , `<a:yukleniyor:741424786433114172> Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   let guild = message.guild;
   let reason = args.slice(1).join(" ");
   let user = message.mentions.users.first();
-  let modlog = guild.channels.find("name", "ban-bilgi");
+  let modlog = guild.channels.find("name", "ban-log");
   db.add(`ban.${message.author.id}.${message.guild.id}`, 1)
-  if (!modlog) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hata` , `<a:particals:692108121518112909> Log Kanalını Bulamıyorum`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
-  if (reason.length < 1) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hatalı Kullanım` , `<a:particals:692108121518112909> Lütfen Yasaklama Nedeninizi Yazınız`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+  if (!modlog) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Hata` , `<a:yukleniyor:741424786433114172> Log Kanalını Bulamıyorum`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+  if (reason.length < 1) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Hatalı Kullanım` , `<a:yukleniyor:741424786433114172> Lütfen Yasaklama Nedeninizi Yazınız`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   if (message.mentions.users.size < 1)
-    return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hatalı Kullanım` , `<a:particals:692108121518112909> Yasaklanacak Kullanıcıyı Etiketleyiniz`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).catch(console.error);
+    return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Hatalı Kullanım` , `<a:yukleniyor:741424786433114172> Yasaklanacak Kullanıcıyı Etiketleyiniz`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).catch(console.error);
 
   if (!message.guild.member(user).bannable)
-    return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hatalı Kullanım` , `<a:particals:692108121518112909> Yetkilileri Banlayamasınız`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+    return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Hatalı Kullanım` , `<a:yukleniyor:741424786433114172> Yetkilileri Banlayamasınız`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   message.guild.ban(user, {reason: reason})
   const embed = new Discord.RichEmbed()
-    .setColor("RANDOM")
+    .setColor("RED")
     .setTimestamp()
-    .setTitle('Üye Yasaklandı')
-    .setDescription(`<a:beyaztik:734740326224232490> **${user.username}#${user.discriminator}** Kullanıcısı **${message.author.username}#${message.author.discriminator}** Tarafından Sunucudan Yasaklandı \n\n<a:particals:692108121518112909> Yetkili ID: **${message.author.id}**\n<a:particals:692108121518112909> Kullanıcı ID: **${user.id}**\n<a:particals:692108121518112909> Yasak Nedeni: **${reason}**`)
-    .setImage("")
+    .setAuthor(message.author.username, message.author.avatarURL)
+    .setDescription(`<@!${user.id}> Adlı Kullanıcı <@!${message.author.id}> Tarafından **${reason}** Sebebiyle Sunucudan Yasaklandı`)
   return guild.channels.get(modlog.id).sendEmbed(embed);
 };
 
