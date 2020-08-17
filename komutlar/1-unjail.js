@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const ayarlar = require('../ayarlar.json')
+const db = require("quick.db")
 
 exports.run = async (client ,message ,args) => {
    if (!message.member.roles.has('694932619392974851') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Kullanıcı Yasaklama Yetkiniz Yok` , `<a:loading:692108268557828188> Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
