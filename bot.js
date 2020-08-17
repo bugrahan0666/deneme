@@ -1,107 +1,84 @@
-const Discord = require("discord.js"); //Discord Code Share
+const Discord = require("discord.js");
+const client = new Discord.Client();
+const ayarlar = require("./ayarlar.json"); 
+const chalk = require("chalk"); 
+const moment = require("moment"); 
+var Jimp = require("jimp");
+const { Client, Util } = require("discord.js");
+const weather = require("weather-js");
+const fs = require("fs"); 
+const db = require("quick.db"); 
+const http = require("http"); 
+const express = require("express"); 
+require("./util/eventLoader")(client); 
 
-const client = new Discord.Client(); //Discord Code Share
+const path = require("path"); 
 
-const ayarlar = require("./ayarlar.json"); //Discord Code Share
+const request = require("request");
 
-const chalk = require("chalk"); //Discord Code Share
+const snekfetch = require("snekfetch"); 
 
-const moment = require("moment"); //D//Discord Code Share
+const queue = new Map(); 
 
-var Jimp = require("jimp"); //Discord Code Share
+const YouTube = require("simple-youtube-api"); 
 
-const { Client, Util } = require("discord.js"); //Discord Code Share
+const ytdl = require("ytdl-core"); 
 
-const weather = require("weather-js"); //Discord Code Share
 
-const fs = require("fs"); //Discord Code Share
-
-const db = require("quick.db"); //Discord Code Share
-
-const http = require("http"); //Discord Code Share
-
-const express = require("express"); //Discord Code Share
-
-require("./util/eventLoader")(client); //Discord Code Share
-
-const path = require("path"); //Discord Code Share
-
-const request = require("request"); //Discord Code Share
-
-const snekfetch = require("snekfetch"); //Discord Code Share
-
-const queue = new Map(); //Discord Code Share
-
-const YouTube = require("simple-youtube-api"); //Discord Code Share
-
-const ytdl = require("ytdl-core"); //Discord Code Share
-
-//Discord Code Share
-
-const app = express(); //Discord Code Share
-
+const app = express(); 
 app.get("/", (request, response) => {
-  //Discord Code Share
 
-  console.log(Date.now() + " Ping tamamdır."); //Discord Code Share
+  console.log(Date.now() + " Ping tamamdır."); 
 
-  response.sendStatus(200); //Discord Code Share
+  response.sendStatus(200); 
 });
-app.listen(process.env.PORT); //Discord Code Share
+app.listen(process.env.PORT); 
 
 setInterval(() => {
-  //Discord Code Share
 
-  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`); //Discord Code Share
-}, 280000); //Discord Code Share
+  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`); 
+}, 280000); 
 
-//Discord Code Share
 
-var prefix = ayarlar.prefix; //Discord Code Share
+var prefix = ayarlar.prefix;
 
 const log = message => {
-  //Discord Code Share
+  
 
-  console.log(`${message}`); //Discord Code Share
+  console.log(`${message}`); 
 };
-//Discord Code Share
 
-client.commands = new Discord.Collection(); //Discord Code Share
+client.commands = new Discord.Collection(); 
 
-client.aliases = new Discord.Collection(); //Discord Code Share
+client.aliases = new Discord.Collection(); 
 
 fs.readdir("./komutlar/", (err, files) => {
-  //Discord Code Share
 
-  if (err) console.error(err); //Discord Code Share
+  if (err) console.error(err);
 
-  log(`${files.length} komut yüklenecek.`); //Discord Code Share
+  log(`${files.length} komut yüklenecek.`); 
 
   files.forEach(f => {
-    //Discord Code Share
 
-    let props = require(`./komutlar/${f}`); //Discord Code Share
+    let props = require(`./komutlar/${f}`);
 
-    log(`Yüklenen komut: ${props.help.name}.`); //Discord Code Share
+    log(`Yüklenen komut: ${props.help.name}.`); 
 
-    client.commands.set(props.help.name, props); //Discord Code Share
+    client.commands.set(props.help.name, props); 
 
     props.conf.aliases.forEach(alias => {
-      //Discord Code Share
 
-      client.aliases.set(alias, props.help.name); //Discord Code Share
-    }); //Discord Code Share
+      client.aliases.set(alias, props.help.name);
+    }); 
   });
-}); //Discord Code Share
+}); 
 
 client.reload = command => {
-  //Discord Code Share
+ 
 
   return new Promise((resolve, reject) => {
-    //Discord Code Share
 
     try {
-      //Discord Code Share
 
       delete require.cache[require.resolve(`./komutlar/${command}`)];
 
