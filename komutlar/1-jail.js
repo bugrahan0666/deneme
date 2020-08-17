@@ -18,7 +18,8 @@ message.guild.members.get(member.id).removeRole(r)
    
 })
   member.addRole('692111658356834304')//CEZALI ROL
-     const kanal = message.guild.channels.find(c => c.id == "744746754058223687") //LOG KANALI
+     const kanal = message.guild.channels.find(c => c.id == "705900521097134193") //LOG KANALI
+       db.add(`jail.${message.author.id}.${message.guild.id}`, 1)
     const embed1 = new Discord.RichEmbed()
     .setAuthor(message.author.tag , message.author.avatarURL)
     .setDescription(`<@!${kullanıcı.id}> Adlı Kullanıcı <@!${message.author.id}> Tarafından Cezalıya Atıldı\nSebep: **${reason}**`)

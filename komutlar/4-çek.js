@@ -29,12 +29,12 @@ if(!voiceChannel) return
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: [],
+  aliases: ["çek","taşı"],
   kategori: "çek",
   permLevel: 0
 }
 exports.help = {
   name: 'çek',
   description: " ",
-  usage: ' '
+  usage: 'çek'
 }

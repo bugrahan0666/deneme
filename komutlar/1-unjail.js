@@ -6,8 +6,8 @@ exports.run = async (client ,message ,args) => {
     let kullanıcı = message.mentions.members.first()
         if(!kullanıcı)
              return message.channel.send(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hatalı Kullanım` , `<a:loading:692108268557828188> Lütfen Cezalıdan Çıkarılacak Kullanıcıyı Etiketleyin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(10000));
-let cezlaırol = message.guild.roles.get("744754531417718904"); //Cezalı Rol Id
-let kayıtsızrol = message.guild.roles.get("741325431692591115"); // Kayıtsız Rol Id
+let cezlaırol = message.guild.roles.get("692111658356834304"); //Cezalı Rol Id
+let kayıtsızrol = message.guild.roles.get("692111260791079024"); // Kayıtsız Rol Id
 if(!cezlaırol) return message.guild.owner.send(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hata` , `<a:loading:692108268557828188> Sunucuda Cezalı Rolünü Bulamadığım için İşlem Yapamıyorum`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
 if(!kayıtsızrol) return message.guild.owner.send(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hata` , `<a:loading:692108268557828188> Sunucuda Kayıtsız Rolünü Bulamadığım için İşlem Yapamıyorum`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
 
@@ -17,7 +17,8 @@ await member.removeRole(cezlaırol)
 
 let kanal = message.guild.channels.find('name' , 'cezalı-üye-bilgi')
     if(!kanal) return message.guild.owner.send(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hata` , `<a:loading:692108268557828188> Sunucuda Cezalı Log Kanalını Bulamadığım için İşlem Yapamıyorum`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
-const unjail = new Discord.RichEmbed()
+  db.add(`unjail.${message.author.id}.${message.guild.id}`, 1)
+  const unjail = new Discord.RichEmbed()
 .setColor("GREEN")
 .setAuthor(message.author.tag , message.author.avatarURL)
 .setDescription(`${kullanıcı} Adlı Kullanıcı ${message.author} Tarafından Cezalıdan Çıkartıldı`)
@@ -35,7 +36,7 @@ message.channel.send(dcs)
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: [],
+  aliases: ["unjail","uncezalı","unkarantina"],
   permLevel: 0
 };
 
