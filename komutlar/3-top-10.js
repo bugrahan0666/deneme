@@ -77,7 +77,7 @@ let sayi4 = 1
       .setTitle(message.guild.name+' İstatistik')
       .setThumbnail(message.guild.iconURL)
       .setColor("BLUE")
-    .setFooter('Salvatore ait adamı sikerler sdjkljdsjksd')
+    .setFooter('Developed by Salvatore')
       .setTimestamp()
   );
 };

@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
       .setColor("BLACK")
       .setTimestamp() 
       .addField(`<a:dikkat:697499533516603545> Hatalı Kullanım` , `<a:yukleniyor:741424786433114172> Bu Komutu Özel Mesajlarda Kullanamazsınız Lütfen Sunucu İçerisinde Herhangi Bir Kanalı Kullanınız`)
-      .setFooter('∻ The Sky - Ban Sistemi');
+      .setFooter('ﾅ Anatolia - Ban Sistemi');
     return message.author.sendEmbed(ozelmesajuyari);
   }
    if (!message.member.roles.has('744630179225403393') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Kullanıcı Yasaklama Yetkiniz Yok` , `<a:yukleniyor:741424786433114172> Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());

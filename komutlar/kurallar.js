@@ -7,7 +7,7 @@ exports.run = (client, message) => {
     .setColor('BLACK')
     .setAuthor(message.author.username, message.author.avatarURL)
     .setDescription('**ﾅ A  N  A T O L İ A Moderasyon Ping ** = **`' + client.ping + '`** **ms**')
-    .setFooter('ﾅ A  N  A T O L İ A - Salvatore ∻#7172');
+    .setFooter('ﾅ A  N  A T O L İ A');
       message.delete()
     message.channel.sendEmbed(ozelmesajkontrol) }
 };

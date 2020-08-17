@@ -10,7 +10,7 @@ exports.run = (client, message, args) => {
       .setColor("BLACK")
       .setTimestamp() 
       .addField(`<a:dikkat:697499533516603545> Hatalı Kullanım` , `<a:yukleniyor:741424786433114172> Bu Komutu Özel Mesajlarda Kullanamazsınız Lütfen Sunucu İçerisinde Herhangi Bir Kanalı Kullanınız`)
-      .setFooter('∻ The Sky - Unban Sistemi');
+      .setFooter('ﾅ Anatolia - Unban Sistemi');
     return message.author.send(ozelmesajuyari);
   }
   let guild = message.guild;
@@ -26,10 +26,10 @@ exports.run = (client, message, args) => {
     return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Hatalı Kullanım` , `<a:yukleniyor:741424786433114172> Lütfen Yasağı Kaldırılacak Kullanıcının ID Numarasını Yazınız`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).catch(console.error);
   message.guild.unban(user);
   const embed = new Discord.RichEmbed()
-    .setColor("RED")
+    .setColor("GREEN")
     .setTimestamp()
     .setAuthor(message.author.username, message.author.avatarURL)
-    .setDescription(`<@!${user.id}> Adlı Kullanıcının <@!${message.author.id}> Tarafından **${reason}** Sebebiyle Yasağı Kaldırıldı`)
+    .setDescription(`<@!${message.author.id}> Tarafından **${reason}** Sebebiyle Bir Yasak Kaldırıldı`)
   return guild.channels.get(modlog.id).send(embed);
 };
 exports.conf = {

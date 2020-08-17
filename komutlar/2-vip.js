@@ -6,12 +6,12 @@ const fs = require('fs');
 let yazı = JSON.parse(fs.readFileSync("./log.json", "utf8"));
 exports.run = async (client, message, args) => {
   if(message.author.bot || message.channel.type === "dm") return;
- if (!message.member.roles.has('693095716943298701') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:discordneon:692108209946886186> Bilgilendirme` , `<a:red_1:692108234273718433> Bu Komutu Kullanmak İçin <@&693095716943298701> Yetkisine Sahip Olmalısın`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+ if (!message.member.roles.has('744630160455630900') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Yetersiz Yetki` , `Bu Komutu Kullanmak İçin Yeterli Yetkiye Sahip Değilsin`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
 
   
   var user = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 
-  var rol   = message.guild.roles.get("692861256905916486")
+  var rol   = message.guild.roles.get("744630188788154471")
   
 if(!user) return message.reply ("**Lütfen bir kullanıcı etiketleyiniz**").then(m => m.delete(5000));
 
