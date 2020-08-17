@@ -1,7 +1,9 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
+const db = require('quick.db')
 
 exports.run = (client, message, args) => {
+  
      if (!message.member.roles.has('692842107970387984') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Yasak Kaldırma Yetkiniz Yok` , `<a:loading:692108268557828188> Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   if (!message.guild) {
     const ozelmesajuyari = new Discord.RichEmbed()
@@ -17,6 +19,7 @@ exports.run = (client, message, args) => {
   client.unbanAuth = message.author;
   let user = args[0];
   let modlog = guild.channels.find("name", "ban-bilgi");
+     db.add(`unban.${message.author.id}.${message.guild.id}`, 1)
   if (!modlog) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hata` , `<a:particals:692108121518112909> Log Kanalını Bulamıyorum`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   if (reason.length < 1) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hatalı Kullanım` , `<a:particals:692108121518112909> Lütfen Yasak Kaldırma Nedeninizi Yazınız`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   if (!user)

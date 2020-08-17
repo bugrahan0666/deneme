@@ -13,7 +13,7 @@ exports.run = async (client, message, args) => {
     if(!user) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hatalı Kullanım` , `<a:loading:692108268557828188> Bir Kullanıcı Etiketlemelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(5000));
    if(user.hasPermission("ADMINISTRATOR")) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Bilgi` , `<a:loading:692108268557828188> Yöneticileri Susturamazsın`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(5000));
     
-
+    db.add(`cmute.${message.author.id}.${message.guild.id}`, 1)
     var muterole = message.guild.roles.get("692111560960639010")
     
      var ceza = message.guild.roles.get("692111658356834304")
@@ -43,7 +43,7 @@ exports.run = async (client, message, args) => {
   let sayı = await db.fetch(`meteceza_${user.user.id}`)
    
 let banlimiti = 7
-
+  db.add(`cmute.${message.author.id}.${message.guild.id}`, 1)
 let banaralıgı = 604800000
 
   var tarih = Date.now() 

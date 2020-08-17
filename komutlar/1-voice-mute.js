@@ -45,6 +45,7 @@ exports.run = async (client, message, args) => {
 let banlimiti = 7
 
 let banaralıgı = 604800000
+  db.add(`vmute.${message.author.id}.${message.guild.id}`, 1)
 
   var tarih = Date.now() 
 
