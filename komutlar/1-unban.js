@@ -4,12 +4,12 @@ const db = require('quick.db')
 
 exports.run = (client, message, args) => {
   
-     if (!message.member.roles.has('744630179225403393') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Yasak Kaldırma Yetkiniz Yok` , `<a:loading:692108268557828188> Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+     if (!message.member.roles.has('744630179225403393') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Yetersiz Yetki` , `<a:yukleniyor:741424786433114172> Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   if (!message.guild) {
     const ozelmesajuyari = new Discord.RichEmbed()
       .setColor("BLACK")
       .setTimestamp() 
-      .addField(`<a:unlem:693080241282744391> Hatalı Kullanım` , `<a:loading:692108268557828188> Bu Komutu Özel Mesajlarda Kullanamazsınız Lütfen Sunucu İçerisinde Herhangi Bir Kanalı Kullanınız`)
+      .addField(`<a:dikkat:697499533516603545> Hatalı Kullanım` , `<a:yukleniyor:741424786433114172> Bu Komutu Özel Mesajlarda Kullanamazsınız Lütfen Sunucu İçerisinde Herhangi Bir Kanalı Kullanınız`)
       .setFooter('∻ The Sky - Unban Sistemi');
     return message.author.send(ozelmesajuyari);
   }
@@ -18,19 +18,18 @@ exports.run = (client, message, args) => {
   client.unbanReason = reason;
   client.unbanAuth = message.author;
   let user = args[0];
-  let modlog = guild.channels.find("name", "ban-bilgi");
+  let modlog = guild.channels.find("name", "ban-log");
      db.add(`unban.${message.author.id}.${message.guild.id}`, 1)
-  if (!modlog) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hata` , `<a:particals:692108121518112909> Log Kanalını Bulamıyorum`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
-  if (reason.length < 1) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hatalı Kullanım` , `<a:particals:692108121518112909> Lütfen Yasak Kaldırma Nedeninizi Yazınız`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+  if (!modlog) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Hata` , `<a:yukleniyor:741424786433114172> Log Kanalını Bulamıyorum`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+  if (reason.length < 1) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Hatalı Kullanım` , `<a:yukleniyor:741424786433114172> Lütfen Yasak Kaldırma Nedeninizi Yazınız`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   if (!user)
-    return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hatalı Kullanım` , `<a:particals:692108121518112909> Lütfen Yasağı Kaldırılacak Kullanıcının ID Numarasını Yazınız`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).catch(console.error);
+    return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Hatalı Kullanım` , `<a:yukleniyor:741424786433114172> Lütfen Yasağı Kaldırılacak Kullanıcının ID Numarasını Yazınız`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).catch(console.error);
   message.guild.unban(user);
   const embed = new Discord.RichEmbed()
-    .setColor("RANDOM")
+    .setColor("RED")
     .setTimestamp()
-    .setTitle('Yasak Kaldırıldı')
-    .setDescription(`<a:beyaztik:734740326224232490> **${user.username}#${user.discriminator}** Kullanıcısı **${message.author.username}#${message.author.discriminator}** Tarafından Sunucuya Giriş Yasağı Kaldırıldı \n\n<a:particals:692108121518112909> Yetkili ID: **${message.author.id}**\n<a:particals:692108121518112909> Kullanıcı ID: **${user.id}**\n<a:particals:692108121518112909> Yasak Kaldırılma Nedeni: **${reason}**`)
-    .setImage("")
+    .setAuthor(message.author.username, message.author.avatarURL)
+    .setDescription(`<@!${user.id}> Adlı Kullanıcının <@!${message.author.id}> Tarafından **${reason}** Sebebiyle Yasağı Kaldırıldı`)
   return guild.channels.get(modlog.id).send(embed);
 };
 exports.conf = {
