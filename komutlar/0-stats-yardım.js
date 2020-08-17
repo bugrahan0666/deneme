@@ -16,7 +16,7 @@ exports.run = (client, message) => {
     .setColor("RANDOM")
     .setTitle('ﾅ Anatolia Kayıt Komutları')
     .setDescription('Bu yardım menüsünde yazılan komutları sadece **<@&744630182433914920>** yetkisine sahip kişiler kullanabilir')
-    .addField("Kayıt Komutları ve Kullanımı",`> **a!stats** = Sunucu İçerisindeki Aktiflik ve İstatistiklerinizi Gösterir\n> **Kullanımı:** __**a!stats**__\n> **a!ses-top** = Ses Aktifliği Sıralamasını Gösterir\n> **Kullanımı:** __**a!ses-top**__`)
+    .addField("Kayıt Komutları ve Kullanımı",`> **a!stats** = Sunucu İçerisindeki Aktiflik ve İstatistiklerinizi Gösterir\n> **Kullanımı:** __**a!stats**__\n> **a!ses-top** = Ses Aktifliği Sıralamasını Gösterir\n> **Kullanımı:** __**a!ses-top**__\n> **a!mesaj-top** = Chat Aktifliği Sıralamasını Gösterir\n> **Kullanımı:** __**a!mesaj-top**__`)
     .setFooter(message.author.username, message.author.avatarURL);
     message.channel.sendEmbed(yardım) }
 };
