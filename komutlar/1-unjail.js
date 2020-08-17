@@ -6,8 +6,8 @@ exports.run = async (client ,message ,args) => {
     let kullanıcı = message.mentions.members.first()
         if(!kullanıcı)
              return message.channel.send(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hatalı Kullanım` , `<a:loading:692108268557828188> Lütfen Cezalıdan Çıkarılacak Kullanıcıyı Etiketleyin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(10000));
-let cezlaırol = message.guild.roles.get("CEZALI ROL ID"); //Cezalı Rol Id
-let kayıtsızrol = message.guild.roles.get("KAYITSIZ ROL ID"); // Kayıtsız Rol Id
+let cezlaırol = message.guild.roles.get("744754531417718904"); //Cezalı Rol Id
+let kayıtsızrol = message.guild.roles.get("741325431692591115"); // Kayıtsız Rol Id
 if(!cezlaırol) return message.guild.owner.send(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hata` , `<a:loading:692108268557828188> Sunucuda Cezalı Rolünü Bulamadığım için İşlem Yapamıyorum`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
 if(!kayıtsızrol) return message.guild.owner.send(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hata` , `<a:loading:692108268557828188> Sunucuda Kayıtsız Rolünü Bulamadığım için İşlem Yapamıyorum`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
 
@@ -18,15 +18,18 @@ await member.removeRole(cezlaırol)
 let kanal = message.guild.channels.find('name' , 'cezalı-üye-bilgi')
     if(!kanal) return message.guild.owner.send(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hata` , `<a:loading:692108268557828188> Sunucuda Cezalı Log Kanalını Bulamadığım için İşlem Yapamıyorum`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
 const unjail = new Discord.RichEmbed()
-.setTitle('Başarılı :)')
-.setDescription(`Başarıyla ${message.author} adlı yetkili ${kullanıcı} adlı kullanıcıyı jailden cıkartdı.`)
-.setFooter('DCS EKİBİ')
+.setColor("GREEN")
+.setAuthor(message.author.tag , message.author.avatarURL)
+.setDescription(`${kullanıcı} Adlı Kullanıcı ${message.author} Tarafından Cezalıdan Çıkartıldı`)
+.setFooter(message.author.tag , message.author.avatarURL)
 kanal.send(unjail)
 
 const dcs = new Discord.RichEmbed()
-.setTitle('Başarılı :)')
-.setDescription(`Başarıyla ${kullanıcı} adlı kullanıcı jailden cıkartıldı.`)
-.setFooter('DCS EKİBİ')
+.setAuthor(message.author.tag , message.author.avatarURL)
+  .setDescription(`${kullanıcı} Adlı Kullanıcı Cezalıdan Çıkartıldı`) 
+  .setFooter(`∻ THE SKY`)
+  .setColor("RANDOM")
+  .setTimestamp()
 message.channel.send(dcs)
 };
 exports.conf = {
