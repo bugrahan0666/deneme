@@ -118,7 +118,7 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
   .addField("Aktiflik İstatistikleri",`Toplam Ses: **${ses}** \nToplam Mesaj: **${puan}**`,true)
   .addField("Attığı Ban ve Unban İstatistikleri",`Toplam Ban: **${dataee ? dataee : '0'}**\nToplam Unban: **${dataeee ? dataeee : '0'}**`,true)
   .addBlankField()
-  .addField("Ceza İşlem İstatistikleri",`Toplam Chat Mute: **${data1? data1 : '0'}**\nToplam Ses Mute: **${dataeeea ? dataeeea : '0'}**`,true)
+  .addField("Ceza İşlem İstatistikleri",`Toplam Mute: **${data1 ? data1 : '0'}**\nToplam Ses Mute: **X**`,true)
   .addField("Jail İstatistikleri",`Toplam Jail: **${datajail ? datajail: '0'}**\nToplam Unjail: **${dataunjail ? dataunjail : '0'}**`,true)
   .setFooter('∻ The Sky Stats / Developed by Salvatore')
   .setColor("RANDOM");

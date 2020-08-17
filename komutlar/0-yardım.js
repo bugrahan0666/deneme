@@ -16,7 +16,7 @@ exports.run = (client, message) => {
     .setColor("RANDOM")
     .setTitle('∻ The Sky Yetkili Yardım')
     .setDescription('Yardım almak istediğiniz konu listede yer almıyorsa lütfen Üst Yönetim ile iletişime geçin')
-    .addField("Yetkili Yardım Listesi",`> **.kayıt-yardım** = Kayıt Komutları Hakkında Bilgi Verir\n\n> **.ceza-yardım** = Ceza İşlem Komutları Hakkında Bilgi Verir\n\n> **.rol-yardım** = Rol Alma/Verme Komutları Hakkında Bilgi Verir\n\n> **.ceza-yardım** = Ceza İşlem Komutları Hakkında Bilgi Verir\n\n> **.rapor-yardım** = Şikayet ve Raporlama Komutları Hakkında Bilgi Verir\n\n`)
+    .addField("Yetkili Yardım Listesi",`> **.kayıt-yardım** = Kayıt Komutları Hakkında Bilgi Verir\n\n> **.ceza-yardım** = Ceza İşlem Komutları Hakkında Bilgi Verir\n\n> **.rol-yardım** = Rol Alma/Verme Komutları Hakkında Bilgi Verir\n\n> **.ceza-yardım** = Ceza İşlem Komutları Hakkında Bilgi Verir\n\n> **.rapor-yardım** = Şikayet ve Raporlama Komutları Hakkında Bilgi Verir\n\n> **.stats-yardım** = İstatistik Komutları Hakkında Bilgi Verir\n\n`)
     .setImage('https://hizliresim.com/U7nlql')
     .setFooter(message.author.username, message.author.avatarURL);
     message.channel.sendEmbed(yardım) }
