@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
+const db = require('quick.db')
 
 exports.run = (client, message, args) => {
   if (!message.guild) {
@@ -10,9 +11,11 @@ exports.run = (client, message, args) => {
       .setFooter('∻ The Sky - Ban Sistemi');
     return message.author.sendEmbed(ozelmesajuyari);
   }
-   if (!message.member.roles.has('692842107970387984') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Kullanıcı Yasaklama Yetkiniz Yok` , `<a:loading:692108268557828188> Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+   if (!message.member.rolesmessage.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Kullanıcı Yasaklama Yetkiniz Yok` , `<a:loading:692108268557828188> Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   let guild = message.guild;
-  let reason = args.slice(1).join(" ");
+  ldb.add(`erkek.${message.author.id}.${message.guild.id}`, 1)
+
+  t reason = args.slice(1).join(" ");
   let user = message.mentions.users.first();
   let modlog = guild.channels.find("name", "ban-bilgi");
   if (!modlog) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hata` , `<a:particals:692108121518112909> Log Kanalını Bulamıyorum`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
@@ -43,4 +46,4 @@ exports.help = {
   name: "ban",
   description: "İstediğiniz kişiyi banlar.",
   usage: "ban [kullanıcı] [sebep]"
-};
+};const db = require('quick.db')
