@@ -13,7 +13,7 @@ exports.run = async (client, message, args) => {
     if(!user) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hatalı Kullanım` , `<a:loading:692108268557828188> Bir Kullanıcı Etiketlemelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(5000));
    if(user.hasPermission("ADMINISTRATOR")) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Bilgi` , `<a:loading:692108268557828188> Yöneticileri Susturamazsın`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(5000));
     
-
+    db.add(`cmute.${message.author.id}.${message.guild.id}`, 1)
     var muterole = message.guild.roles.get("692111478580576338")
     
      var ceza = message.guild.roles.get("692111658356834304")
@@ -43,9 +43,8 @@ exports.run = async (client, message, args) => {
   let sayı = await db.fetch(`meteceza_${user.user.id}`)
    
 let banlimiti = 7
-
+  db.add(`smute.${message.author.id}.${message.guild.id}`, 1)
 let banaralıgı = 604800000
-  db.add(`vmute.${message.author.id}.${message.guild.id}`, 1)
 
   var tarih = Date.now() 
 
@@ -92,8 +91,8 @@ if(sayı>banlimiti && tarih-ilkbantarihi <=banaralıgı) {
   setTimeout(function(){
     db.delete(`mutesessüre_${user.id}`);
     let embed = new Discord.RichEmbed()
-    .setColor(muterole.color)
-    .setDescription(`${user} Adlı Kullanıcının **${süre}** Ses Mute Süresi Doldu`)
+    .setColor("RANDOM")
+    .setDescription(`${user} Adlı Kullanıcının **${süre}** Chat Mute Süresi Doldu`)
    .setFooter('∻ The Sky')
   .setTimestamp()  
 
@@ -109,9 +108,9 @@ let süre =muteTime
 .replace(/m/g, " Dakika")
 .replace(/s/g, " Saniye")
     let embed = new Discord.RichEmbed()
-    .setColor("BLACK")
-    .setDescription(`${user} Adlı Kullanıcıya **${reason}** Sebebiyle **${süre}** Ses Mutesi Atıldı`)
-   .setFooter(`${message.author.tag}` , `${message.author.displayAvatarURL}`)
+    .setColor("RANDOM")
+    .setDescription(`${user} Adlı Kullanıcıya **${reason}** Sebebiyle **${süre}** Chat Mutesi Atıldı`)
+    .setFooter(`${message.author.tag}` , `${message.author.displayAvatarURL}`)
   .setTimestamp()  
     let sChannel = message.guild.channels.get("731536005806424184")
     if(!sChannel) return
@@ -122,12 +121,12 @@ let süre =muteTime
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["vmute","sesmute","voicemute","smute"],
+  aliases: ["vmute","sesmute","smute","mute"],
   permLevel: 0
 };
 
 exports.help = {
-  name: 'voicemute',
+  name: 'chatmute',
   description: 'kullanıcıyı susturur.',
   usage: '(a!tempmute <@user> Ceza Sürüsi Ceza Nedeni) Seklinde Kullanılır.>'
 };

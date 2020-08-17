@@ -47,7 +47,7 @@ exports.run = async (client, message, args, tools) => {
         const dataeee = await db.fetch(`unban.${message.author.id}.${message.guild.id}`)
         let jail = message.mentions.users.first()
         if(!args[0]) {
-        const datavmute = await db.fetch(`vmute.${message.author.id}.${message.guild.id}`)
+        const datavmute = await db.fetch(`smute.${message.author.id}.${message.guild.id}`)
         const datacmute = await db.fetch(`cmute.${message.author.id}.${message.guild.id}`)
         if(!args[0]) {
         const datajail = await db.fetch(`jail.${message.author.id}.${message.guild.id}`)
