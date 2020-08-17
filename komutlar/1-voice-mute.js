@@ -39,11 +39,11 @@ exports.run = async (client, message, args) => {
   message.react('?')
   
   db.add(`meteceza_${user.user.id}`,1)        
-   
+     db.add(`vmute.${message.author.id}.${message.guild.id}`, 1)
+
   let sayı = await db.fetch(`meteceza_${user.user.id}`)
    
 let banlimiti = 7
-  db.add(`smute.${message.author.id}.${message.guild.id}`, 1)
 let banaralıgı = 604800000
 
   var tarih = Date.now() 
@@ -92,7 +92,7 @@ if(sayı>banlimiti && tarih-ilkbantarihi <=banaralıgı) {
     db.delete(`mutesessüre_${user.id}`);
     let embed = new Discord.RichEmbed()
     .setColor("RANDOM")
-    .setDescription(`${user} Adlı Kullanıcının **${süre}** Chat Mute Süresi Doldu`)
+    .setDescription(`${user} Adlı Kullanıcının **${süre}** Ses Mute Süresi Doldu`)
    .setFooter('∻ The Sky')
   .setTimestamp()  
 
@@ -109,7 +109,7 @@ let süre =muteTime
 .replace(/s/g, " Saniye")
     let embed = new Discord.RichEmbed()
     .setColor("RANDOM")
-    .setDescription(`${user} Adlı Kullanıcıya **${reason}** Sebebiyle **${süre}** Chat Mutesi Atıldı`)
+    .setDescription(`${user} Adlı Kullanıcıya **${reason}** Sebebiyle **${süre}** Ses Mutesi Atıldı`)
     .setFooter(`${message.author.tag}` , `${message.author.displayAvatarURL}`)
   .setTimestamp()  
     let sChannel = message.guild.channels.get("731536005806424184")
@@ -121,12 +121,12 @@ let süre =muteTime
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["vmute","sesmute","smute","mute"],
+  aliases: ["vmute","sesmute","smute","ses-mute","voicemute","voice-mute"],
   permLevel: 0
 };
 
 exports.help = {
-  name: 'chatmute',
+  name: 'sesmute',
   description: 'kullanıcıyı susturur.',
-  usage: '(a!tempmute <@user> Ceza Sürüsi Ceza Nedeni) Seklinde Kullanılır.>'
+  usage: 'vmute'
 };

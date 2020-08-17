@@ -91,7 +91,7 @@ if(sayı>banlimiti && tarih-ilkbantarihi <=banaralıgı) {
   setTimeout(function(){
     db.delete(`mutesessüre_${user.id}`);
     let embed = new Discord.RichEmbed()
-    .setColor(muterole.color)
+    .setColor("RANDOM")
     .setDescription(`${user} Adlı Kullanıcının **${süre}** Chat Mute Süresi Doldu`)
    .setFooter('∻ The Sky')
   .setTimestamp()  
@@ -108,7 +108,7 @@ let süre =muteTime
 .replace(/m/g, " Dakika")
 .replace(/s/g, " Saniye")
     let embed = new Discord.RichEmbed()
-    .setColor("BLACK")
+    .setColor("RANDOM")
     .setDescription(`${user} Adlı Kullanıcıya **${reason}** Sebebiyle **${süre}** Chat Mutesi Atıldı`)
     .setFooter(`${message.author.tag}` , `${message.author.displayAvatarURL}`)
   .setTimestamp()  
@@ -121,7 +121,7 @@ let süre =muteTime
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["cmute","chatmute","kanalmute","mute"],
+  aliases: ["cmute","chatmute","kanalmute","mute","chat-mute"],
   permLevel: 0
 };
 
