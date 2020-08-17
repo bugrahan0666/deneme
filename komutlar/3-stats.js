@@ -48,9 +48,9 @@ exports.run = async (client, message, args, tools) => {
         if(!args[0]) {
         const datajail = await db.fetch(`jail.${message.author.id}.${message.guild.id}`)
         const dataunjail = await db.fetch(`unjail.${message.author.id}.${message.guild.id}`)
-        if(!args[1]) {
-        const dataeee = await db.fetch(`vmute.${message.author.id}.${message.guild.id}`)
-        const dataeeee = await db.fetch(`cmute.${message.author.id}.${message.guild.id}`)
+        if(!args[0]) {
+        const dataeeea = await db.fetch(`vmute.${message.author.id}.${message.guild.id}`)
+        const data1 = await db.fetch(`cmute.${message.author.id}.${message.guild.id}`)
         
         let simdikitarih = moment.utc(message.createdAt).format('DD MM YYYY');
         let user = message.mentions.users.first() || message.author;
@@ -118,7 +118,7 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
   .addField("Aktiflik İstatistikleri",`Toplam Ses: **${ses}** \nToplam Mesaj: **${puan}**`,true)
   .addField("Attığı Ban ve Unban İstatistikleri",`Toplam Ban: **${dataee ? dataee : '0'}**\nToplam Unban: **${dataeee ? dataeee : '0'}**`,true)
   .addBlankField()
-  .addField("Ceza İşlem İstatistikleri",`Toplam Chat Mute: **${datacmute ? datacmute : '0'}**\nToplam Ses Mute: **${datallmute ? datallmute : '0'}**`,true)
+  .addField("Ceza İşlem İstatistikleri",`Toplam Chat Mute: **${data1? data1 : '0'}**\nToplam Ses Mute: **${dataeeea ? dataeeea : '0'}**`,true)
   .addField("Jail İstatistikleri",`Toplam Jail: **${datajail ? datajail: '0'}**\nToplam Unjail: **${dataunjail ? dataunjail : '0'}**`,true)
   .setFooter('∻ The Sky Stats / Developed by Salvatore')
   .setColor("RANDOM");
