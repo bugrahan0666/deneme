@@ -8,7 +8,7 @@ module.exports = client => {
   setInterval(function() {}, 8000);
   client.user.setPresence({
     game: {
-      name: `Salvatore`,
+      name: `ﾅ ANATOLİA ❤ Salvatore`,
       type: "WATCHING"
     },
     status: "online"
