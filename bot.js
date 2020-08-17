@@ -238,3 +238,143 @@ client.on("voiceStateUpdate", async (oldMember, newMember) => {
     }
   }
 }); 
+
+
+
+
+
+
+client.on("userUpdate", async (oldUser, newUser) => {
+  if (oldUser.username !== newUser.username) {
+    let tag = "ﾅ"; //Kullandığınız tag
+    let sunucu = "696149491316949052"; //Sunucunuzun İD'si
+    let kanal = "744630301887561851"; //Mesaj atıalcağı kanal
+    let rol = "744630194698190968"; //Rolünüzün İD'si
+    if (
+      newUser.username.includes(tag) &&
+      !client.guilds
+        .get(sunucu)
+        .members.get(newUser.id)
+        .roles.has(rol)
+    ) {
+      client.channels
+        .get(kanal)
+        .send(new Discord.RichEmbed().setColor('RANDOM').setDescription(`${newUser} ${tag} Tagımızı Aldı ve <@&${rol}> Rolünü Verdim`));
+      client.guilds
+        .get(sunucu)
+        .members.get(newUser.id)
+        .addRole(rol);
+    }
+    if (
+      !newUser.username.includes(tag) &&
+      client.guilds
+        .get(sunucu)
+        .members.get(newUser.id)
+        .roles.has(rol)
+    ) {
+      client.guilds
+        .get(sunucu)
+        .members.get(newUser.id)
+        .removeRole(rol);
+      client.channels
+        .get(kanal)
+        .send(new Discord.RichEmbed().setColor('RANDOM').setDescription(`${newUser} ${tag} Tagımızı Bıraktığı için <@&${rol}> Rolünü Aldım`));
+    }
+  }
+});
+
+
+//salvatore sa as
+client.on("message", async msg => {
+  if (msg.content == "sa") {
+    return msg.reply(
+      "**Aleyküm Selam Hoşgeldin Dostum** "
+    );
+  }
+});
+
+client.on("message", async msg => {
+  if (msg.content == "sea") {
+    return msg.reply(
+      "**Aleyküm Selam Hoşgeldin Dostum** "
+    );
+  }
+});
+
+client.on("message", async msg => {
+  if (msg.content == "selam") {
+    return msg.reply(
+      "**Aleyküm Selam Hoşgeldin Dostum** "
+    );
+  }
+});
+
+client.on("message", async msg => {
+  if (msg.content == "selamun aleyküm") {
+    return msg.reply(
+      "**Aleyküm Selam Hoşgeldin Dostum** "
+    );
+  }
+});
+
+client.on("message", async msg => {
+  if (msg.content == "Selam") {
+    return msg.reply(
+      "**Aleyküm Selam Hoşgeldin Dostum** "
+    );
+  }
+});
+
+client.on("message", async msg => {
+  if (msg.content == "Sa") {
+    return msg.reply(
+      "**Aleyküm Selam Hoşgeldin Dostum** "
+    );
+  }
+});
+
+
+//tag link ver
+client.on("message", msg => {
+  if (msg.content === "!tag") {
+    msg.channel.sendMessage("ﾅ");
+  }
+});
+
+client.on("message", msg => {
+  if (msg.content === "tag") {
+    msg.channel.sendMessage("ﾅ");
+  }
+});
+
+
+client.on("message", msg => {
+  if (msg.content === ".tag") {
+    msg.channel.sendMessage("ﾅ");
+  }
+});
+
+client.on("message", msg => {
+  if (msg.content === "a!tag") {
+    msg.channel.sendMessage("ﾅ");
+  }
+});
+
+client.on("message", msg => {
+  if (msg.content === "!link") {
+    msg.channel.sendMessage("https://discord.gg/GS8rHyU");
+  }
+});
+
+
+client.on("message", msg => {
+  if (msg.content === ".link") {
+    msg.channel.sendMessage("https://discord.gg/GS8rHyU");
+  }
+});
+
+client.on("message", msg => {
+  if (msg.content === "link") {
+    msg.channel.sendMessage("https://discord.gg/GS8rHyU");
+  }
+});
