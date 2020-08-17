@@ -1,51 +1,43 @@
-const Discord = require('discord.js');
-const db = require("quick.db")
-const moment = require('moment')
-require("moment-duration-format")
-exports.run = async (client, message, args) => {
-   if (!message.member.roles.has('693095757070204938') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Kullanıcı Yasaklama Yetkiniz Yok` , `<a:loading:692108268557828188> Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
-  let kullanıcı = message.mentions.users.first()
-  if (!kullanıcı) return message.channel.sendEmbed(new Discord.RichEmbed() .setDescription('Bir üye etiketlemen gerekiyor!').setColor("Black"));
-  let user = message.mentions.users.first();
-  let rol = message.mentions.roles.first()
-  let member = message.guild.member(kullanıcı)
-   let reason = args.slice(1).join(" ")
-      if(!reason) return message.channel.send("Lütfen Bir Sebep Yazınız.").then(m => m.delete(5000));
-  
-          message.react("EMOJİ ID");
-  message.guild.members.get(member.id).roles.forEach(r => {
-message.guild.members.get(member.id).removeRole(r) 
-   
-})
-  member.addRole('692111658356834304')//CEZALI ROL
-     const kanal = message.guild.channels.find(c => c.id == "744746754058223687") //LOG KANALI
-    const embed1 = new Discord.RichEmbed()
-    .setAuthor(message.author.tag , message.author.avatarURL)
-    .setDescription(`<@!${kullanıcı.id}> Adlı Kullanıcı <@!${message.author.id}> Tarafından Cezalıya Atıldı\nSebep: **${reason}**`)
-    .setColor("RED")
-    .setFooter(message.author.tag , message.author.avatarURL)
-    .setTimestamp()
-  
-  let embed = new Discord.RichEmbed() 
-  .setAuthor(message.author.tag , message.author.avatarURL)
-  .setDescription(`${kullanıcı} Adlı Kullanıcı **${reason}** Sebebiyle Cezalıya Atıldı`) 
-  .setFooter(`∻ THE SKY`)
-  .setColor("RANDOM")
-  .setTimestamp()
-  return message.channel.send(embed).then(kanal.send(embed1));
-  
-}
+const Discord = require('discord.js')
+const ayarlar = require('../ayarlar.json')
 
+exports.run = async (client ,message ,args) => {
+   if (!message.member.roles.has('694932619392974851') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Kullanıcı Yasaklama Yetkiniz Yok` , `<a:loading:692108268557828188> Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+    let kullanıcı = message.mentions.members.first()
+        if(!kullanıcı)
+             return message.channel.send(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hatalı Kullanım` , `<a:loading:692108268557828188> Lütfen Cezalıdan Çıkarılacak Kullanıcıyı Etiketleyin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(10000));
+let cezlaırol = message.guild.roles.get("CEZALI ROL ID"); //Cezalı Rol Id
+let kayıtsızrol = message.guild.roles.get("KAYITSIZ ROL ID"); // Kayıtsız Rol Id
+if(!cezlaırol) return message.guild.owner.send(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hata` , `<a:loading:692108268557828188> Sunucuda Cezalı Rolünü Bulamadığım için İşlem Yapamıyorum`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+if(!kayıtsızrol) return message.guild.owner.send(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hata` , `<a:loading:692108268557828188> Sunucuda Kayıtsız Rolünü Bulamadığım için İşlem Yapamıyorum`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+
+let member = message.guild.member(kullanıcı)
+await member.addRole(kayıtsızrol) // 
+await member.removeRole(cezlaırol)
+
+let kanal = message.guild.channels.find('name' , 'cezalı-üye-bilgi')
+    if(!kanal) return message.guild.owner.send(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hata` , `<a:loading:692108268557828188> Sunucuda Cezalı Log Kanalını Bulamadığım için İşlem Yapamıyorum`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+const unjail = new Discord.RichEmbed()
+.setTitle('Başarılı :)')
+.setDescription(`Başarıyla ${message.author} adlı yetkili ${kullanıcı} adlı kullanıcıyı jailden cıkartdı.`)
+.setFooter('DCS EKİBİ')
+kanal.send(unjail)
+
+const dcs = new Discord.RichEmbed()
+.setTitle('Başarılı :)')
+.setDescription(`Başarıyla ${kullanıcı} adlı kullanıcı jailden cıkartıldı.`)
+.setFooter('DCS EKİBİ')
+message.channel.send(dcs)
+};
 exports.conf = {
   enabled: true,
-  guildOnly: true,
-  aliases: ["ceza","cezalandır","cezalı","karantina"],
-  kategori: "Yetkili Komutları",
+  guildOnly: false,
+  aliases: [],
   permLevel: 0
-}
+};
 
 exports.help = {
-  name: 'jail',
-  description: "Etiketlenen kişinin tüm rollerini alıp jail'e atar.",
-  usage: '!jail @etiket Sebebe'
-}
+  name: "unjail",
+  description: "Belirtiniz Kullanıyı Cezalıdan Kaldırır!",
+  usage: "unjail <kullanıcı>"
+};
