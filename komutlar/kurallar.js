@@ -6,7 +6,7 @@ exports.run = (client, message) => {
     const ozelmesajkontrol = new Discord.RichEmbed()
     .setColor('BLACK')
     .setAuthor(message.author.username, message.author.avatarURL)
-    .setDescription('**ﾅ A  N  A T O L İ A Moderasyon Ping ** = **`' + client.ping + '`** **ms**')
+    .setDescription(``)
     .setFooter('ﾅ A  N  A T O L İ A');
       message.delete()
     message.channel.sendEmbed(ozelmesajkontrol) }
@@ -15,12 +15,12 @@ exports.run = (client, message) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ['p'],
+  aliases: ['kkk'],
   permLevel: 0
 };
 
 exports.help = {
-  name: 'ping',
+  name: 'kkk',
   description: 'Pingi gösterir.',
-  usage: 'ping'
+  usage: 'kkk'
 };
