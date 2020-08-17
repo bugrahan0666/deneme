@@ -6,26 +6,26 @@ var prefix = ayarlar.prefix;
 
 exports.run = async (client, message, args) => {
 
-  if(!message.member.roles.get("692842065712775229") && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Yetersiz Yetki` , `<a:loading:692108268557828188> Yeterli Yetkiniz Olmadığı için Bu Komutu Kullanamazsınız`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(5000));
+  if(!message.member.roles.get("744630181297127516") && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Yetersiz Yetki` , `<a:yukleniyor:741424786433114172> Yeterli Yetkiniz Olmadığı için Bu Komutu Kullanamazsınız`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(5000));
 
   var user = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 
-    if(!user) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hatalı Kullanım` , `<a:loading:692108268557828188> Bir Kullanıcı Etiketlemelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(5000));
-   if(user.hasPermission("ADMINISTRATOR")) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Bilgi` , `<a:loading:692108268557828188> Yöneticileri Susturamazsın`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(5000));
+    if(!user) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Hatalı Kullanım` , `<a:yukleniyor:741424786433114172> Bir Kullanıcı Etiketlemelisin!`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(5000));
+   if(user.hasPermission("ADMINISTRATOR")) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Bilgi` , `<a:yukleniyor:741424786433114172> Yöneticileri Susturamazsın`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(5000));
     
     db.add(`cmute.${message.author.id}.${message.guild.id}`, 1)
-    var muterole = message.guild.roles.get("692111560960639010")
+    var muterole = message.guild.roles.get("744630203258634340")
     
-     var ceza = message.guild.roles.get("692111658356834304")
+     var ceza = message.guild.roles.get("744630200842584114")
         
 
-    if(!muterole) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Bilgi` , `<a:loading:692108268557828188> Chat Mute Rolü Yok`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(5000));
+    if(!muterole) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Bilgi` , `<a:yukleniyor:741424786433114172> Chat Mute Rolü Yok`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(5000));
     var muteTime = args[1];
     
-    if(!muteTime) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hatalı Kullanım` , `<a:loading:692108268557828188> Lütfen Mute Süresini Yazınız`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(5000));
+    if(!muteTime) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Hatalı Kullanım` , `<a:yukleniyor:741424786433114172> Lütfen Mute Süresini Yazınız`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(5000));
     let reason = args.slice(2).join(" ")
     
-    if(!reason) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Hatalı Kullanım` , `<a:loading:692108268557828188> Lütfen Susturma Sebebini Yazınız`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(5000));
+    if(!reason) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Hatalı Kullanım` , `<a:yukleniyor:741424786433114172> Lütfen Susturma Sebebini Yazınız`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(5000));
 
        if(user.voiceChannel){
   user.setVoiceChannel(null).catch(e => console.log("Bağlantı Kesma Yetkim Yok"))
@@ -60,7 +60,7 @@ if(sayı>banlimiti && tarih-ilkbantarihi <=banaralıgı) {
   
   user.addRole(ceza.id);
   
-  message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Bilgi` , `<a:loading:692108268557828188> Bu Kullanıcıya 1 Hafta İçerisinde 4'den Fazla Ses Mutesi Atıldığı <@&692111658356834304> Rolü Verirdi.`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(20000));
+  message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Bilgi` , `<a:yukleniyor:741424786433114172> Bu Kullanıcıya 1 Hafta İçerisinde 4'den Fazla Ses Mutesi Atıldığı <@&692111658356834304> Rolü Verirdi.`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(20000));
   
 }
   console.log(user.user.id)
@@ -71,7 +71,7 @@ if(sayı>banlimiti && tarih-ilkbantarihi <=banaralıgı) {
     
  
 
-  message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Bilgi` , `<a:loading:692108268557828188> Bu Kullanıcının İlk Mute Verilme Zamanından 1 Hafta Geçtiği İçin Ceza Sayısı Sıfırlandı`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(20000));
+  message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:693080241282744391> Bilgi` , `<a:yukleniyor:741424786433114172> Bu Kullanıcının İlk Mute Verilme Zamanından 1 Hafta Geçtiği İçin Ceza Sayısı Sıfırlandı`).setColor("2e0101").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(20000));
     
        db.add(`meteceza_${user.user.id}`,1)
     db.set(`metecezatarih_${user.user.id}`,Date.now())
@@ -91,12 +91,13 @@ if(sayı>banlimiti && tarih-ilkbantarihi <=banaralıgı) {
   setTimeout(function(){
     db.delete(`mutesessüre_${user.id}`);
     let embed = new Discord.RichEmbed()
-    .setColor("RANDOM")
+    .setColor("GREEN")
+    .setAuthor(message.author.username, message.author.avatarURL)
     .setDescription(`${user} Adlı Kullanıcının **${süre}** Chat Mute Süresi Doldu`)
-   .setFooter('∻ The Sky')
+   .setFooter('ﾅ A  N  A T O L İ A')
   .setTimestamp()  
 
-    let sChannel = message.guild.channels.get("731538802199363695")
+    let sChannel = message.guild.channels.get("744630289782931478")
     if(!sChannel) return
     sChannel.send(embed)
   },1000)
@@ -108,11 +109,12 @@ let süre =muteTime
 .replace(/m/g, " Dakika")
 .replace(/s/g, " Saniye")
     let embed = new Discord.RichEmbed()
-    .setColor("RANDOM")
+    .setColor("RED")
+     .setAuthor(message.author.username, message.author.avatarURL)
     .setDescription(`${user} Adlı Kullanıcıya **${reason}** Sebebiyle **${süre}** Chat Mutesi Atıldı`)
     .setFooter(`${message.author.tag}` , `${message.author.displayAvatarURL}`)
   .setTimestamp()  
-    let sChannel = message.guild.channels.get("731538802199363695")
+    let sChannel = message.guild.channels.get("744630289782931478")
     if(!sChannel) return
     sChannel.send(embed)
 
