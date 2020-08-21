@@ -290,6 +290,10 @@ client.on("message", async msg => {
 });
 
 
+
+
+
+//KANALLI HOŞGELDİN MESAJI
 client.on("guildMemberAdd", (member, message) => {
   if (member.guild.id !== "746454241366769746") return; //SUNUCU İD
   let aylartoplam = {
@@ -319,27 +323,51 @@ client.on("guildMemberAdd", (member, message) => {
   var kontrol;
   if (gün < 10) kontrol = "Şüpheli <a:unlem:746470597265064026>";
   if (gün > 10) kontrol = "Güvenli <a:tik_1:746470658804023338>";
-  const hg = new Discord.RichEmbed()
+  const hesapgiris = new Discord.RichEmbed()
   .setColor('RANDOM')
   .setThumbnail(member.user.avatarURL) 
   .setTitle(`O'nlar Sunucusuna Hoşgeldiniz`)
-  .setDescription(`<a:kelebek:746470695231553546> Sunucumuza Hoşgeldin ${member.toString()} Seninle Beraber ${member.guild.memberCount} Kişiyiz
+  .setDescription(`<a:kelebek:746470695231553546> Sunucumuza Hoşgeldin ${member.toString()} Seninle Beraber \`${member.guild.memberCount}\` Kişiyiz
 
 <a:beyaztik:746470622934335549> Kaydının Yapılması için Sesli Odaya Gelip Teyit Vermen Gerekli
 
 <a:yildiz1:746470692635279420> <@&746465906623774750> Rolündeki Yetkililer Seninle İlgilenecektir
 
 > Kullanıcı Bilgileri
-<a:discord:746470697651666944> Hesap Kuruluş Tarihi: **${moment(user.createdAt).format("DD")} ${aylar[moment(user.createdAt).format("MM")]} ${moment(user.createdAt).format("YYYY HH:mm:ss")}**
+<a:discord:746470697651666944> Hesap Kuruluş Tarihi: **${moment(user.createdAt).format("DD")} ${aylar[moment(user.createdAt).format("MM")]} ${moment(user.createdAt).format("YYYY [Saat:] HH:mm:ss")}**
 <a:discord:746470697651666944> Hesap Açılalı: **${gecen}** Olmuş
 <a:discord:746470697651666944> Bu Kullanıcı: **${kontrol}**`)
-  channel.send(hg)
+  channel.send(hesapgiris)
 });
 
 
 
 
-//bot dm hoşgeldin mesajı
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 client.on("guildMemberAdd", async (member, message, args) => {
   try {
     let aresMessage = new Discord.RichEmbed();
