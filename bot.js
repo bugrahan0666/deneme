@@ -240,50 +240,6 @@ client.on("voiceStateUpdate", async (oldMember, newMember) => {
 }); 
 
 
-
-
-
-
-client.on("userUpdate", async (oldUser, newUser) => {
-  if (oldUser.username !== newUser.username) {
-    let tag = "ﾅ"; //Kullandığınız tag
-    let sunucu = "696149491316949052"; //Sunucunuzun İD'si
-    let kanal = "744630301887561851"; //Mesaj atıalcağı kanal
-    let rol = "744630194698190968"; //Rolünüzün İD'si
-    if (
-      newUser.username.includes(tag) &&
-      !client.guilds
-        .get(sunucu)
-        .members.get(newUser.id)
-        .roles.has(rol)
-    ) {
-      client.channels
-        .get(kanal)
-        .send(new Discord.RichEmbed().setColor('RANDOM').setDescription(`${newUser} ${tag} Tagımızı Aldı ve <@&${rol}> Rolünü Verdim`));
-      client.guilds
-        .get(sunucu)
-        .members.get(newUser.id)
-        .addRole(rol);
-    }
-    if (
-      !newUser.username.includes(tag) &&
-      client.guilds
-        .get(sunucu)
-        .members.get(newUser.id)
-        .roles.has(rol)
-    ) {
-      client.guilds
-        .get(sunucu)
-        .members.get(newUser.id)
-        .removeRole(rol);
-      client.channels
-        .get(kanal)
-        .send(new Discord.RichEmbed().setColor('RANDOM').setDescription(`${newUser} ${tag} Tagımızı Bıraktığı için <@&${rol}> Rolünü Aldım`));
-    }
-  }
-});
-
-
 //salvatore sa as
 client.on("message", async msg => {
   if (msg.content == "sa") {
@@ -334,47 +290,75 @@ client.on("message", async msg => {
 });
 
 
-//tag link ver
-client.on("message", msg => {
-  if (msg.content === "!tag") {
-    msg.channel.sendMessage("ﾅ");
-  }
+client.on("guildMemberAdd", (member, message) => {
+  if (member.guild.id !== "746454241366769746") return; //SUNUCU İD
+  let aylartoplam = {
+    "01": "Ocak",
+    "02": "Şubat",
+    "03": "Mart",
+    "04": "Nisan",
+    "05": "Mayıs",
+    "06": "Haziran",
+    "07": "Temmuz",
+    "08": "Ağustos",
+    "09": "Eylül",
+    "10": "Ekim",
+    "11": "Kasım",
+    "12": "Aralık"
+  };
+  let aylar = aylartoplam;
+  let user = client.users.get(member.id);
+  require("moment-duration-format");
+  let eskiisim = member.user.username;
+  const id = "746475814123470899"; //MESAJIN GİDECEĞİ KANAL İD
+  const channel = member.guild.channels.get(id);
+  const kurulus = new Date().getTime() - user.createdAt.getTime();
+   let zaman1 = new Date().getTime() - user.createdAt.getTime()
+   const gecen = moment.duration(zaman1).format(` YY [Yıl] DD [Gün] HH [Saat] mm [Dakika] ss [Saniye]`) 
+  const gün = moment.duration(kurulus).format("D");
+  var kontrol;
+  if (gün < 10) kontrol = "Şüpheli <a:unlem:746470597265064026>";
+  if (gün > 10) kontrol = "Güvenli <a:tik_1:746470658804023338>";
+  const hg = new Discord.RichEmbed()
+  .setColor('BLACK')
+  .setThumbnail(member.user.avatarURL) 
+  .setTitle(`O'nlar Sunucusuna Hoşgeldiniz`)
+  .setDescription(`<a:vip:698312030242996297> Sunucumuza Hoşgeldin ${member.toString()} Seninle Beraber ${member.guild.memberCount} Kişiyiz
+
+<a:elams:697501489375084625> Kaydının Yapılması için Sesli Odaya Gelip Teyit Vermen Gerekli
+
+<a:yldz2:705064147293044807> <@&746465906623774750> Rolündeki Yetkililer Seninle İlgilenecektir
+
+> Kullanıcı Bilgileri
+<a:loading:705391672707776543> Hesap Kuruluş Tarihi: **${moment(user.createdAt).format("DD")} ${aylar[moment(user.createdAt).format("MM")]} ${moment(user.createdAt).format("YYYY HH:mm:ss")}**
+<a:loading:705391672707776543> Hesap Açılalı: **${gecen}** Olmuş
+<a:loading:705391672707776543> Bu Kullanıcı: **${kontrol}**`)
+  .setImage("https://cdn.discordapp.com/attachments/744630265174818826/745003574743924937/anatolia_pp.gif")
+  channel.send(hg)
 });
 
-client.on("message", msg => {
-  if (msg.content === "tag") {
-    msg.channel.sendMessage("ﾅ");
-  }
-});
 
 
-client.on("message", msg => {
-  if (msg.content === ".tag") {
-    msg.channel.sendMessage("ﾅ");
-  }
-});
 
-client.on("message", msg => {
-  if (msg.content === "a!tag") {
-    msg.channel.sendMessage("ﾅ");
-  }
-});
-
-client.on("message", msg => {
-  if (msg.content === "!link") {
-    msg.channel.sendMessage("https://discord.gg/GS8rHyU");
-  }
-});
-
-
-client.on("message", msg => {
-  if (msg.content === ".link") {
-    msg.channel.sendMessage("https://discord.gg/GS8rHyU");
-  }
-});
-
-client.on("message", msg => {
-  if (msg.content === "link") {
-    msg.channel.sendMessage("https://discord.gg/GS8rHyU");
+//bot dm hoşgeldin mesajı
+client.on("guildMemberAdd", async (member, message, args) => {
+  try {
+    let aresMessage = new Discord.RichEmbed();
+    await member.addRole("744630193217601627");//kayıtsız
+    await member.addRole("744630193217601627");//kayıtsız
+    await member.setNickname(`${member.user.username}`);
+    await client.channels
+      .get("744630193217601627")//kanal
+      .send(
+        `<a:tac:692108149984854157> **WELCOME TO ⋈ THE SKY** <a:tac:692108149984854157>\n\n<a:kebelek:693103182578057286> **Sunucumuza Hoşgeldin** ${member}, **Seninle Beraber **\`${member.guild.memberCount}\` **Kişiyiz!**\n\n**<a:yildiz1:692394627260481556> Kaydının Yapılması için Sesli Odaya Gelip Teyit Vermen Gerekli**\n\n**<a:ates:692108616743780385> <@&693111236036132937> Rolündeki Yetkililer Seninle İlgilenecektir**\n\n<a:raptiye:692839119792898199> <#692396339300008018> **Kanalından Kuralları Okumayı Unutma**`,
+        new Discord.Attachment(
+          "https://cdn.discordapp.com/attachments/692698508448366672/700405263299117117/ezgif-4-04b1206c6d54.gif"
+        )
+      );
+    if (!member.roles.has("744630193217601627")) {
+      member.addRole("744630193217601627");
+    }
+  } catch (err) {
+    console.log(err);
   }
 });

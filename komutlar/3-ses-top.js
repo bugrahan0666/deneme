@@ -25,7 +25,6 @@ exports.run = async (client, message, args) => {
     new Discord.RichEmbed()
       .setTitle('Ses Top 10')
       .addField("TOP 10 SES AKTİFLİĞİ",`${ses_kişi}`)
-      .setDescription()
       .setColor("RANDOM")
       .setFooter('Developed by Salvatore')
       .setTimestamp()
