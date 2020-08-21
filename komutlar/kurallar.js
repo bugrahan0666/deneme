@@ -6,32 +6,31 @@ exports.run = (client, message) => {
     const ozelmesajkontrol = new Discord.RichEmbed()
     .setColor('BLACK')
     .setAuthor(message.author.username, message.author.avatarURL)
-    .setDescription(`ﾅ A N A T O L İ A - SUNUCU KURALLARI
+    .setDescription(`O'NLAR - SUNUCU KURALLARI
 
-<a:dikkat:697499533516603545> ● Pub odalarda vs kesinlikle troll yasaktır
+<a:unlem:746470597265064026> ● Küfür ve Hakaret Söylemleri Yasaktır
 
-<a:dikkat:697499533516603545> ● Odalarda Kışkırtma kesinlikle yasaktır
+<a:unlem:746470597265064026> ● Chatte Flood Yapmak, Spam Yapmak, Capslock Açık Yazı Yazmak Yasaktır
 
-<a:dikkat:697499533516603545> ● Pub odalarda küfür kesinlikle yasaktır
+<a:unlem:746470597265064026> ● Yasaklı (Cinsel, Kan, Vahşet) İçeriklerinin Paylaşımı Yasaktır
 
-<a:dikkat:697499533516603545> ● Pub odalarda şarkı açmak vs yasaktır
+<a:unlem:746470597265064026> ● Ailevi Değerlere ve Milli Değerlere Hakaret Yasaktır
 
-<a:dikkat:697499533516603545> ● Reklam her türlü yasaktır
+<a:unlem:746470597265064026> ● Din, Dil, Irk Ayrımı Yapmak Yasaktır
 
-<a:dikkat:697499533516603545> ● +18 içerik,şiddet içerimli şeyler paylaşmak yasaktır
+<a:unlem:746470597265064026> ● Siyaset Yapmak Kesinlikle Yasaktır
 
-<a:dikkat:697499533516603545> ● Sunucuya katılan her üyenin kuralları okuması şarttır
+<a:unlem:746470597265064026> ● Ses/Metin Kanallarında İnsanları Trollemek, Rahatsız Etmek Yasaktır
 
-<a:dikkat:697499533516603545> ● Kişisel kavgalarınızı sorunlarınızı sunucuya taşımak yasaktır
+<a:unlem:746470597265064026> ● Kişisel Sorunlarınızı Sunucuya Yansıtmak Yasaktır
 
-<a:dikkat:697499533516603545> ● Her hangi bir olay yaşandığında sorun çözmeye çıkılması şarttır
+<a:unlem:746470597265064026> ● Metin Kanallarının Amacı Dışında Kullanımı Yasaktır
 
-<a:dikkat:697499533516603545> ● Sunucu odalarında ses kayıtı almak yasaktır
 
-<a:dikkat:697499533516603545> ● Genel chatta, CapsLock,Spam,Flood,Yasaktır
+<a:raptiye:746470603153997875> ● Sunucu Kurallarına Uymayan veya Sizleri Rahatsız Eden Şahısları <@!746465962794156193>  <@!> Yetkililerine Bildirerek Yardım Alabilirsiniz
 
 **SİZLERİ SEVİYORUZ BU KURALLARA LÜTFEN UYALIM AKSİ TAKTİR DE İŞLEM UYGULAMAK ZORUNDA KALIRIZ**`)
-    .setFooter('ﾅ A  N  A T O L İ A');
+    .setFooter(`O'nlar | İlkay Alpgiray`);
       message.delete()
     message.channel.sendEmbed(ozelmesajkontrol) }
 };

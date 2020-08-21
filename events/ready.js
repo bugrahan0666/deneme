@@ -8,10 +8,10 @@ module.exports = client => {
   setInterval(function() {}, 8000);
   client.user.setPresence({
     game: {
-      name: `ﾅ ANATOLİA ❤ Salvatore`,
+      name: `Developed by Salvatore`,
       type: "WATCHING"
     },
-    status: "online"
+    status: "dnd"
   });
-  console.log(`[BOT]: Giriş Yaptı! Komutlar Yüklendi! DCS Ekibine Aittir!`);
+  console.log(`[BOT]: Giriş Yaptı! Komutlar Yüklendi! Salvatore Aittir!`);
 };
