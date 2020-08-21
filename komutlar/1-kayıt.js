@@ -12,31 +12,30 @@ exports.run = async (client, message, args) => {
    let yas = args[2]
       if(!yas) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:746470597265064026> Bilgi` , `<a:loading:746470616085037236> Bir Yaş Girmelisin!`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());    
 await member.setNickname(`${isim} | ${yas}`)
-  member.addRole('744630191812378815')
-  member.addRole('744630192139403353')
-  member.removeRole('744630193217601627')
+  member.addRole('746465562720338042')
+  member.removeRole('746465808376529017')
   message.react('<a:tik_1:746470658804023338>')
      const kanal = message.guild.channels.find(c => c.id == "746477500649046136") 
     const embed1 = new Discord.RichEmbed() 
-    .addField(`ﾅ A N A T O L İ A`, `<a:mavi:697499700147912825> ${member.user} **Hoşgeldin , Seninle Beraber** \`${member.guild.memberCount}\` **Üyeye Ulaştık.**\n<a:kelebek:697499570447450142> **Sunucumuzun** \`Kurallarına\` <#744630227053051935> **Kanalından Bakabilirsin.**`)
+    .addField(`O'nlar`, `<a:kalp:746470633893920808> ${member.user} **Hoşgeldin , Seninle Beraber** \`${member.guild.memberCount}\` **Üyeye Ulaştık.**\n<a:kelebek:746470695231553546> **Sunucumuzun** \`Kurallarına\` <#746469362843648070> **Kanalından Bakabilirsin.**`)
     .setColor("RANDOM")
     .setFooter(message.author.tag ,message.author.avatarURL)
     .setTimestamp()
   let embed = new Discord.RichEmbed() 
   .setColor("RANDOM")
-  .addField(`ﾅ A N A T O L İ A`, `<a:mavi:697499700147912825> ${member.user} **Adlı Üyeye** <@&744630191812378815> **Rolünü Verip İsmini**  \`${isim} | ${yas}\` **Olarak Düzenledim**`).setFooter(message.author.tag ,message.author.avatarURL)
+  .addField(`O'nlar`, `<a:beyaztik:746470622934335549> ${member.user} **Adlı Üyeye** <@&746465562720338042> **Rolünü Verip İsmini**  \`${isim} | ${yas}\` **Olarak Düzenledim**`).setFooter(message.author.tag ,message.author.avatarURL)
   .setTimestamp()
   return message.channel.send(embed).then(kanal.send(embed1))
 }
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ["e" , "erkek","bay"],
+  aliases: ["üye", "kayıt", "k", "register"],
   kategori: "Yetkili Komutları",
   permLevel: 0
 }
 exports.help = {
-  name: 'erkek',
-  description: "Kayıts",
+  name: 'kayıt',
+  description: "Kayıt Komutu",
   usage: 'kayıt isim yaş'
 } 
