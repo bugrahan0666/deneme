@@ -70,7 +70,7 @@ let sayi4 = 1
   message.channel.send(
     new Discord.RichEmbed()
       .addField("Mesaj | Top 5 - Üyeler",`${mesaj_kişi}`,true)
-      .addField("Ses | Top 3 - Üyeler",`${ses_kişi}`,true)
+      .addField("Ses | Top 5 - Üyeler",`${ses_kişi}`,true)
      .addBlankField()
      .addField("Mesaj | Top 5 - Kanal",`${mesaj_kanal}`,true)
       .addField("Ses | Top 5 - Kanal",`${ses_kanal}`,true)

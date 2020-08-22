@@ -134,7 +134,7 @@ exports.conf = {
 };
 
 exports.help = {
-  name: "stats",
+  name: "yetkili-stats",
   description: "İstediğiniz kişinin istatistiklerini verir",
-  usage: "stats"
+  usage: "yetkili-stats"
 };

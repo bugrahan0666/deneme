@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
         (db.get(`puan_${message.guild.id}_${a.user.id}`) || 0)
       );
     })
-    .slice(0, 5)
+    .slice(0, 10)
     .map(member => {
       return `\n\`${sayi++}.\`  <@${member.user.id}>:  \`${db.get(
         `puan_${message.guild.id}_${member.user.id}`

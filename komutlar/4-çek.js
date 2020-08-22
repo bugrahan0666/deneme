@@ -1,22 +1,22 @@
 
 const Discord = require('discord.js');
 exports.run = async (client, message, args) => {
-     if (!message.member.roles.has('744630181016109196') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Yetersiz Yetki` , `<a:yukleniyor:741424786433114172> Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+ if (!message.member.roles.has('746465906623774750') && !message.member.roles.has('746465962794156193') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:746470597265064026> Yetersiz Yetki` , `<a:loading:746470616085037236> Bu Komutu Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
 
   
-    if (!message.member.voiceChannel) { return message.channel.send(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> İşlem Başarısız` , `<a:yukleniyor:741424786433114172> Bir Ses Kanalında Olmanız Gerekiyor`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()); }
+    if (!message.member.voiceChannel) { return message.channel.send(new Discord.RichEmbed().addField(`<a:unlem:746470597265064026> İşlem Başarısız` , `<a:loading:746470616085037236> Bir Ses Kanalında Olmanız Gerekiyor`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()); }
   let kullanıcı = message.mentions.users.first()
                                                                               
-  if (!kullanıcı) return message.channel.send(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Hatalı Kullanım` , `<a:yukleniyor:741424786433114172> Lütfen Bir Kullanıcı Etiketleyiniz`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+  if (!kullanıcı) return message.channel.send(new Discord.RichEmbed().addField(`<a:unlem:746470597265064026> Hatalı Kullanım` , `<a:loading:746470616085037236> Lütfen Bir Kullanıcı Etiketleyiniz`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
 
     let rol = message.mentions.roles.first()
   let member = message.guild.member(kullanıcı)
-  if(!member.voiceChannel) return message.channel.send(new Discord.RichEmbed().addField(`<a:dikkat:697499533516603545> Hatalı Kullanım` , `<a:yukleniyor:741424786433114172> Lütfen Bir Kullanıcı Etiketleyiniz`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+  if(!member.voiceChannel) return message.channel.send(new Discord.RichEmbed().addField(`<a:unlem:746470597265064026> Hatalı Kullanım` , `<a:loading:746470616085037236> Lütfen Bir Kullanıcı Etiketleyiniz`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
 
 const voiceChannel = message.member.voiceChannel.id;
 if(!voiceChannel) return
   member.setVoiceChannel(voiceChannel);
-   message.react('636990852362928158')
+   message.react('<a:tik_1:746470658804023338>')
    const voiceChannel1 = message.member.voiceChannel.name;
   let embed= new Discord.RichEmbed()
     .setColor("RANDOM")
