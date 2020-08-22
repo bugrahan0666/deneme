@@ -314,7 +314,7 @@ client.on("guildMemberAdd", (member, message) => {
   let user = client.users.get(member.id);
   require("moment-duration-format");
   let eskiisim = member.user.username;
-  const id = "746475814123470899"; //MESAJIN GİDECEĞİ KANAL İD
+  const id = "746533147000176763"; //MESAJIN GİDECEĞİ KANAL İD
   const channel = member.guild.channels.get(id);
   const kurulus = new Date().getTime() - user.createdAt.getTime();
    let zaman1 = new Date().getTime() - user.createdAt.getTime()

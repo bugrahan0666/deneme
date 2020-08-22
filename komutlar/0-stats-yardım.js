@@ -7,7 +7,6 @@ exports.run = (client, message) => {
       .setColor("BLACK")
       .setTimestamp() 
       .addField(`Hatalı Kullanım` , `Bu Komutu Özel Mesajlarda Kullanamazsınız Lütfen Sunucu İçerisinde Herhangi Bir Kanalı Kullanınız`)
-      .setFooter('ﾅ Anatolia');
     return message.author.sendEmbed(ozelmesajuyari);
   }
   if (message.channel.type !== 'dm') {

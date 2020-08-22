@@ -76,7 +76,7 @@ let sayi4 = 1
       .addField("Ses | Top 5 - Kanal",`${ses_kanal}`,true)
       .setTitle(message.guild.name+' İstatistik')
       .setThumbnail(message.guild.iconURL)
-      .setColor("BLUE")
+      .setColor("RANDOM")
     .setFooter('Developed by Salvatore')
       .setTimestamp()
   );
@@ -84,9 +84,9 @@ let sayi4 = 1
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["top-10"],
+  aliases: ["top-5"],
   permLevel: 0
 };
 exports.help = {
-  name: "top-10"
+  name: "top-5"
 };

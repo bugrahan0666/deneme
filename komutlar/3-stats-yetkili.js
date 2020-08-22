@@ -3,6 +3,7 @@ const db = require("quick.db");
 const moment = require('moment')
 require("moment-duration-format")
 exports.run = async (client, message, args, tools) => {        
+   if (!message.member.roles.has('746465906623774750') && !message.member.roles.has('746465962794156193') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:746470597265064026> Yetersiz Yetki` , `<a:loading:746470616085037236> Bu Komutu Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   const us = message.mentions.users.first() || client.users.get(args[0]) || message.author
   const puan = await db.get("puan_" + message.guild.id + "_" + us.id);
   let sayi22 = 1;
