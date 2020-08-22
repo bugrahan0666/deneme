@@ -7,22 +7,22 @@ exports.run = (client, message, args) => {
     const ozelmesajuyari = new Discord.RichEmbed()
       .setColor("RANDOM")
       .setTimestamp() 
-      .addField(`:red_circle: Hatalı Kullanım` , `:small_blue_diamond: Bu Komutu Özel Mesajlarda Kullanamazsınız Lütfen Sunucu İçerisinde Herhangi Bir Kanalı Kullanınız`)
+      .addField(`Hatalı Kullanım` , `Bu Komutu Özel Mesajlarda Kullanamazsınız Lütfen Sunucu İçerisinde Herhangi Bir Kanalı Kullanınız`)
     return message.author.sendEmbed(ozelmesajuyari);
   }
- if (!message.member.hasPermission('BAN_MEMBERS') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`:red_circle: Yetersiz Yetki` , `:small_blue_diamond: Bu Komutu Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+ if (!message.member.hasPermission('BAN_MEMBERS') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Yetersiz Yetki` , `Bu Komutu Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   let guild = message.guild;
   let reason = args.slice(1).join(" ");
   let user = message.mentions.users.first();
   let modlog = guild.channels.find("name", "ban-bilgi");
   db.add(`ban.${message.author.id}.${message.guild.id}`, 1)
-  if (!modlog) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`:red_circle: Hata` , `:small_blue_diamond: Log Kanalını Bulamıyorum`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
-  if (reason.length < 1) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`:red_circle: Hatalı Kullanım` , `:small_blue_diamond: Lütfen Yasaklama Nedeninizi Yazınız`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
-  if (message.mentions.users.size < 1)
-    return message.channel.sendEmbed(new Discord.RichEmbed().addField(`:red_circle: Hatalı Kullanım` , `:small_blue_diamond: Yasaklanacak Kullanıcıyı Etiketleyiniz`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).catch(console.error);
+  if (!modlog) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hata` , `Log Kanalını Bulamıyorum`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+    if (message.mentions.users.size < 1)
+    return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hatalı Kullanım` , `Yasaklanacak Kullanıcıyı Etiketleyiniz`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).catch(console.error);
+  if (reason.length < 1) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hatalı Kullanım` , `Lütfen Yasaklama Sebebinizi Yazınız`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
 
   if (!message.guild.member(user).bannable)
-    return message.channel.sendEmbed(new Discord.RichEmbed().addField(`:red_circle: Hatalı Kullanım` , `:small_blue_diamond: Yetkilileri Banlayamasınız`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+    return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hatalı Kullanım` , `Yetkilileri Banlayamasınız`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   message.guild.ban(user, {reason: reason})
   const embed = new Discord.RichEmbed()
     .setColor("RED")

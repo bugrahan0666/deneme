@@ -7,7 +7,7 @@ exports.run = function(client, message, args) {
   
 
    
-    if(isNaN(id)) return message.channel.send(new Discord.RichEmbed().addField(`Hatalı Kullanım` , `Lütfen Silinecek Mesaj Sayısını Yazınız Örnek: || e!temizle 10 ||`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(10000));
+    if(isNaN(id)) return message.channel.send(new Discord.RichEmbed().addField(`Hatalı Kullanım` , `Lütfen Silinecek Mesaj Sayısını Yazınız Örnek: __**e!temizle 10**__`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(10000));
 if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(new Discord.RichEmbed().addField(`Yetersiz Yetki` , `Bu Komutu Kullanabilmek  için "Mesajları Yönet" Yetkisine Sahip Olmalısınız`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(10000));
 if(!args[0]) return message.channel.send(new Discord.RichEmbed().addField(`Hatalı Kullanım` , `Lütfen Silinecek Mesaj Sayısını Yazınız`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(10000));
 message.channel.bulkDelete(args[0]).then(() => {
