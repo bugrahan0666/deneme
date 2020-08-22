@@ -11,20 +11,12 @@ const db = require("quick.db");
 const http = require("http"); 
 const express = require("express"); 
 require("./util/eventLoader")(client); 
-
 const path = require("path"); 
-
 const request = require("request");
-
-const snekfetch = require("snekfetch"); 
-
+const snekfetch = require("snekfetch");
 const queue = new Map(); 
-
 const YouTube = require("simple-youtube-api"); 
-
 const ytdl = require("ytdl-core"); 
-
-
 const app = express(); 
 app.get("/", (request, response) => {
 
@@ -240,152 +232,153 @@ client.on("voiceStateUpdate", async (oldMember, newMember) => {
 }); 
 
 
-//salvatore sa as
-client.on("message", async msg => {
-  if (msg.content == "sa") {
-    return msg.reply(
-      "**Aleyküm Selam Hoşgeldin Dostum** "
-    );
-  }
-});
 
-client.on("message", async msg => {
-  if (msg.content == "sea") {
-    return msg.reply(
-      "**Aleyküm Selam Hoşgeldin Dostum** "
-    );
-  }
-});
-
-client.on("message", async msg => {
-  if (msg.content == "selam") {
-    return msg.reply(
-      "**Aleyküm Selam Hoşgeldin Dostum** "
-    );
-  }
-});
-
-client.on("message", async msg => {
-  if (msg.content == "selamun aleyküm") {
-    return msg.reply(
-      "**Aleyküm Selam Hoşgeldin Dostum** "
-    );
-  }
-});
-
-client.on("message", async msg => {
-  if (msg.content == "Selam") {
-    return msg.reply(
-      "**Aleyküm Selam Hoşgeldin Dostum** "
-    );
-  }
-});
-
-client.on("message", async msg => {
-  if (msg.content == "Sa") {
-    return msg.reply(
-      "**Aleyküm Selam Hoşgeldin Dostum** "
-    );
-  }
-});
+///SUNUCU KUR
+client.on('message', async message => {
+  const ms = require('ms');
+  const args = message.content.slice(prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
+  let u = message.mentions.users.first() || message.author;
+  if (command === "sunucu-kur") {
+  if (message.guild.channels.find(channel => channel.name === "Bot Kullanımı")) return message.channel.send("Sunucu Zaten Ayarlanmış")
+  message.channel.send(`Bot Bilgi Kanallarının kurulumu başlatılsın mı? başlatılacak ise **kabul** yazınız.`)
+      if (!message.member.hasPermission('ADMINISTRATOR'))
+  return message.channel.send(" Bu Kodu `Yönetici` Yetkisi Olan Kullanabilir");
+      message.channel.awaitMessages(response => response.content === 'kabul', {
+        max: 1,
+        time: 10000,
+        errors: ['time'],
+      })
+    .then((collected) => {
+        
+         message.guild.owner.send('Heyo, Sunucunuz Kuruluyor... Bu Biraz Zaman Alabilir!')
+       message.guild.channels.forEach(function(kan) {
+       message.guild.roles.forEach(function(rol) {
+                 kan.delete()
+                 rol.delete()
+       })}) 
+        
+        
+   message.guild.createChannel('✮ ▬  ▬ Duyuru Kanalları▬  ▬ ✮', 'category', [{
+  id: message.guild.id,
+  deny: ['SEND_MESSAGES']
+}])
 
 
+        
+ message.guild.createChannel('【📃 】кυяαℓℓαя', 'text', [{
+  id: message.guild.id,
+  deny: ['SEND_MESSAGES']
+}])
+.then(channel =>
+ channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Duyuru Kanalları▬  ▬ ✮")));
+ message.guild.createChannel('「💚」gelen-giden', 'text', [{
+  id: message.guild.id,
+  deny: ['SEND_MESSAGES']
+}])
+.then(channel =>
+       channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Duyuru Kanalları▬  ▬ ✮")));
+       message.guild.createChannel('【👑】sayaç', 'text', [{
+        id: message.guild.id,
+        deny: ['SEND_MESSAGES']
+      }])
+.then(channel =>
+             channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Duyuru Kanalları▬  ▬ ✮")));
+             message.guild.createChannel('【🎉】çєкιℓιş', 'text', [{
+              id: message.guild.id,
+              deny: ['SEND_MESSAGES']
+            }])
+            .then(channel => channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Duyuru Kanalları▬  ▬ ✮")));
+            message.guild.createChannel('【📢 】∂υуυяυℓαя', 'text', [{
+              id: message.guild.id,
+              deny: ['SEND_MESSAGES']
+            }])
+.then(channel =>
+ channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Duyuru Kanalları▬  ▬ ✮")));
+        
+                    message.guild.createChannel('【🎀】ραятηєя', 'text', [{
+              id: message.guild.id,
+              deny: ['SEND_MESSAGES']
+            }])
+.then(channel =>
+ channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Duyuru Kanalları▬  ▬ ✮")));
+        
+
+       }) 
+       .then((collected) => {
+        message.guild.createChannel('✮ ▬  ▬ Metin Kanalları▬  ▬ ✮', 'category', [{
+       id: message.guild.id,
+     }]);
+             
+      message.guild.createChannel(`【🎁】şikayet-ve-öneriler`, 'text')
+     .then(channel =>
+      channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Metin Kanalları▬  ▬ ✮")));
+     message.guild.createChannel(`【👥】video-duyurular`, 'text')
+     .then(channel =>
+            channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Metin Kanalları▬  ▬ ✮")));
+     message.guild.createChannel(`【📷】galeri-odası`, 'text')
+     .then(channel =>
+                  channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Metin Kanalları▬  ▬ ✮")));
+     message.guild.createChannel(`【🤖】bot-komut`, 'text')
+     .then(channel =>
+                  channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Metin Kanalları▬  ▬ ✮")));
+     message.guild.createChannel(`【👻】sohbet-odası`, 'text')
+     .then(channel =>
+      channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Metin Kanalları▬  ▬ ✮")));
+
+      message.guild.createChannel(`🌹》Kurucu Odası`, "voice")
+      .then(channel =>
+        channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Ses Kanalları▬  ▬ ✮|")))
+      .then(c => {
+        let role = message.guild.roles.find("name", "@everyone");
+        let role2 = message.guild.roles.find("name", "Kurucu");
+        
+        c.overwritePermissions(role, {
+            CONNECT: false,
+        });
+        c.overwritePermissions(role2, {
+            CONNECT: true,
+            
+        });
+    })
+
+    message.guild.createChannel('|▬▬|Ses Kanalları|▬▬|', 'category', [{
+      id: message.guild.id,
+    }]);
+
+    message.guild.createChannel(`👍》Sesli Yönetici Odası`, "voice")
+    .then(channel =>
+      channel.setParent(message.guild.channels.find(channel => channel.name === "|▬▬|Ses Kanalları|▬▬|")))
+    .then(c => {
+      let role = message.guild.roles.find("name", "@everyone");
+      let role2 = message.guild.roles.find("name", "Kurucu");
+      let role3 = message.guild.roles.find("name", "Yönetici");
+      c.overwritePermissions(role, {
+          CONNECT: false,
+      });
+      c.overwritePermissions(role2, {
+          CONNECT: true,
+      });
+      c.overwritePermissions(role3, {
+          CONNECT: true,
+      });
+  })
+
+  message.guild.createChannel(`💬》Sesli Sohbet Odası`, "voice")
+  .then(channel =>
+    channel.setParent(message.guild.channels.find(channel => channel.name === "|▬▬|Ses Kanalları|▬▬|")))
+  .then(c => {
+    let role = message.guild.roles.find("name", "@everyone");
+    c.overwritePermissions(role, {
+        CONNECT: true,
+    });
+})
 
 
 
-//KANALLI HOŞGELDİN MESAJI
-client.on("guildMemberAdd", (member, message) => {
-  if (member.guild.id !== "746454241366769746") return; //SUNUCU İD
-  let aylartoplam = {
-    "01": "Ocak",
-    "02": "Şubat",
-    "03": "Mart",
-    "04": "Nisan",
-    "05": "Mayıs",
-    "06": "Haziran",
-    "07": "Temmuz",
-    "08": "Ağustos",
-    "09": "Eylül",
-    "10": "Ekim",
-    "11": "Kasım",
-    "12": "Aralık"
-  };
-  let aylar = aylartoplam;
-  let user = client.users.get(member.id);
-  require("moment-duration-format");
-  let eskiisim = member.user.username;
-  const id = "746533147000176763"; //MESAJIN GİDECEĞİ KANAL İD
-  const channel = member.guild.channels.get(id);
-  const kurulus = new Date().getTime() - user.createdAt.getTime();
-   let zaman1 = new Date().getTime() - user.createdAt.getTime()
-   const gecen = moment.duration(zaman1).format(` YY [Yıl] DD [Gün] HH [Saat] mm [Dakika] ss [Saniye]`) 
-  const gün = moment.duration(kurulus).format("D");
-  var kontrol;
-  if (gün < 10) kontrol = "Şüpheli <a:unlem:746470597265064026>";
-  if (gün > 10) kontrol = "Güvenli <a:tik_1:746470658804023338>";
-  const hesapgiris = new Discord.RichEmbed()
-  .setColor('RANDOM')
-  .setThumbnail(member.user.avatarURL) 
-  .setTitle(`O'nlar Sunucusuna Hoşgeldiniz`)
-  .setDescription(`<a:kelebek:746470695231553546> Sunucumuza Hoşgeldin ${member.toString()} Seninle Beraber \`${member.guild.memberCount}\` Kişiyiz
-
-<a:beyaztik:746470622934335549> Kaydının Yapılması için Sesli Odaya Gelip Teyit Vermen Gerekli
-
-<a:yildiz1:746470692635279420> <@&746465906623774750> Rolündeki Yetkililer Seninle İlgilenecektir
-
-> Kullanıcı Bilgileri
-<a:discord:746470697651666944> Hesap Kuruluş Tarihi: **${moment(user.createdAt).format("DD")} ${aylar[moment(user.createdAt).format("MM")]} ${moment(user.createdAt).format("YYYY [Saat:] HH:mm:ss")}**
-<a:discord:746470697651666944> Hesap Açılalı: **${gecen}**
-<a:discord:746470697651666944> Bu Kullanıcı: **${kontrol}**`)
-  channel.send(hesapgiris)
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-client.on("guildMemberAdd", async (member, message, args) => {
-  try {
-    let aresMessage = new Discord.RichEmbed();
-    await member.addRole("746465808376529017");//kayıtsız
-    await member.addRole("746465808376529017");//kayıtsız
-    await member.setNickname(`${member.user.username}`);
-    await client.channels
-      .get("746465808376529017")//kanal
-      .send(
-        `<a:tac:692108149984854157> **WELCOME TO ⋈ THE SKY** <a:tac:692108149984854157>\n\n<a:kebelek:693103182578057286> **Sunucumuza Hoşgeldin** ${member}, **Seninle Beraber **\`${member.guild.memberCount}\` **Kişiyiz!**\n\n**<a:yildiz1:692394627260481556> Kaydının Yapılması için Sesli Odaya Gelip Teyit Vermen Gerekli**\n\n**<a:ates:692108616743780385> <@&693111236036132937> Rolündeki Yetkililer Seninle İlgilenecektir**\n\n<a:raptiye:692839119792898199> <#692396339300008018> **Kanalından Kuralları Okumayı Unutma**`,
-        new Discord.Attachment(
-          "https://cdn.discordapp.com/attachments/692698508448366672/700405263299117117/ezgif-4-04b1206c6d54.gif"
-        )
-      );
-    if (!member.roles.has("746465808376529017")) {
-      member.addRole("746465808376529017");
-    }
-  } catch (err) {
-    console.log(err);
-  }
+       message.guild.owner.send("Gerekli Herşey Kuruldu Rahatına Bak! **BlackBlvee'un kıymetini bil :D**")
+     
+            })   
+    
+}
 });
