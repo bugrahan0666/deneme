@@ -14,7 +14,7 @@ exports.run = (client, message) => {
     .setColor("RANDOM")
     .setTitle(`Elyse Stats Komutları`)
     .setDescription('Bu Yardım Menüsünde Sadece İstatistik Komutları Hakkında Bilgi Verilmiştir')
-    .addField("Stats Komutları ve Kullanımı",`> :small_blue_diamond: **!stats** = Sunucu İçerisindeki Aktiflik ve İstatistiklerinizi Gösterir\n> **Kullanımı:** __**!üye-stats**__\n> :small_orange_diamond: **!ses-top** = Ses Aktifliği Sıralamasını Gösterir\n> **Kullanımı:** __**!ses-top**__\n> :small_blue_diamond: **!mesaj-top** = Chat Aktifliği Sıralamasını Gösterir\n> **Kullanımı:** __**!mesaj-top**__`)
+    .addField("Stats Komutları ve Kullanımı",`> :small_blue_diamond: **e!stats** = Sunucu İçerisindeki Aktiflik ve İstatistiklerinizi Gösterir\n> **Kullanımı:** __**e!stats**__\n> :small_orange_diamond: **e!ses-top** = Ses Aktifliği Sıralamasını Gösterir\n> **Kullanımı:** __**e!ses-top**__\n> :small_blue_diamond: **e!mesaj-top** = Chat Aktifliği Sıralamasını Gösterir\n> **Kullanımı:** __**e!mesaj-top**__`)
     .setFooter(message.author.username, message.author.avatarURL);
     message.channel.sendEmbed(yardım) }
 };
