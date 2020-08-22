@@ -16,8 +16,9 @@ exports.run = async (client, message, args) => {
 const voiceChannel = message.member.voiceChannel.id;
 if(!voiceChannel) return
   member.setVoiceChannel(voiceChannel);
-   message.react('<a:tik_1:746470658804023338>')
    const voiceChannel1 = message.member.voiceChannel.name;
+     message.react('<a:tik_1:746470658804023338>')
+
   let embed= new Discord.RichEmbed()
     .setColor("RANDOM")
     .setAuthor(message.author.tag, message.author.displayAvatarURL)
