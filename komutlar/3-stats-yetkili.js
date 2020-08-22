@@ -103,7 +103,7 @@ exports.run = async (client, message, args, tools) => {
         .replace("December", `**Aralık**`)
 
     const embed = new Discord.RichEmbed()
-    .setTitle(`ﾅ Anatolia Stats`)
+    .setTitle(`O'nlar İstatistik`)
     .setTimestamp()
     .setThumbnail(us.avatarURL || message.author.avatarURL)
     .setDescription(`Bu Listede Gösterilen Oranlar Toplam ve Anlık Olarak Gösterilmektedir
@@ -117,10 +117,7 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
   .addField("Aktif Olduğu Metin Kanalları (5)",`${top3c}`)
   .addField("Aktiflik İstatistikleri",`Toplam Ses: **${ses}** \nToplam Mesaj: **${puan}**`,true)
   .addField("Attığı Ban ve Unban İstatistikleri",`Toplam Ban: **${dataee ? dataee : '0'}**\nToplam Unban: **${dataeee ? dataeee : '0'}**`,true)
-  .addBlankField()
-  .addField("Ceza İşlem İstatistikleri",`Toplam Mute: **${data1 ? data1 : '0'}**\nToplam Ses Mute: **X**`,true)
-  .addField("Jail İstatistikleri",`Toplam Jail: **${datajail ? datajail: '0'}**\nToplam Unjail: **${dataunjail ? dataunjail : '0'}**`,true)
-  .setFooter('ﾅ Anatolia Stats / Developed by Salvatore')
+  .setFooter(`O'nlar İstatistik / Developed by Salvatore'`)
   .setColor("RANDOM");
   message.channel.send(embed)
 }
@@ -132,7 +129,7 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["stats","aktifliğim","statsall"],
+  aliases: ["yetkili-stats","yetkili-aktifliğim","yetkili-statsall",],
   permLevel: 0
 };
 
