@@ -13,9 +13,9 @@ module.exports.run = (client, message, args) => {
   let modlog = guild.channels.find('name', 'mute-bilgi');
   if (!modlog) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hata` , `**"mute-bilgi"** Kanalını Sunucuda Bulamadım Lütfen **"mute-bilgi"** İsimli Bir Metin Kanalı Oluşturun`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(20000));;
   let süre = args[1]
-  if(!süre) return message.channel.send("Lütfen doğru bir zaman dilimi giriniz. Örneğin: ***!voicemute @kişi 1s/m/h/d sebep**");
+  if(!süre) return message.channel.send(new Discord.RichEmbed().addField(`Hatalı Kullanım` , `Lütfen Susturma Süresini Yazınız`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(10000)).catch(console.error);
   let sebep = args[2]
-  if (!sebep) return message.channel.send("Lütfen bir sebep giriniz. Örneğin: ***!voicemute @kişi 1s/m/h/d sebep**");
+  if (!sebep) return message.channel.send(new Discord.RichEmbed().addField(`Hatalı Kullanım` , `Lütfen Susturma Sebebini Yazınız`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(10000)).catch(console.error);
               let embed =  new Discord.RichEmbed()
               .setTitle('Ses Mutesi Atıldı')
               .setDescription(`${kullanici} Ses Odasında Bir Yetkili Tarafından Susturuldu`)
