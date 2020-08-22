@@ -14,7 +14,7 @@ exports.run = (client, message) => {
     .setColor("RANDOM")
     .setTitle(`Elyse Moderasyon Komutları`)
     .setDescription('Bu Yardım Menüsünde Sadece Moderasyon Komutları Hakkında Bilgi Verilmiştir')
-    .addField("Moderasyon Komutları ve Kullanımı",`> **!ban** = Etiketlenen Kullanıcıyı Sunucudan Yasaklar\n> **Kullanımı:** __**!ban @kullanıcı Sebebi**__\n> **!unban** = ID'si Yazılan Kullanıcının Yasağını Kaldırır\n> **Kullanımı:** __**!unban ID Sebebi**__\n> **!sustur** = Etiketlenen Kullanıcıyı Sunucuda Susturur\n> **Kullanımı:** __**!sustur @kullanıcı 5m Sebebi**__\nNn\n> Not: Komutu Kullanırken Örnekteki Gibi Her Kelimenin Arasında 1 Boşluk Olmasına Dikkat Edin`)
+    .addField("Moderasyon Komutları ve Kullanımı",`> :small_blue_diamond: **e!ban** = Etiketlenen Kullanıcıyı Sunucudan Yasaklar\n> **Kullanımı:** __**e!ban @kullanıcı Sebebi**__\n> :small_orange_diamond: **e!unban** = ID'si Yazılan Kullanıcının Yasağını Kaldırır\n> **Kullanımı:** __**e!unban ID Sebebi**__\n> :small_blue_diamond: **e!sustur** = Etiketlenen Kullanıcıyı Sunucuda Susturur\n> **Kullanımı:** __**e!sustur @kullanıcı 5m Sebebi**__\n> Not: 5m Yerine Yazdığınız Sayı Kadar Mute Atar Örnek 10m -> 10 Dakika\n> :small_orange_diamond: **e!userinfo** = Etiketlenen Kullanıcı Hakkında Bilgi Verir\n> **Kullanımı:** __**e!userinfo @kullanıcı**__\n> :small_orange_diamond: **e!çek** = Etiketlenen Kullanıcı Bulunduğunuz Kanala Taşır\n> **Kullanımı:** __**e!çek @kullanıcı**__\n> :small_orange_diamond: **e!userinfo** = Etiketlenen Kullanıcı Hakkında Bilgi Verir\n> **Kullanımı:** __**e!userinfo @kullanıcı**__`)
     .setFooter(message.author.username, message.author.avatarURL);
     message.channel.sendEmbed(yardım) }
 };
