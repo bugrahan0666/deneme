@@ -12,8 +12,8 @@ exports.run = (client, message) => {
   if (message.channel.type !== 'dm') {
     const yardım = new Discord.RichEmbed()
     .setColor("RANDOM")
-    .setTitle(`O'nlar Yardım Menüsü`)
-    .setDescription('Yardım almak istediğiniz konu (bot ile ilgili) listede yer almıyorsa lütfen <@!463000494164672512> ile iletişime geçin')
+    .setTitle(`Elyse Yardım Menüsü`)
+    .setDescription('Botun Komutları Hakkında Detaylı Bilgi Almak İstiyorsanız Alt Kategorilere Bakabilirsiniz')
     .addField("Yardım Listesi",`> **!kayıt-yardım** = Kayıt Komutları Hakkında Bilgi Verir\n\n> **!stats-yardım** = İstatistik Komutları Hakkında Bilgi Verir\n\n`)
     .setFooter(message.author.username, message.author.avatarURL);
     message.channel.sendEmbed(yardım) }

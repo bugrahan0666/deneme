@@ -8,7 +8,7 @@ module.exports = client => {
   setInterval(function() {}, 8000);
   client.user.setPresence({
     game: {
-      name: `Developed by Salvatore`,
+      name: `e!yardım | e!stats | e!davet`,
       type: "WATCHING"
     },
     status: "dnd"
