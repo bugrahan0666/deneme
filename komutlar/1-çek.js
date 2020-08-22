@@ -1,10 +1,10 @@
 
 const Discord = require('discord.js');
 exports.run = async (client, message, args) => {
- if (!message.member.roles.has('746465906623774750') && !message.member.roles.has('746465962794156193') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`<a:unlem:746470597265064026> Yetersiz Yetki` , `<a:loading:746470616085037236> Bu Komutu Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+ if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Yetersiz Yetki` , `Bu Komutu Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
 
   
-    if (!message.member.voiceChannel) { return message.channel.send(new Discord.RichEmbed().addField(`İşlem Başarısız` , `<a:loading:746470616085037236> Bir Ses Kanalında Olmanız Gerekiyor`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()); }
+    if (!message.member.voiceChannel) { return message.channel.send(new Discord.RichEmbed().addField(`İşlem Başarısız` , `Bir Ses Kanalında Olmanız Gerekiyor`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()); }
   let kullanıcı = message.mentions.users.first()
                                                                               
   if (!kullanıcı) return message.channel.send(new Discord.RichEmbed().addField(`Hatalı Kullanım` , `Lütfen Bir Kullanıcı Etiketleyiniz`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());

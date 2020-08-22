@@ -23,10 +23,10 @@ exports.run = async (client, message, args) => {
     
   message.channel.send(
     new Discord.RichEmbed()
-      .setTitle('Ses Top 10')
-      .addField("TOP 10 SES AKTİFLİĞİ",`${ses_kişi}`)
+      .setTitle(`${message.guild.name} Ses Top 10 Listesi`)
+    .setDescription(`${ses_kişi}`)
       .setColor("RANDOM")
-      .setFooter('Developed by Salvatore')
+      .setFooter('')
       .setTimestamp()
   );
 };

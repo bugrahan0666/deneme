@@ -103,7 +103,7 @@ exports.run = async (client, message, args, tools) => {
         .replace("December", `**Aralık**`)
 
     const embed = new Discord.RichEmbed()
-    .setTitle(`O'nlar İstatistik`)
+    .setAuthor(message.author.tag, message.author.avatarURL)
     .setTimestamp()
     .setThumbnail(us.avatarURL || message.author.avatarURL)
     .setDescription(`Bu Listede Gösterilen Oranlar Toplam ve Anlık Olarak Gösterilmektedir
@@ -116,7 +116,7 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
   .addField("Aktif Olduğu Ses Kanalları (5)",`${top4c}`)
   .addField("Aktif Olduğu Metin Kanalları (5)",`${top3c}`)
   .addField("Aktiflik İstatistikleri",`Toplam Ses: **${ses}** \nToplam Mesaj: **${puan}**`,true)
-  .setFooter(`O'nlar İstatistik / Developed by Salvatore'`)
+  .setFooter('Elyse İstatistik | Yukarıdaki Veriler Sadece Bu Sunucu için Geçerlidir')
   .setColor("RANDOM");
   message.channel.send(embed)
 }
@@ -128,7 +128,7 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["istatistiklerim","aktifliğim","üye-stats","aktiflik-bilgi"],
+  aliases: ["istatistiklerim","aktifliğim","üye-stats","aktiflik-bilgi","stats"],
   permLevel: 0
 };
 
