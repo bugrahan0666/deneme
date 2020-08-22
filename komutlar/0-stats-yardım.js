@@ -13,8 +13,8 @@ exports.run = (client, message) => {
     const yardım = new Discord.RichEmbed()
     .setColor("RANDOM")
     .setTitle(`Elyse Stats Komutları`)
-    .setDescription('Bu Yardım Menüsünde Sadece İstatistikler için Bilgi Verilmiştir')
-    .addField("Stats Komutları ve Kullanımı",`> **!stats** = Sunucu İçerisindeki Aktiflik ve İstatistiklerinizi Gösterir\n> **Kullanımı:** __**!üye-stats**__\n> **!ses-top** = Ses Aktifliği Sıralamasını Gösterir\n> **Kullanımı:** __**!ses-top**__\n> **!mesaj-top** = Chat Aktifliği Sıralamasını Gösterir\n> **Kullanımı:** __**!mesaj-top**__`)
+    .setDescription('Bu Yardım Menüsünde Sadece İstatistik Komutları Hakkında Bilgi Verilmiştir')
+    .addField("Stats Komutları ve Kullanımı",`> :small_blue_diamond: **!stats** = Sunucu İçerisindeki Aktiflik ve İstatistiklerinizi Gösterir\n> **Kullanımı:** __**!üye-stats**__\n> :small_orange_diamond: **!ses-top** = Ses Aktifliği Sıralamasını Gösterir\n> **Kullanımı:** __**!ses-top**__\n> :small_blue_diamond: **!mesaj-top** = Chat Aktifliği Sıralamasını Gösterir\n> **Kullanımı:** __**!mesaj-top**__`)
     .setFooter(message.author.username, message.author.avatarURL);
     message.channel.sendEmbed(yardım) }
 };
@@ -28,6 +28,6 @@ exports.conf = {
 
 exports.help = {
   name: 'stats-işlem-yardım',
-  description: 'Komutları Gösterir',
+  description: 'Stats Komutlarını Gösterir',
   usage: 'stats-işlem-yardım'
 };

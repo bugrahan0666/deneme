@@ -28,6 +28,6 @@ exports.conf = {
 
 exports.help = {
   name: 'yetkili-yardım',
-  description: 'Komutları Gösterir',
+  description: 'Yardım Komutlarını Gösterir',
   usage: 'yetkili-yardım'
 };
