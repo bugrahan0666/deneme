@@ -335,7 +335,7 @@ client.on("guildMemberAdd", (member, message) => {
 
 > Kullanıcı Bilgileri
 <a:discord:746470697651666944> Hesap Kuruluş Tarihi: **${moment(user.createdAt).format("DD")} ${aylar[moment(user.createdAt).format("MM")]} ${moment(user.createdAt).format("YYYY [Saat:] HH:mm:ss")}**
-<a:discord:746470697651666944> Hesap Açılalı: **${gecen}** Olmuş
+<a:discord:746470697651666944> Hesap Açılalı: **${gecen}**
 <a:discord:746470697651666944> Bu Kullanıcı: **${kontrol}**`)
   channel.send(hesapgiris)
 });
