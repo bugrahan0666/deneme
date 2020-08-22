@@ -12,9 +12,9 @@ exports.run = (client, message) => {
   if (message.channel.type !== 'dm') {
     const yardım = new Discord.RichEmbed()
     .setColor("RANDOM")
-    .setTitle(`O'nlar Stats Komutları`)
-    .setDescription('Bu yardım menüsünde yazılan komutlar anlık ve sadece bu sunucuya göre bilgi vermektedir')
-    .addField("Kayıt Komutları ve Kullanımı",`> **!üye-stats** = Sunucu İçerisindeki Aktiflik ve İstatistiklerinizi Gösterir\n> **Kullanımı:** __**!üye-stats**__\n> **!yetkili-stats** = Sunucu İçerisindeki Yetkili Aktiflik ve İstatistiklerinizi Gösterir\n> **Kullanımı:** __**!yetkili-stats**__\n> **!ses-top** = Ses Aktifliği Sıralamasını Gösterir\n> **Kullanımı:** __**!ses-top**__\n> **!mesaj-top** = Chat Aktifliği Sıralamasını Gösterir\n> **Kullanımı:** __**!mesaj-top**__\n> **!top-5** = Top 5 Genel Aktiflik Sıralamasını Gösterir\n> **Kullanımı:** __**!top-5**__`)
+    .setTitle(`Elyse Stats Komutları`)
+    .setDescription('Bu Yardım Menüsünde Sadece İstatistikler için Bilgi Verilmiştir')
+    .addField("Stats Komutları ve Kullanımı",`> **!stats** = Sunucu İçerisindeki Aktiflik ve İstatistiklerinizi Gösterir\n> **Kullanımı:** __**!üye-stats**__\n> **!ses-top** = Ses Aktifliği Sıralamasını Gösterir\n> **Kullanımı:** __**!ses-top**__\n> **!mesaj-top** = Chat Aktifliği Sıralamasını Gösterir\n> **Kullanımı:** __**!mesaj-top**__`)
     .setFooter(message.author.username, message.author.avatarURL);
     message.channel.sendEmbed(yardım) }
 };

@@ -14,7 +14,7 @@ exports.run = (client, message) => {
     .setColor("RANDOM")
     .setTitle(`Elyse Yardım Menüsü`)
     .setDescription('Botun Komutları Hakkında Detaylı Bilgi Almak İstiyorsanız Alt Kategorilere Bakabilirsiniz')
-    .addField("Elyse Yardım Listesi",`> **e!moderasyon-yardım** = Moderasyon Komutları Hakkında Bilgi Verir\n\n> **e!sunucu-yardım** = Ayarlamalı Sunucu Sistemleri Hakkında Bilgi Verir\n\n> **e!stats-yardım** = İstatistik Komutları Hakkında Bilgi Verir\n\n`)
+    .addField("Elyse Yardım Listesi",`> :small_blue_diamond: **e!moderasyon-yardım** = Moderasyon Komutları Hakkında Bilgi Verir\n\n> :small_orange_diamond: **e!sunucu-yardım** = Ayarlamalı Sunucu Sistemleri Hakkında Bilgi Verir\n\n> :small_blue_diamond: **e!stats-yardım** = İstatistik Komutları Hakkında Bilgi Verir\n\n`)
     .setFooter(message.author.username, message.author.avatarURL);
     message.channel.sendEmbed(yardım) }
 };
