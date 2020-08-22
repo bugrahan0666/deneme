@@ -9,25 +9,25 @@ exports.run = (client, message) => {
     .setAuthor(message.author.username, message.author.avatarURL)
     .setDescription(`**${message.guild.name} - Sunucu Kuralları**
 
-<a:unlem:746470597265064026> ● Reklam Yapmak Yasaktır
+:exclamation: ● Reklam Yapmak Yasaktır
 
-<a:unlem:746470597265064026> ● Küfür ve Hakaret Söylemleri Yasaktır
+:exclamation: ● Küfür ve Hakaret Söylemleri Yasaktır
 
-<a:unlem:746470597265064026> ● Chatte Flood Yapmak, Spam Yapmak, Capslock Açık Yazı Yazmak Yasaktır
+:exclamation: ● Chatte Flood Yapmak, Spam Yapmak, Capslock Açık Yazı Yazmak Yasaktır
 
-<a:unlem:746470597265064026> ● Yasaklı (Cinsel, Kan, Vahşet) İçeriklerinin Paylaşımı Yasaktır
+:exclamation: ● Yasaklı (Cinsel, Kan, Vahşet) İçeriklerinin Paylaşımı Yasaktır
 
-<a:unlem:746470597265064026> ● Ailevi ve Milli Değerlere Hakaret Yasaktır
+:exclamation: ● Ailevi ve Milli Değerlere Hakaret Yasaktır
 
-<a:unlem:746470597265064026> ● Din, Dil, Irk Ayrımı Yapmak Yasaktır
+:exclamation: ● Din, Dil, Irk Ayrımı Yapmak Yasaktır
 
-<a:unlem:746470597265064026> ● Siyaset Yapmak Kesinlikle Yasaktır
+:exclamation: ● Siyaset Yapmak Kesinlikle Yasaktır
 
-<a:unlem:746470597265064026> ● Ses/Metin Kanallarında İnsanları Trollemek, Rahatsız Etmek Yasaktır
+:exclamation: ● Ses/Metin Kanallarında İnsanları Trollemek, Rahatsız Etmek Yasaktır
 
-<a:unlem:746470597265064026> ● Kişisel Sorunlarınızı Sunucuya Yansıtmak Yasaktır
+:exclamation: ● Kişisel Sorunlarınızı Sunucuya Yansıtmak Yasaktır
 
-<a:unlem:746470597265064026> ● Metin Kanallarının Amacı Dışında Kullanımı Yasaktır
+:exclamation: ● Metin Kanallarının Amacı Dışında Kullanımı Yasaktır
 
 `)
       message.delete()
