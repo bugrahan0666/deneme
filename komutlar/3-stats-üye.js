@@ -128,7 +128,7 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["istatistiklerim","aktifliğim","statsall","aktiflik-bilgi"],
+  aliases: ["istatistiklerim","aktifliğim","üye-stats","aktiflik-bilgi"],
   permLevel: 0
 };
 

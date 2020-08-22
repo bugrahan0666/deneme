@@ -129,7 +129,7 @@ Sunucuya Giriş Tarihi: ${userinfo.dctarihkatilma}`)
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["yetkili-stats","yetkili-aktifliğim","yetkili-statsall",],
+  aliases: ["yetkili-stats","yetkili-aktifliğim","yetkili-stats",],
   permLevel: 0
 };
 

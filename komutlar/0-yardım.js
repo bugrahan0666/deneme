@@ -7,17 +7,15 @@ exports.run = (client, message) => {
       .setColor("BLACK")
       .setTimestamp() 
       .addField(`Hatalı Kullanım` , `Bu Komutu Özel Mesajlarda Kullanamazsınız Lütfen Sunucu İçerisinde Herhangi Bir Kanalı Kullanınız`)
-      .setFooter('ﾅ Anatolia');
+      .setFooter('Onlar');
     return message.author.sendEmbed(ozelmesajuyari);
   }
-  if (!message.member.roles.has('744630182975111250') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Yetersiz Yetki` , `Bu Komutu Kullanabilmek için Yetkili Olmalısınız`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   if (message.channel.type !== 'dm') {
     const yardım = new Discord.RichEmbed()
     .setColor("RANDOM")
-    .setTitle('ﾅ Anatolia Yetkili Yardım')
-    .setDescription('Yardım almak istediğiniz konu listede yer almıyorsa lütfen Üst Yönetim ile iletişime geçin')
-    .addField("Yetkili Yardım Listesi",`> **a!kayıt-yardım** = Kayıt Komutları Hakkında Bilgi Verir\n\n> **a!ceza-yardım** = Ceza İşlem Komutları Hakkında Bilgi Verir\n\n> **a!stats-yardım** = İstatistik Komutları Hakkında Bilgi Verir\n\n`)
-    .setImage('https://hizliresim.com/U7nlql')
+    .setTitle(`O'nlar Yardım Menüsü`)
+    .setDescription('Yardım almak istediğiniz konu (bot ile ilgili) listede yer almıyorsa lütfen <@!463000494164672512> ile iletişime geçin')
+    .addField("Yardım Listesi",`> **!kayıt-yardım** = Kayıt Komutları Hakkında Bilgi Verir\n\n> **!stats-yardım** = İstatistik Komutları Hakkında Bilgi Verir\n\n`)
     .setFooter(message.author.username, message.author.avatarURL);
     message.channel.sendEmbed(yardım) }
 };

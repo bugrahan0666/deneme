@@ -13,9 +13,9 @@ exports.run = (client, message) => {
   if (message.channel.type !== 'dm') {
     const yardım = new Discord.RichEmbed()
     .setColor("RANDOM")
-    .setTitle('ﾅ Anatolia Kayıt Komutları')
+    .setTitle(`O'nlar Kayıt Komutları`)
     .setDescription('Bu yardım menüsünde yazılan komutları sadece **<@&746466007429677096> <@&746465962794156193> <@&746465906623774750>** yetkisine sahip kişiler kullanabilir')
-    .addField("Kayıt Komutları ve Kullanımı",`> **!kayıt** = Etiketlenen Kullanıcıyı Sunucuya Kaydeder\n> **Kullanımı:** __**!kayıt @kullanıcı İsim Yaş**__\n\n> `)
+    .addField("Kayıt Komutları ve Kullanımı",`> **!kayıt** = Etiketlenen Kullanıcıyı Sunucuya Kaydeder\n> **Kullanımı:** __**!kayıt @kullanıcı İsim Yaş**__\n\n> Not: Komutu Kullanırken Örnekteki Gibi Her Kelimenin Arasında 1 Boşluk Olmasına Dikkat Edin`)
     .setFooter(message.author.username, message.author.avatarURL);
     message.channel.sendEmbed(yardım) }
 };
