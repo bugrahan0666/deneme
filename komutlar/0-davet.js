@@ -13,8 +13,10 @@ exports.run = (client, message) => {
     const yardım = new Discord.RichEmbed()
     .setColor("RANDOM")
     .setTitle(`Elyse`)
-    .setDescription('Bu Yardım Menüsünde Sadece Sunucu Kurulum Komutları Hakkında Bilgi Verilmiştir')
-    .addField("Sunucu Kurulum Paketi ve Kullanımı",`> :small_blue_diamond: **e!sunucu-kur** = İşlemleri Onayladıktan Sonra Hazır Bir Sunucu Kurar\n> **Kullanımı:** __**e!sunucu-kur**__\n> :small_orange_diamond: **e!kurallar-kur** = Hazır Sunucu Kuralları Listesi Oluşturur\n> **Kullanımı:** __**e!kurallar-kur**__\n\n\n> :purple_circle: Çok Yakında Yeni Özellikler Eklenecektir`)
+    .setDescription('Elyse Bot Gelişmiş %100 Türkçe Bir Moderasyon Botudur Tek Yapman Gereken Sunucuna Ekleyip Elyse Botu Keşfetmen :)')
+    .addField("Elyse Davet",`[Tıkla](https://discord.com/oauth2/authorize?client_id=736987450722746401&scope=bot&permissions=8)`,true)
+    .addField("Elyse Destek Sunucusu",`[Tıkla](https://discord.gg/jZZUKgz)`,true)
+    .addField("Elyse Yapımcısı",`Salvatore ∻#7172`,true)
     .setFooter(message.author.username, message.author.avatarURL);
     message.channel.sendEmbed(yardım) }
 };
