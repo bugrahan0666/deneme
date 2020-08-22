@@ -6,8 +6,8 @@ exports.run = (client, message) => {
     const ozelmesajkontrol = new Discord.RichEmbed()
     .setColor('BLACK')
     .setAuthor(message.author.username, message.author.avatarURL)
-    .setDescription('**Onlar Bot Ping ** = **`' + client.ping + '`** **ms**')
-    .setFooter('Onlar Bot | Developed by Salvatore');
+    .setDescription('**Elyse Bot Ping ** = **`' + client.ping + '`** **ms**')
+    .setFooter('Anlık Botun Pingi');
       message.delete()
     message.channel.sendEmbed(ozelmesajkontrol) }
 };

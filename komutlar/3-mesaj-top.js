@@ -26,11 +26,10 @@ exports.run = async (client, message, args) => {
 
   message.channel.send(
     new Discord.RichEmbed()
-      .setTitle('Mesaj Top 10')
-      .addField("TOP 10 MESAJ AKTİFLİĞİ",`${mesaj_kişi}`)
+       .setTitle(`${message.guild.name} Mesaj Top 10 Listesi`)
+    .setDescription(`${mesaj_kişi}`)
       .setColor("RANDOM")
-      .setFooter('Developed by Salvatore')
-      .setTimestamp()
+      .setFooter('Elyse Stats')
   );
 };
 exports.conf = {
