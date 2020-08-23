@@ -512,7 +512,6 @@ client.on('message', async message => {
 });
 
 
-
 //---------------------SUNUCU KURMA SON-------------------------///
 
 
@@ -521,3 +520,18 @@ client.on('message', async message => {
 
 
 
+//---------------------BOT KORUMA----------------------//
+
+
+client.on("guildMemberAdd", async member => {
+  if (db.has(`botkoruma_${member.guild.id}`) === false) return;
+  if (member.user.bot === false) return;
+  if (db.has(`botİzinli_${member.id}`) === true) return;
+
+  member.kick(member, `Bot Koruması Aktif!`);
+
+  member.guild.owner.send(new Discord.RichEmbed().setColor('RANDOM').setDescription(`Sunucunuza bir bot eklendi ve sunucudan otomatik olarak atıldı, sunucuya eklenmesini onaylıyor iseniz \`!giriş-izni ${member.id}\``));
+});
+
+
+//---------------------BOT KORUMA----------------------//
