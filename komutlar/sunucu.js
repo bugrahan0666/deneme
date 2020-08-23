@@ -34,9 +34,9 @@ exports.run = async (client, message, args) => {
 
     //Kategoriler
     message.guild.createChannel('Bilgilendirme', 'category').then(bilgi => {
-    message.guild.createChannel('Toplum', 'category').then(toplum => {
+    message.guild.createChannel('Metin Kanalları', 'category').then(toplum => {
     message.guild.createChannel('Kayıtlar', 'category').then(kayitlar => {
-    message.guild.createChannel('Sesli Kanallar', 'category').then(sesli => {
+    message.guild.createChannel('Ses Kanalları', 'category').then(sesli => {
 
     //Kanallar
     setTimeout(() => {
