@@ -524,14 +524,16 @@ client.on('message', async message => {
 
 
 client.on("guildMemberAdd", async member => {
-  if (db.has(`botkoruma_${member.guild.id}`) === false) return;
-  if (member.user.bot === false) return;
-  if (db.has(`botİzinli_${member.id}`) === true) return;
-
-  member.kick(member, `Bot Koruması Aktif!`);
-
-  member.guild.owner.send(new Discord.RichEmbed().setColor('RANDOM').setDescription(`Sunucunuza bir bot eklendi ve sunucudan otomatik olarak atıldı, sunucuya eklenmesini onaylıyor iseniz \`!giriş-izni ${member.id}\``));
-});
+  var fetch = db.has(`sunucular.${member.guild.id}.giriscikis.kanal`);
+  if (!fetch) return;
+  var kanal = client.channels.get(fetch);
+  if (!kanal) return;
+  var tur = db.has(`sunucular.${member.guild.id}.giriscikis.tur`);
+  if (!tur) return;
+  let mesaj = db.fetch(`sunucular.${member.guild.id}.gcm`)
+  if(mesaj) kanal.send(mesaj.replace(`{sunucu}`,member.guild.name).replace(`{kackisi}`,member.guild.members.size).replace(`{kullanici}`,member.username).replace(`{kullanicietiket}`,`<@${member.id}>`))
+  else kanal.send(`<@${member.id}>,**${member.guild.name}** isimli sunucumuza hoşgeldin! Seninle beraber **${member.guild.members.size}** kişiyiz`)
+      });
 
 
 //---------------------BOT KORUMA----------------------//
