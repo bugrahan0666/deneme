@@ -259,37 +259,37 @@ client.on('message', async message => {
        })}) 
         
         
-   message.guild.createChannel('✮ ▬  ▬ Duyuru Kanalları▬  ▬ ✮', 'category', [{
+   message.guild.createChannel('Bilgilendirme', 'category', [{
   id: message.guild.id,
   deny: ['SEND_MESSAGES']
 }])
 
 
         
- message.guild.createChannel('【📃 】кυяαℓℓαя', 'text', [{
+ message.guild.createChannel('kurallar', 'text', [{
   id: message.guild.id,
   deny: ['SEND_MESSAGES']
 }])
 .then(channel =>
  channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Duyuru Kanalları▬  ▬ ✮")));
- message.guild.createChannel('「💚」gelen-giden', 'text', [{
+ message.guild.createChannel('duyurular', 'text', [{
   id: message.guild.id,
   deny: ['SEND_MESSAGES']
 }])
 .then(channel =>
        channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Duyuru Kanalları▬  ▬ ✮")));
-       message.guild.createChannel('【👑】sayaç', 'text', [{
+       message.guild.createChannel('bilgilendirme', 'text', [{
         id: message.guild.id,
         deny: ['SEND_MESSAGES']
       }])
 .then(channel =>
              channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Duyuru Kanalları▬  ▬ ✮")));
-             message.guild.createChannel('【🎉】çєкιℓιş', 'text', [{
+             message.guild.createChannel('sayaç', 'text', [{
               id: message.guild.id,
               deny: ['SEND_MESSAGES']
             }])
             .then(channel => channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Duyuru Kanalları▬  ▬ ✮")));
-            message.guild.createChannel('【📢 】∂υуυяυℓαя', 'text', [{
+            message.guild.createChannel('gelen-giden', 'text', [{
               id: message.guild.id,
               deny: ['SEND_MESSAGES']
             }])
