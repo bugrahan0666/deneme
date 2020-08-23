@@ -541,3 +541,34 @@ client.on("guildMemberRemove", async member => {
 
 
 //---------------------SAYAÇ SON----------------------//
+
+
+
+
+
+
+
+
+//---------------------CAPSLOCK ENGEL----------------------//
+
+
+    client.on("message", async msg => {
+    if (msg.channel.type === "dm") return;
+      if(msg.author.bot) return;  
+        if (msg.content.length > 4) {
+         if (db.fetch(`capslock_${msg.guild.id}`)) {
+           let caps = msg.content.toUpperCase()
+           if (msg.content == caps) {
+             if (!msg.member.hasPermission("ADMINISTRATOR")) {
+               if (!msg.mentions.users.first()) {
+                 msg.delete()
+                 return msg.channel.send(new Discord.RichEmbed().setColor('RANDOM').addField("`Capslock Engel Sistemi`",`${msg.author} Lütfen CapsLock'u Kapatarak Yazmayı Dene`)).then(m => m.delete(10000))
+     }
+       }
+     }
+   }
+  }
+});
+
+
+//---------------------CAPSLOCK ENGEL SON----------------------//
