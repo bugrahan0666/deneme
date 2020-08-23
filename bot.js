@@ -240,10 +240,10 @@ client.on('message', async message => {
   const command = args.shift().toLowerCase();
   let u = message.mentions.users.first() || message.author;
   if (command === "sunucu-kur") {
-  if (message.guild.channels.find(channel => channel.name === "Bot Kullanımı")) return message.channel.send("Sunucu Zaten Ayarlanmış")
-  message.channel.send(`Bot Bilgi Kanallarının kurulumu başlatılsın mı? başlatılacak ise **kabul** yazınız.`)
+  if (message.guild.channels.find(channel => channel.name === "Bot Kullanımı")) return message.channel.send(new Discord.RichEmbed().setColor('RANDOM').addField("Hata",`Sunucu Zaten Ayarlanmış`).setFooter('Elyse - Sunucu Kurma Sistemi'))
+  message.channel.send(new Discord.RichEmbed().setColor('RANDOM').addField("Bilgi",`Sunucu Kurma İşleminin Başlamasını Onaylıyorsanız **kabul** Yazarak İşlemi Başlatabilirsiniz`).setFooter('Elyse - Sunucu Kurma Sistemi'))
       if (!message.member.hasPermission('ADMINISTRATOR'))
-  return message.channel.send(" Bu Kodu `Yönetici` Yetkisi Olan Kullanabilir");
+  return message.channel.send(new Discord.RichEmbed().setColor('RANDOM').addField("Yetersiz Yetki",`Bu Komutu Kullanmak için Yeterli Yetkiye Sahip Değilsiniz`).setFooter('Elyse - Sunucu Kurma Sistemi'));
       message.channel.awaitMessages(response => response.content === 'kabul', {
         max: 1,
         time: 10000,
@@ -251,7 +251,7 @@ client.on('message', async message => {
       })
     .then((collected) => {
         
-         message.guild.owner.send('Heyo, Sunucunuz Kuruluyor... Bu Biraz Zaman Alabilir!')
+         message.guild.owner.send(new Discord.RichEmbed().setColor('RANDOM').addField("Bilgi",`Sunucunuz Başarılı Bir Şekilde Kuruldu Kalan Ayarlamaları Yapmak için **e!sunucu-yardım** Yazarak Yardım Alabilirsiniz`).setFooter('Elyse - Sunucu Kurma Sistemi'))
        message.guild.channels.forEach(function(kan) {
        message.guild.roles.forEach(function(rol) {
                  kan.delete()
@@ -290,13 +290,6 @@ client.on('message', async message => {
             }])
             .then(channel => channel.setParent(message.guild.channels.find(channel => channel.name === "Bilgilendirme")));
             message.guild.createChannel('gelen-giden', 'text', [{
-              id: message.guild.id,
-              deny: ['SEND_MESSAGES']
-            }])
-.then(channel =>
- channel.setParent(message.guild.channels.find(channel => channel.name === "Bilgilendirme")));
-        
-                    message.guild.createChannel('【🎀】ραятηєя', 'text', [{
               id: message.guild.id,
               deny: ['SEND_MESSAGES']
             }])
@@ -400,9 +393,9 @@ client.on('message', async message => {
       id: message.guild.id,
     }]);
 
-  message.guild.createChannel(`CS:GO Odası 1`, "voice")
+  message.guild.createChannel(`CS:GO 1`, "voice")
   .then(channel =>
-    channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Ses Kanalları" + channel.limit === "5" )))
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Oyun Kanalları")))
   .then(c => {
     let role = message.guild.roles.find("name", "@everyone");
     
@@ -410,9 +403,9 @@ client.on('message', async message => {
         CONNECT: true,
     });
 })
-   message.guild.createChannel(`Sohbet Odası 2`, "voice")
+   message.guild.createChannel(`CS:GO 2`, "voice")
   .then(channel =>
-    channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Ses Kanalları")))
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Oyun Kanalları")))
   .then(c => {
     let role = message.guild.roles.find("name", "@everyone");
     
@@ -420,9 +413,9 @@ client.on('message', async message => {
         CONNECT: true,
     });
 })
-   message.guild.createChannel(`Müzik Odası 1`, "voice")
+   message.guild.createChannel(`League of Legends 1`, "voice")
   .then(channel =>
-    channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Ses Kanalları")))
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Oyun Kanalları")))
   .then(c => {
     let role = message.guild.roles.find("name", "@everyone");
     
@@ -430,9 +423,9 @@ client.on('message', async message => {
         CONNECT: true,
     });
 })
-   message.guild.createChannel(`Müzik Odası 2`, "voice")
+   message.guild.createChannel(`League of Legends 2`, "voice")
   .then(channel =>
-    channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Ses Kanalları")))
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Oyun Kanalları")))
   .then(c => {
     let role = message.guild.roles.find("name", "@everyone");
     
@@ -440,9 +433,51 @@ client.on('message', async message => {
         CONNECT: true,
     });
 })
-           message.guild.createChannel(`Film Dizi Odası`, "voice")
+                  message.guild.createChannel(`Valorant 1`, "voice")
   .then(channel =>
-    channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Ses Kanalları")))
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Oyun Kanalları")))
+  .then(c => {
+    let role = message.guild.roles.find("name", "@everyone");
+    
+    c.overwritePermissions(role, {
+        CONNECT: true,
+    });
+})
+
+                  message.guild.createChannel(`Valorant 1`, "voice")
+  .then(channel =>
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Oyun Kanalları")))
+  .then(c => {
+    let role = message.guild.roles.find("name", "@everyone");
+    
+    c.overwritePermissions(role, {
+        CONNECT: true,
+    });
+})
+
+           message.guild.createChannel(`Zula 1`, "voice")
+  .then(channel =>
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Oyun Kanalları")))
+  .then(c => {
+    let role = message.guild.roles.find("name", "@everyone");
+    
+    c.overwritePermissions(role, {
+        CONNECT: true,
+    });
+})
+          message.guild.createChannel(`Zula 2`, "voice")
+  .then(channel =>
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Oyun Kanalları")))
+  .then(c => {
+    let role = message.guild.roles.find("name", "@everyone");
+    
+    c.overwritePermissions(role, {
+        CONNECT: true,
+    });
+})
+          message.guild.createChannel(`Minecraft`, "voice")
+  .then(channel =>
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Oyun Kanalları")))
   .then(c => {
     let role = message.guild.roles.find("name", "@everyone");
     
@@ -454,7 +489,7 @@ client.on('message', async message => {
 
 
 
-       message.guild.owner.send("Gerekli Herşey Kuruldu Rahatına Bak! **BlackBlvee'un kıymetini bil :D**")
+       message.guild.owner.send(new Discord.RichEmbed().setColor('RANDOM').addField("İşlem Başarılı",`Sunucunuz Başarılı Bir Şekilde Kuruldu Kalan Ayarlamaları Yapmak için **e!sunucu-yardım** Yazarak Yardım Alabilirsiniz`).setFooter('Elyse - Sunucu Kurma Sistemi'))
      
             })   
     
