@@ -38,35 +38,13 @@ exports.run = async (client, message, args) => {
     message.guild.createChannel('Kayıtlar', 'category').then(kayitlar => {
     message.guild.createChannel('Ses Kanalları', 'category').then(sesli => {
 
+
     //Kanallar
     setTimeout(() => {
     	message.guild.createChannel('kurallar', 'text').then(kurallar => {
     	kurallar.overwritePermissions(every, {
     		SEND_MESSAGES: false
     	})
-    	kurallar.setParent(bilgi.id)
-    	kurallar.send(stripIndents`
-    	\`\`\`md
-> Kurallar
-1. Küfür etmek, hakaretlerde bulunmak yasaktır!
-2. Reklam yapmak, link atmak sunucu içersin de de, sunucudaki bir üyeye özelden mesaj olarak ta kesinlikle yasaktır!
-3. #komutlar kanalı dışında bir kanalda komut kullanmak yasaktır!
-4. Sesli kanallarda bas açmak vb. hareketler yapmak yasaktır!
-5. Din, dil, ırk ayrımı yapmak yasaktır!
-6. Siyaset hakkında tartışmak, konuşmak yasaktır!
-7. Spam ve flood yapmak yasaktır!
-8. Uygunsuz davranışlarda bulunmak, uygunsuz paylaşımlar yapmak yasaktır!
-9. Yetkilileri sebesiz, saçma sebepler yüzünden rahatsız etmek yasaktır!
-- Kuralları okumamak kesinlikle yasaktır!
-
-> Üyelerin bu kanalda konuşmaları yasaklanmıştır.
-\`\`\`
-    	`)
-    	kurallar.send(stripIndents`
-    		\`\`\`md
-[NOT]: Sunucudaki her üye *yetkili dahil* kuralları okumuş olarak kabul edilir. Buradaki maddelere herhangi bir karşı gelme olayı olduğu an "bilmiyordum, okumamıştım" gibi bahanelerin *hiç biri* umursanmaz ve gerekli işlem yapılır!
-\`\`\`
-    	`)
     })
     	message.guild.createChannel('duyurular', 'text').then(duyurular => {
          duyurular.send(stripIndents`
