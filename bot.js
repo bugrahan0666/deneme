@@ -271,37 +271,37 @@ client.on('message', async message => {
   deny: ['SEND_MESSAGES']
 }])
 .then(channel =>
- channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Duyuru Kanalları▬  ▬ ✮")));
+ channel.setParent(message.guild.channels.find(channel => channel.name === "Bilgilendirme")));
  message.guild.createChannel('duyurular', 'text', [{
   id: message.guild.id,
   deny: ['SEND_MESSAGES']
 }])
 .then(channel =>
-       channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Duyuru Kanalları▬  ▬ ✮")));
+       channel.setParent(message.guild.channels.find(channel => channel.name === "Bilgilendirme")));
        message.guild.createChannel('bilgilendirme', 'text', [{
         id: message.guild.id,
         deny: ['SEND_MESSAGES']
       }])
 .then(channel =>
-             channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Duyuru Kanalları▬  ▬ ✮")));
+             channel.setParent(message.guild.channels.find(channel => channel.name === "Bilgilendirme")));
              message.guild.createChannel('sayaç', 'text', [{
               id: message.guild.id,
               deny: ['SEND_MESSAGES']
             }])
-            .then(channel => channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Duyuru Kanalları▬  ▬ ✮")));
+            .then(channel => channel.setParent(message.guild.channels.find(channel => channel.name === "Bilgilendirme")));
             message.guild.createChannel('gelen-giden', 'text', [{
               id: message.guild.id,
               deny: ['SEND_MESSAGES']
             }])
 .then(channel =>
- channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Duyuru Kanalları▬  ▬ ✮")));
+ channel.setParent(message.guild.channels.find(channel => channel.name === "Bilgilendirme")));
         
                     message.guild.createChannel('【🎀】ραятηєя', 'text', [{
               id: message.guild.id,
               deny: ['SEND_MESSAGES']
             }])
 .then(channel =>
- channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Duyuru Kanalları▬  ▬ ✮")));
+ channel.setParent(message.guild.channels.find(channel => channel.name === "Bilgilendirme")));
         
 
        }) 
