@@ -562,7 +562,7 @@ client.on("guildMemberRemove", async member => {
              if (!msg.member.hasPermission("ADMINISTRATOR")) {
                if (!msg.mentions.users.first()) {
                  msg.delete()
-                 return msg.channel.send(new Discord.RichEmbed().setColor('RANDOM').addField("`Capslock Engel Sistemi`",`${msg.author} Lütfen CapsLock'u Kapatarak Yazmayı Dene`)).then(m => m.delete(10000))
+                 return msg.channel.send(new Discord.RichEmbed().setColor('RANDOM').addField("Capslock Engel Sistemi",`${msg.author} Lütfen **CapsLock'u** Kapatarak Yazmayı Dene`)).then(m => m.delete(10000))
      }
        }
      }
