@@ -306,29 +306,26 @@ client.on('message', async message => {
 
        }) 
        .then((collected) => {
-        message.guild.createChannel('✮ ▬  ▬ Metin Kanalları▬  ▬ ✮', 'category', [{
+        message.guild.createChannel('Genel Metin Kanalları', 'category', [{
        id: message.guild.id,
      }]);
              
-      message.guild.createChannel(`【🎁】şikayet-ve-öneriler`, 'text')
+      message.guild.createChannel(`genel-sohbet`, 'text')
      .then(channel =>
-      channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Metin Kanalları▬  ▬ ✮")));
-     message.guild.createChannel(`【👥】video-duyurular`, 'text')
+      channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Metin Kanalları")));
+     message.guild.createChannel(`bot-komut`, 'text')
      .then(channel =>
-            channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Metin Kanalları▬  ▬ ✮")));
-     message.guild.createChannel(`【📷】galeri-odası`, 'text')
+            channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Metin Kanalları")));
+     message.guild.createChannel(`galeri`, 'text')
      .then(channel =>
-                  channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Metin Kanalları▬  ▬ ✮")));
-     message.guild.createChannel(`【🤖】bot-komut`, 'text')
+                  channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Metin Kanalları")));
+     message.guild.createChannel(`sosyal-medya`, 'text')
      .then(channel =>
-                  channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Metin Kanalları▬  ▬ ✮")));
-     message.guild.createChannel(`【👻】sohbet-odası`, 'text')
+                  channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Metin Kanalları")));
+     message.guild.createChannel(`kelime-türetmece`, 'text')
      .then(channel =>
-      channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Metin Kanalları▬  ▬ ✮")));
+      channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Metin Kanalları")))
 
-      message.guild.createChannel(`🌹》Kurucu Odası`, "voice")
-      .then(channel =>
-        channel.setParent(message.guild.channels.find(channel => channel.name === "✮ ▬  ▬ Ses Kanalları▬  ▬ ✮|")))
       .then(c => {
         let role = message.guild.roles.find("name", "@everyone");
         let role2 = message.guild.roles.find("name", "Kurucu");
@@ -342,7 +339,7 @@ client.on('message', async message => {
         });
     })
 
-    message.guild.createChannel('|▬▬|Ses Kanalları|▬▬|', 'category', [{
+    message.guild.createChannel('Genel Ses Kanalları|▬▬|', 'category', [{
       id: message.guild.id,
     }]);
 
