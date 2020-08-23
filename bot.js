@@ -339,37 +339,118 @@ client.on('message', async message => {
         });
     })
 
-    message.guild.createChannel('Genel Ses Kanalları|▬▬|', 'category', [{
+    message.guild.createChannel('Genel Ses Kanalları', 'category', [{
       id: message.guild.id,
     }]);
 
-    message.guild.createChannel(`👍》Sesli Yönetici Odası`, "voice")
-    .then(channel =>
-      channel.setParent(message.guild.channels.find(channel => channel.name === "|▬▬|Ses Kanalları|▬▬|")))
-    .then(c => {
-      let role = message.guild.roles.find("name", "@everyone");
-      let role2 = message.guild.roles.find("name", "Kurucu");
-      let role3 = message.guild.roles.find("name", "Yönetici");
-      c.overwritePermissions(role, {
-          CONNECT: false,
-      });
-      c.overwritePermissions(role2, {
-          CONNECT: true,
-      });
-      c.overwritePermissions(role3, {
-          CONNECT: true,
-      });
-  })
-
-  message.guild.createChannel(`💬》Sesli Sohbet Odası`, "voice")
+  message.guild.createChannel(`Sohbet Odası 1`, "voice")
   .then(channel =>
-    channel.setParent(message.guild.channels.find(channel => channel.name === "|▬▬|Ses Kanalları|▬▬|")))
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Ses Kanalları")))
   .then(c => {
     let role = message.guild.roles.find("name", "@everyone");
+    
     c.overwritePermissions(role, {
         CONNECT: true,
     });
 })
+   message.guild.createChannel(`Sohbet Odası 2`, "voice")
+  .then(channel =>
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Ses Kanalları")))
+  .then(c => {
+    let role = message.guild.roles.find("name", "@everyone");
+    
+    c.overwritePermissions(role, {
+        CONNECT: true,
+    });
+})
+   message.guild.createChannel(`Müzik Odası 1`, "voice")
+  .then(channel =>
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Ses Kanalları")))
+  .then(c => {
+    let role = message.guild.roles.find("name", "@everyone");
+    
+    c.overwritePermissions(role, {
+        CONNECT: true,
+    });
+})
+   message.guild.createChannel(`Müzik Odası 2`, "voice")
+  .then(channel =>
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Ses Kanalları")))
+  .then(c => {
+    let role = message.guild.roles.find("name", "@everyone");
+    
+    c.overwritePermissions(role, {
+        CONNECT: true,
+    });
+})
+           message.guild.createChannel(`Film Dizi Odası`, "voice")
+  .then(channel =>
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Ses Kanalları")))
+  .then(c => {
+    let role = message.guild.roles.find("name", "@everyone");
+    
+    c.overwritePermissions(role, {
+        CONNECT: true,
+    });
+})
+
+
+///OYUN ODALARI
+      message.guild.createChannel('Oyun Kanalları', 'category', [{
+      id: message.guild.id,
+    }]);
+
+  message.guild.createChannel(`CS:GO Odası 1`, "voice")
+  .then(channel =>
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Ses Kanalları" + channel.limit === "5" )))
+  .then(c => {
+    let role = message.guild.roles.find("name", "@everyone");
+    
+    c.overwritePermissions(role, {
+        CONNECT: true,
+    });
+})
+   message.guild.createChannel(`Sohbet Odası 2`, "voice")
+  .then(channel =>
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Ses Kanalları")))
+  .then(c => {
+    let role = message.guild.roles.find("name", "@everyone");
+    
+    c.overwritePermissions(role, {
+        CONNECT: true,
+    });
+})
+   message.guild.createChannel(`Müzik Odası 1`, "voice")
+  .then(channel =>
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Ses Kanalları")))
+  .then(c => {
+    let role = message.guild.roles.find("name", "@everyone");
+    
+    c.overwritePermissions(role, {
+        CONNECT: true,
+    });
+})
+   message.guild.createChannel(`Müzik Odası 2`, "voice")
+  .then(channel =>
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Ses Kanalları")))
+  .then(c => {
+    let role = message.guild.roles.find("name", "@everyone");
+    
+    c.overwritePermissions(role, {
+        CONNECT: true,
+    });
+})
+           message.guild.createChannel(`Film Dizi Odası`, "voice")
+  .then(channel =>
+    channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Ses Kanalları")))
+  .then(c => {
+    let role = message.guild.roles.find("name", "@everyone");
+    
+    c.overwritePermissions(role, {
+        CONNECT: true,
+    });
+})
+
 
 
 
