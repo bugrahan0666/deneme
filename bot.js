@@ -338,19 +338,6 @@ client.on('message', async message => {
      message.guild.createChannel(`kelime-türetmece`, 'text')
      .then(channel =>
       channel.setParent(message.guild.channels.find(channel => channel.name === "Genel Metin Kanalları")))
-
-      .then(c => {
-        let role = message.guild.roles.find("name", "@everyone");
-        let role2 = message.guild.roles.find("name", "Kurucu");
-        
-        c.overwritePermissions(role, {
-            CONNECT: false,
-        });
-        c.overwritePermissions(role2, {
-            CONNECT: true,
-            
-        });
-    })
         
         
         
@@ -520,20 +507,37 @@ client.on('message', async message => {
 
 
 
-//---------------------BOT KORUMA----------------------//
+//---------------------SAYAÇ----------------------//
 
 
 client.on("guildMemberAdd", async member => {
-  var fetch = db.has(`sunucular.${member.guild.id}.giriscikis.kanal`);
-  if (!fetch) return;
-  var kanal = client.channels.get(fetch);
-  if (!kanal) return;
-  var tur = db.has(`sunucular.${member.guild.id}.giriscikis.tur`);
-  if (!tur) return;
-  let mesaj = db.fetch(`sunucular.${member.guild.id}.gcm`)
-  if(mesaj) kanal.send(mesaj.replace(`{sunucu}`,member.guild.name).replace(`{kackisi}`,member.guild.members.size).replace(`{kullanici}`,member.username).replace(`{kullanicietiket}`,`<@${member.id}>`))
-  else kanal.send(`<@${member.id}>,**${member.guild.name}** isimli sunucumuza hoşgeldin! Seninle beraber **${member.guild.members.size}** kişiyiz`)
-      });
+  let sayac = await db.fetch(`sayac_${member.guild.id}`);
+  let skanal9 = await db.fetch(`sayacK_${member.guild.id}`);
+  if (!skanal9) return;
+  const skanal31 = member.guild.channels.find("name", skanal9);
+  if (!skanal31) return;
+  skanal31.send(
+    `<:evet:665857392264871936> - ${
+      member.user.tag
+    } Aramıza katıldı, ${sayac} Kişi olmamıza ${sayac -
+      member.guild.members.size} Kaldı.`
+  );
+});
+
+client.on("guildMemberRemove", async member => {
+  let sayac = await db.fetch(`sayac_${member.guild.id}`);
+  let skanal9 = await db.fetch(`sayacK_${member.guild.id}`);
+  if (!skanal9) return;
+  const skanal31 = member.guild.channels.find("name", skanal9);
+  if (!skanal31) return;
+
+  skanal31.send(
+    `<:XMARK:666359344778182659> **${
+      member.user.tag
+    }** Aramızdan ayrıldı. **${sayac}** Kişi olmamıza **${sayac -
+      member.guild.members.size}** Kaldı.`
+  );
+});
 
 
-//---------------------BOT KORUMA----------------------//
+//---------------------SAYAÇ SON----------------------//
