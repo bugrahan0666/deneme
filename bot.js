@@ -184,7 +184,13 @@ client.on("error", e => {
 client.login(ayarlar.token);
 
 
-//........MESAJ ISTATISTIK........//
+
+
+
+
+
+//---------------------CHAT AKTİFLİĞİ-------------------------///
+
 
 client.on("message", async message => {
   if (message.author.bot === false) {
@@ -195,8 +201,16 @@ client.on("message", async message => {
     await db.add(`puanuc_${message.author.id}_${message.channel.id}`, 1);
   }
 });
+//---------------------CHAT AKTİFLİĞİ SON-------------------------///
 
-//........SES ISTATISTIK........//
+
+
+
+
+
+
+//---------------------SES AKTİFLİĞİ-------------------------///
+
 
 client.on("voiceStateUpdate", async (oldMember, newMember) => {
   if (!oldMember.user.bot) {
@@ -230,10 +244,16 @@ client.on("voiceStateUpdate", async (oldMember, newMember) => {
     }
   }
 }); 
+//---------------------SES AKTİFLİĞİ SON-------------------------///
 
 
 
-///SUNUCU KUR
+
+
+
+
+
+//---------------------SUNUCU KURMA-------------------------///
 client.on('message', async message => {
   const ms = require('ms');
   const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -251,7 +271,7 @@ client.on('message', async message => {
       })
     .then((collected) => {
         
-         message.guild.owner.send(new Discord.RichEmbed().setColor('RANDOM').addField("Bilgi",`Sunucunuz Başarılı Bir Şekilde Kuruldu Kalan Ayarlamaları Yapmak için **e!sunucu-yardım** Yazarak Yardım Alabilirsiniz`).setFooter('Elyse - Sunucu Kurma Sistemi'))
+         message.guild.owner.send(new Discord.RichEmbed().setColor('RANDOM').addField("Bilgi",`Sunucunuz Kuruluyor Lütfen Bekleyin! Bu İşlem Biraz Zaman Alabilir...`).setFooter('Elyse - Sunucu Kurma Sistemi'))
        message.guild.channels.forEach(function(kan) {
        message.guild.roles.forEach(function(rol) {
                  kan.delete()
@@ -331,6 +351,11 @@ client.on('message', async message => {
             
         });
     })
+        
+        
+        
+        
+        
 
     message.guild.createChannel('Genel Ses Kanalları', 'category', [{
       id: message.guild.id,
@@ -388,7 +413,9 @@ client.on('message', async message => {
 })
 
 
-///OYUN ODALARI
+
+        
+        
       message.guild.createChannel('Oyun Kanalları', 'category', [{
       id: message.guild.id,
     }]);
@@ -438,29 +465,24 @@ client.on('message', async message => {
     channel.setParent(message.guild.channels.find(channel => channel.name === "Oyun Kanalları")))
   .then(c => {
     let role = message.guild.roles.find("name", "@everyone");
-    
     c.overwritePermissions(role, {
         CONNECT: true,
     });
 })
-
                   message.guild.createChannel(`Valorant 1`, "voice")
   .then(channel =>
     channel.setParent(message.guild.channels.find(channel => channel.name === "Oyun Kanalları")))
   .then(c => {
-    let role = message.guild.roles.find("name", "@everyone");
-    
+    let role = message.guild.roles.find("name", "@everyone"); 
     c.overwritePermissions(role, {
         CONNECT: true,
     });
 })
-
            message.guild.createChannel(`Zula 1`, "voice")
   .then(channel =>
     channel.setParent(message.guild.channels.find(channel => channel.name === "Oyun Kanalları")))
   .then(c => {
     let role = message.guild.roles.find("name", "@everyone");
-    
     c.overwritePermissions(role, {
         CONNECT: true,
     });
@@ -469,8 +491,7 @@ client.on('message', async message => {
   .then(channel =>
     channel.setParent(message.guild.channels.find(channel => channel.name === "Oyun Kanalları")))
   .then(c => {
-    let role = message.guild.roles.find("name", "@everyone");
-    
+    let role = message.guild.roles.find("name", "@everyone");   
     c.overwritePermissions(role, {
         CONNECT: true,
     });
@@ -480,18 +501,23 @@ client.on('message', async message => {
     channel.setParent(message.guild.channels.find(channel => channel.name === "Oyun Kanalları")))
   .then(c => {
     let role = message.guild.roles.find("name", "@everyone");
-    
     c.overwritePermissions(role, {
         CONNECT: true,
     });
 })
-
-
-
-
        message.guild.owner.send(new Discord.RichEmbed().setColor('RANDOM').addField("İşlem Başarılı",`Sunucunuz Başarılı Bir Şekilde Kuruldu Kalan Ayarlamaları Yapmak için **e!sunucu-yardım** Yazarak Yardım Alabilirsiniz`).setFooter('Elyse - Sunucu Kurma Sistemi'))
      
             })   
-    
 }
 });
+
+
+
+//---------------------SUNUCU KURMA SON-------------------------///
+
+
+
+
+
+
+
