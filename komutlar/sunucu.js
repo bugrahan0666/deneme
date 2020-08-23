@@ -47,65 +47,14 @@ exports.run = async (client, message, args) => {
     	})
     })
     	message.guild.createChannel('duyurular', 'text').then(duyurular => {
-         duyurular.send(stripIndents`
-    		\`\`\`md
-# Merhaba! 
-> Burası duyurular. Burda önemli bilgiler verilir.
-> Üyelerin bu kanalda konuşmaları yasaklanmıştır.
-
-
-- ${client.user.username} -
-\`\`\`
-    	`)
-    
-    	duyurular.overwritePermissions(every, {
-    		SEND_MESSAGES: false
-    	})
-    	duyurular.setParent(bilgi.id)
-    })
-    	message.guild.createChannel('sohbet', 'text').then(sohbet => {
-    	sohbet.setParent(toplum.id)
-         sohbet.send(stripIndents`
-    		\`\`\`md
-# Merhaba! 
-> Burası sohbet. Burdan arkadaşlarınla vb sohbet etmek için kuruldu. Uygunsuz konuşmalara izinli değildir.
-
-
-
-- ${client.user.username} -
-\`\`\`
-    	`)
     })
      message.guild.createChannel('destek', 'text').then(destek => {
     	destek.setParent(toplum.id)
-    	destek.send(stripIndents`
-    		\`\`\`md
-# Merhaba! 
-> Bu kanal destek sistemi kanalıdır! Buraya bir mesaj yazıldığında otomatik olarak bir Destek Talebi açılır ve yetkililerimiz açılan talep kanalında size yardımcı olurlar. 
-
-[Uyarı!]: Gereksiz yere kullanmak yasaktır!
-
-- ${client.user.username} Gelişmiş Destek Sistemi -
-\`\`\`
-    	`)
-    	db.set(`destekK_${message.guild.id}`, destek.id)
     })
     }, 5000)
 
     setTimeout(() => {
     	message.guild.createChannel('komut-kullanım', 'text').then(komutlar => {
-           komutlar.send(stripIndents`
-    		\`\`\`md
-# Merhaba! 
-> Burası komutlar odası. !!yardım yazarak Vortex'in komutlarını görebilirsiniz.
-
-
-
-- ${client.user.username} -
-\`\`\`
-    	`)
-           	db.set(`ktr_${message.guild.id}`, komutlar.id)
-    	komutlar.setParent(toplum.id)
     })
       
     }, 5000)
@@ -116,32 +65,11 @@ exports.run = async (client, message, args) => {
     	gc.overwritePermissions(every, {
     		SEND_MESSAGES: false
     	})
-         gc.send(stripIndents`
-    		\`\`\`md
-# Merhaba! 
-> Bu kanal yeni gelen üyeleri yazılı bir şekilde karşılar. 
-> Üyelerin bu kanalda konuşmaları yasaklanmıştır.
-
-
-- ${client.user.username} Gelişmiş Gelen-Giden Sistemi -
-\`\`\`
-    	`)
-        
-    	db.set(`gc_${message.guild.id}`, gc.id)
     })
       
     	message.guild.createChannel('sayaç', 'text').then(sayac => {
     	sayac.setParent(kayitlar.id)
-        sayac.send(stripIndents`
-    		\`\`\`md
-# Merhaba! 
-> Bu kanal yeni gelen üyelerle birlikte belirtilen sayıya ne kadar kaldığını söyler.
-> Üyelerin bu kanalda konuşmaları yasaklanmıştır.
-
-
-- ${client.user.username} Gelişmiş Sayaç Sistemi -
-\`\`\`
-    	`)
+      
           sayac.overwritePermissions(every, {
     		SEND_MESSAGES: false
     	})
@@ -150,16 +78,7 @@ exports.run = async (client, message, args) => {
     })
       message.guild.createChannel('oto-rol', 'text').then(otor => {
     	otor.setParent(kayitlar.id)
-        otor.send(stripIndents`
-    		\`\`\`md
-# Merhaba! 
-> Bu kanal yeni gelen üyelere belirtilen rolü verir.
-> Üyelerin bu kanalda konuşmaları yasaklanmıştır.
 
-
-- ${client.user.username} Gelişmiş Oto-Rol Sistemi -
-\`\`\`
-    	`)
           otor.overwritePermissions(every, {
     		SEND_MESSAGES: false
     	})
@@ -169,17 +88,6 @@ exports.run = async (client, message, args) => {
     })
    	message.guild.createChannel('resimli-hoşgeldin', 'text').then(gcc => {
     	gcc.setParent(kayitlar.id)
-      gcc.send(stripIndents`
-    		\`\`\`md
-# Merhaba! 
-> Bu kanal yeni gelen üyeleri resimli bir şekilde karşılar. 
-> Üyelerin bu kanalda konuşmaları yasaklanmıştır.
-
-
-- ${client.user.username} Gelişmiş Resim-Kanal Sistemi -
-\`\`\`
-    	`)
-    	db.set(`gcc_${message.guild.id}`, gcc.id)
          gcc.overwritePermissions(every, {
            
     		SEND_MESSAGES: false
@@ -188,18 +96,6 @@ exports.run = async (client, message, args) => {
       
     	message.guild.createChannel('moderasyon-kayıtları', 'text').then(log => {
     	log.setParent(kayitlar.id)
-        log.send(stripIndents`
-    		\`\`\`md
-# Merhaba! 
-> Bu kanal sunucuda geçen olayları söyler. 
-> Üyelerin bu kanalda konuşmaları yasaklanmıştır.
-> Üyelerin bu kanalı görmeleri yasaklanmıştır.
-
-
-- ${client.user.username} Gelişmiş Mod-Log Sistemi -
-\`\`\`
-    	`)
-    	db.set(`log_${message.guild.id}`, log.id)
              log.overwritePermissions(every, {
                 VIEW_CHANNEL: false,
                 		SEND_MESSAGES: false
@@ -210,17 +106,7 @@ exports.run = async (client, message, args) => {
     })
       	message.guild.createChannel('güvenlik', 'text').then(guvenlik => {
     	guvenlik.setParent(kayitlar.id)
-               guvenlik.send(stripIndents`
-    		\`\`\`md
-# Merhaba! 
-> Bu kanal yeni gelen üyeleri güvenilir olup olmadıklarını tespit eder. 
-> Üyelerin bu kanalda konuşmaları yasaklanmıştır.
 
-
-- ${client.user.username} Gelişmiş Güvenlik Sistemi -
-\`\`\`
-    	`)
-    	db.set(`guvenlik3_${message.guild.id}`, guvenlik.id)
           guvenlik.overwritePermissions(every, {
     		SEND_MESSAGES: false
     	})
@@ -235,11 +121,8 @@ exports.run = async (client, message, args) => {
     	message.guild.createChannel('Sohbet Odası - 2', 'voice').then(shbt2 => {
     	shbt2.setParent(sesli.id)
     })
-    	message.guild.createChannel('Oyun Odası', 'voice').then(oyn => {
+    	message.guild.createChannel('Sohbet Odası - 3', 'voice').then(oyn => {
     	oyn.setParent(sesli.id)
-    })
-    	message.guild.createChannel('Oyun Odası - 2', 'voice').then(oyn2 => {
-    	oyn2.setParent(sesli.id)
     })
  
     }, 15000)
