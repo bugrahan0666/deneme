@@ -7,7 +7,7 @@ exports.run = (client, message, args) => {
   .setFooter(message.author.tag ,message.author.avatarURL)
   .setTimestamp()
   return message.author.send(ozelmesajuyari); }
-   if (!message.member.roles.has('748911423786320032') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Yetersiz Yetki` , `Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+   if (!message.member.roles.has('KİCK YETKİLİSİ ROL ID') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Yetersiz Yetki` , `Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   let guild = message.guild
   let reason = args.slice(1).join(' ');
   let user = message.mentions.users.first();

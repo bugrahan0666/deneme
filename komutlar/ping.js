@@ -6,7 +6,7 @@ exports.run = (client, message) => {
     const ozelmesajkontrol = new Discord.RichEmbed()
     .setColor('BLACK')
     .setAuthor(message.author.username, message.author.avatarURL)
-    .setDescription('**Elyse Bot Ping ** = **`' + client.ping + '`** **ms**')
+    .setDescription('**Bot Ping ** = **`' + client.ping + '`** **ms**')
     .setFooter('Anlık Botun Pingi');
       message.delete()
     message.channel.sendEmbed(ozelmesajkontrol) }

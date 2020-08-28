@@ -3,7 +3,7 @@ const ms = require("ms");
 
 module.exports.run = (client, message, args) => {
   
-   if (!message.member.roles.has('748911625402056806') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Yetersiz Yetki` , `Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+   if (!message.member.roles.has('MUTE YETKİLİSİ ROL ID') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Yetersiz Yetki` , `Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
 
   let kullanici = message.mentions.members.first() || message.guild.members.get(args[0])
   let guild = message.guild
@@ -20,7 +20,7 @@ module.exports.run = (client, message, args) => {
               .setTitle('Ses Mutesi Atıldı')
               .setDescription(`${kullanici} Ses Odasında Bir Yetkili Tarafından Susturuldu`)
               .addField("Ses Mute Bilgileri",`**Susturulan Kullanıcı:** ${kullanici} \n**Susturan Yetkili:** <@!${message.author.id}>\n**Ceza Süresi:** ${süre} \n**Ceza Sebebi:** ${sebep}`)
-              .setFooter('Elyse Mute Sistemi')
+              .setFooter('Mute Sistemi')
               .setColor("RANDOM");
 kullanici.setMute(true, `Susturan yetkili: ${message.author.tag} - Susturma süresi: ${süre} ms`)
               .then(() => guild.channels.get(modlog.id).sendEmbed(embed)).catch(console.error);
@@ -29,7 +29,7 @@ kullanici.setMute(false,`Süresi dolduğu için susturması kaldırıldı.`)
               let sembed =  new Discord.RichEmbed()
               .setTitle('Ses Mutesi Kaldırıldı')
               .setDescription(`${kullanici} Ses Mute Ceza Süresi Bitti ve Susturulması Kaldırıldı`)
-              .setFooter('Elyse Mute Sistemi')
+              .setFooter('Mute Sistemi')
               .setColor("RANDOM");
               guild.channels.get(modlog.id).sendEmbed(sembed);
 
