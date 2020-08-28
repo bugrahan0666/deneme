@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const moment = require('moment')
 const client = new Discord.Client();
 
-const botadi = "Elyse"
+const botadi = "Salvatore"
 
 exports.run = async (bot, msg, args) => {
         let simdikitarih = moment.utc(msg.createdAt).format('DD MM YYYY');
@@ -10,7 +10,6 @@ exports.run = async (bot, msg, args) => {
         let userinfo = {};
         userinfo.avatar= user.displayAvatarURL;
         userinfo.id = user.id;
-        userinfo.od1 = msg.guild.members.get(user.id).user.presence.game || "``Oynadığı Bir Oyun Yok``"
         userinfo.status = user.presence.status.toString()
         .replace("dnd", `Rahatsız Etmeyin`)
         .replace("online", `Çevrimiçi`)
