@@ -3,19 +3,19 @@ const ayarlar = require('../ayarlar.json')
 const db = require("quick.db")
 
 exports.run = async (client ,message ,args) => {
-   if (!message.member.roles.has('JAİL YETKİLİSİ ROL ID') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Yetersiz Yetki` , `Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+   if (!message.member.roles.has('756247227407794267') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Yetersiz Yetki` , `Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
     let kullanıcı = message.mentions.members.first()
         if(!kullanıcı)
              return message.channel.send(new Discord.RichEmbed().addField(`Hatalı Kullanım` , `Lütfen Cezalıdan Çıkarılacak Kullanıcıyı Etiketleyin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(10000));
-let cezalırol = message.guild.roles.get("CEZALI ROL ID");
-let kayıtsızrol = message.guild.roles.get("KAYITSIZ ROL ID");
+let cezalırol = message.guild.roles.get("756255483605811342");
+let kayıtsızrol = message.guild.roles.get("756255623422673058");
 if(!cezalırol) return message.guild.owner.send(new Discord.RichEmbed().addField(`Hata` , `Sunucuda Cezalı Rolünü Bulamadığım için İşlem Yapamıyorum`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
 if(!kayıtsızrol) return message.guild.owner.send(new Discord.RichEmbed().addField(`Hata` , `Sunucuda Kayıtsız Rolünü Bulamadığım için İşlem Yapamıyorum`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
 db.add(`unjail.${message.author.id}.${message.guild.id}`, 1)
 let member = message.guild.member(kullanıcı)
 await member.addRole(kayıtsızrol)
 await member.removeRole(cezalırol)
-let kanal = message.guild.channels.find('name' , 'jail-bilgi')
+let kanal = message.guild.channels.find('id' , '756457572248322058')
     if(!kanal) return message.guild.owner.send(new Discord.RichEmbed().addField(`Hata` , `Sunucuda Cezalı Log Kanalını Bulamadığım için İşlem Yapamıyorum`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   const unjail = new Discord.RichEmbed()
 .setColor("GREEN")

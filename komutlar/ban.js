@@ -14,7 +14,7 @@ exports.run = (client, message, args) => {
   let guild = message.guild;
   let reason = args.slice(1).join(" ");
   let user = message.mentions.users.first();
-  let modlog = guild.channels.find("name", "ban-bilgi");
+  let modlog = guild.channels.find("id", "756457649507139595");
   db.add(`ban.${message.author.id}.${message.guild.id}`, 1)
   if (!modlog) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hata` , `Log Kanalını Bulamıyorum`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
     if (message.mentions.users.size < 1)

@@ -3,7 +3,7 @@ const db = require("quick.db")
 const moment = require('moment')
 require("moment-duration-format")
 exports.run = async (client, message, args) => {
-   if (!message.member.roles.has('JAİL YETKİLİSİ ROL ID') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Yetersiz Yetki` , `Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+   if (!message.member.roles.has('756247227407794267') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Yetersiz Yetki` , `Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   let kullanıcı = message.mentions.users.first()
   if (!kullanıcı) return message.channel.send(new Discord.RichEmbed().addField(`Hatalı Kullanım` , `Lütfen Cezalıya Atılacak Kullanıcıyı Etiketleyin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(10000));
   let user = message.mentions.users.first();
@@ -17,8 +17,8 @@ exports.run = async (client, message, args) => {
 message.guild.members.get(member.id).removeRole(r) 
    
 })
-  member.addRole('JAİL ROL ID')
-     const kanal = message.guild.channels.find(c => c.id == "LOG KANALI ROL ID")
+  member.addRole('756255483605811342')
+     const kanal = message.guild.channels.find(c => c.id == "756457572248322058")
        db.add(`jail.${message.author.id}.${message.guild.id}`, 1)
     const embed1 = new Discord.RichEmbed()
     .setAuthor(message.author.tag , message.author.avatarURL)
