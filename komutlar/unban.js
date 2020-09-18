@@ -4,7 +4,7 @@ const db = require('quick.db')
 
 exports.run = (client, message, args) => {
   
-   if (!message.member.roles.has('BAN YETKİLİSİ ROL ID') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Yetersiz Yetki` , `Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+   if (!message.member.roles.has('756458727170637856') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Yetersiz Yetki` , `Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
   if (!message.guild) {
    const ozelmesajuyari = new Discord.RichEmbed()
       .setColor("RANDOM")
@@ -17,7 +17,7 @@ exports.run = (client, message, args) => {
   let reason = args.slice(1).join(" ");
   client.unbanReason = reason;
   client.unbanAuth = message.author;
-  let modlog = guild.channels.find("name", "ban-bilgi");
+  let modlog = guild.channels.find("id", "756457649507139595");
      db.add(`unban.${message.author.id}.${message.guild.id}`, 1)
   if (!modlog) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hata` , `Log Kanalını Bulamıyorum`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
     if (!user)

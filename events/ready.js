@@ -8,10 +8,10 @@ module.exports = client => {
   setInterval(function() {}, 8000);
   client.user.setPresence({
     game: {
-      name: `Salvo Code | Moderasyon Botu`,
+      name: `PHENTOS`,
       type: "WATCHING"
     },
     status: "dnd"
   });
-  console.log(`[BOT]: Giriş Yaptı! Komutlar Yüklendi! Salvatore Aittir!`);
+  console.log(`[BOT]: Giriş Yaptı! Komutlar Yüklendi! Phentos'a Aittir!`);
 };

@@ -3,14 +3,14 @@ const ms = require("ms");
 
 module.exports.run = (client, message, args) => {
   
-   if (!message.member.roles.has('MUTE YETKİLİSİ ROL ID') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Yetersiz Yetki` , `Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
+   if (!message.member.roles.has('756248062820745367') && !message.member.hasPermission('ADMINISTRATOR')) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Yetersiz Yetki` , `Bu Yetkiyi Kullanmak için Yeterli Yetkiye Sahip Değilsin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp());
 
   let kullanici = message.mentions.members.first() || message.guild.members.get(args[0])
   let guild = message.guild
   if (!kullanici) return message.channel.send(new Discord.RichEmbed().addField(`Hatalı Kullanım` , `Lütfen Susturulacak Kullanıcıyı Etiketleyin`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(10000)).catch(console.error);
   if(kullanici.hasPermission("MANAGE_MESSAGES")) return message.channel.send(new Discord.RichEmbed().addField(`Hata` , `Benden Daha Yetkili Birini Susturamam`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(10000)).catch(console.error);
   if (kullanici.id === message.author.id) return message.channel.send(new Discord.RichEmbed().addField(`Hatalı Kullanım` , `Kendini Susturamazsın`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(10000)).catch(console.error);
-  let modlog = guild.channels.find('name', 'mute-bilgi');
+  let modlog = guild.channels.find('id', '756457586953420840');
   if (!modlog) return message.channel.sendEmbed(new Discord.RichEmbed().addField(`Hata` , `**"mute-bilgi"** Kanalını Sunucuda Bulamadım Lütfen **"mute-bilgi"** İsimli Bir Metin Kanalı Oluşturun`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(20000));;
   let süre = args[1]
   if(!süre) return message.channel.send(new Discord.RichEmbed().addField(`Hatalı Kullanım` , `Lütfen Susturma Süresini Yazınız`).setColor("RANDOM").setFooter(message.author.tag ,message.author.avatarURL).setTimestamp()).then(m => m.delete(10000)).catch(console.error);

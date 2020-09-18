@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const moment = require('moment')
 const client = new Discord.Client();
 
-const botadi = "Salvatore"
+const botadi = "Phentos"
 
 exports.run = async (bot, msg, args) => {
         let simdikitarih = moment.utc(msg.createdAt).format('DD MM YYYY');
