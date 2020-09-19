@@ -477,7 +477,18 @@ client.on("message", message => {
     message.channel.send("as");
   }
   
-  
+  client.on("userUpdate", async(eski, yeni) => {
+  if(eski.username !== yeni.username) {
+  if(!yeni.username.includes("☮") && client.guilds.get("Sunucu İd").members.get(yeni.id).roles.has("756249558631186546")) {
+     client.guilds.get("756241474148106360").members.get(yeni.id).removeRole("ROL İD")
+     client.channels.get('756260528166535239').send(`:broken_heart: ${yeni}, TAG tagını çıkardı!`)
+    }
+     if(yeni.username.includes("☮") && !client.guilds.get("SUNUCU ID").members.get(yeni.id).roles.has("ROL İD")) {
+      client.channels.get('756260528166535239').send(`:heart: ${yeni}, TAG tagını aldı!`)
+      client.guilds.get("756241474148106360").members.get(yeni.id).addRole("ROL ID")
+     }
+  }
+  }) 
   
 });
 
