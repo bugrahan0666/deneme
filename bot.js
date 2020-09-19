@@ -505,30 +505,6 @@ client.on("message", message => {
 });
 
 
-const ms = require("parse-ms");
-client.on("message", async message => {
-  
-  if(message.author.bot) return;
-  if(!message.guild) return;
-  if(message.content.includes(`${prefix}afk`)) return;
-  
-  if(await db.fetch(`afk_${message.author.id}`)) {
-    db.delete(`afk_${message.author.id}`);
-    db.delete(`afk_süre_${message.author.id}`);
-    message.reply("Başarıyla afk modundan çıktınız.");
-  }
-  
-  var USER = message.mentions.users.first();
-  if(!USER) return;
-  var REASON = await db.fetch(`afk_${USER.id}`);
-  
-  if(REASON) {
-    let süre = await db.fetch(`afk_süre_${USER.id}`);
-    let timeObj = ms(Date.now() - süre);
-    message.channel.send(`${USER.tag} kullanıcısı AFK\n AFK süresi: ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s\nSebep:\n **${REASON}**` )
-  }
-});
-
 client.on("message", message => {
     const dmchannel = client.channels.find("id", "756874144787857428");
     if (message.channel.type === "dm") {
@@ -539,4 +515,66 @@ client.on("message", message => {
             description: `Bota Özelden Gönderilen DM: ${message.content}`
         }})
     }
+});
+
+
+client.on("message", async message => {
+  if (message.author.bot || message.channel.type === "dm") return;
+
+  //return message.channel.send(`**${user_tag}** Şu anda afk.\nNedeni:${key.reason}`)
+  //return message.reply(`Artık afk değilsin. Tekrardan hoş geldin.`).then(msg => msg.delete(9000))
+  var afklar = await db.fetch(`afk_${message.author.id}, ${message.guild.id}`);
+
+  if (afklar) {
+    db.delete(`afk_${message.author.id}, ${message.guild.id}`);
+    db.delete(`afk-zaman_${message.author.id}, ${message.guild.id}`);
+
+    message
+      .reply(`Artık afk değilsin. Tekrardan hoş geldin.`)
+      .then(msg => msg.delete(9000));
+    try {
+      let takma_ad = message.member.nickname.replace("[AFK]", "");
+      message.member.setNickname(takma_ad).catch(err => console.log(err));
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+  var kullanıcı = message.mentions.users.first();
+  if (!kullanıcı) return;
+  let zaman = await db.fetch(`afk-zaman_${kullanıcı.id}, ${message.guild.id}`);
+
+  var süre = ms(Date.now() - zaman);
+
+  var sebep = await db.fetch(`afk_${kullanıcı.id}, ${message.guild.id}`);
+  if (
+    await db.fetch(
+      `afk_${message.mentions.users.first().id}, ${message.guild.id}`
+ )
+  ) {
+    if (süre.days !== 0) {
+      message.channel.send(
+        `**${kullanıcı}** Kullanıcısı **${süre.days}** Gün **${süre.hours}** Saat **${süre.minutes}** Dakika Önce **Afk** Oldu.\n Afk Nedeni: **${sebep}**`
+      );
+      return;
+    }
+
+    if (süre.hours !== 0) {
+      message.channel.send(
+        `**${kullanıcı}** Kullanıcısı **${süre.hours}** Saat **${süre.minutes}** Dakika Önce **Afk** Oldu.\n Afk Nedeni: **${sebep}**`
+      );
+      return;
+    }
+    if (süre.minutes !== 0) {
+      message.channel.send(
+        `**${kullanıcı}** Kullanıcısı **${süre.minutes}** Dakika Önce **Afk** Oldu.\n Afk Nedeni: **${sebep}**`
+      );
+      return;
+    }
+    if (süre.seconds !== 0) {
+      message.channel.send(
+        `**${kullanıcı}** Kullanıcısı **Bir Kaç Saniye** Önce **Afk** Oldu.\n Afk Nedeni: **${sebep}**`
+      );
+      return;
+    }
+  }
 });
