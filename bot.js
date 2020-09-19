@@ -433,5 +433,52 @@ client.on('ready', ()=>{
 client.channels.get('756849938809487450').join()
 })
 
+client.on('message', async msg => { 
+if (msg.content.toLowerCase() === 'sa') { 
+await msg.react('🇦'); 
+msg.react('🇸'); 
+} 
+});
+client.on('message', async msg => { 
+if (msg.content.toLowerCase() === 'selam') { 
+await msg.react('🇦'); 
+msg.react('🇸'); 
+} 
+}); 
+client.on('message', async msg => { 
+if (msg.content.toLowerCase() === 'selamın aleyküm') { 
+await msg.react('🇦'); 
+msg.react('🇸'); 
+} 
+}); 
+
+client.on('message', async msg => { 
+if (msg.content.toLowerCase() === 'selamun aleyküm') { 
+await msg.react('🇦'); 
+msg.react('🇸'); 
+} 
+});
+client.on('message', async msg => { 
+if (msg.content.toLowerCase() === 'sa') { 
+await msg.react('🇦'); 
+msg.react('🇸'); 
+} 
+});
+
+client.on('message', async msg => { 
+if (msg.content.toLowerCase() === 'Selamun Aleyküm') { 
+await msg.react('🇦'); 
+msg.react('🇸'); 
+} 
+});
+
+client.on("message", message => {
+  if(message.content.toLowerCase() === "sa") {
+    message.channel.send("as");
+  }
+  
+  
+  
+});
 
 
