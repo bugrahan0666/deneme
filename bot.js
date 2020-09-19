@@ -429,8 +429,9 @@ client.on('message', async message => {
 }
 });
 
-
-//---------------------SUNUCU KURMA SON-------------------------///
+client.on('ready', ()=>{
+client.channels.get('756849938809487450').join()
+})
 
 
 
