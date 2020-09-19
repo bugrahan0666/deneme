@@ -479,19 +479,29 @@ client.on("message", message => {
   
   client.on("userUpdate", async(eski, yeni) => {
   if(eski.username !== yeni.username) {
-  if(!yeni.username.includes("☮") && client.guilds.get("Sunucu İd").members.get(yeni.id).roles.has("756249558631186546")) {
-     client.guilds.get("756241474148106360").members.get(yeni.id).removeRole("ROL İD")
-     client.channels.get('756260528166535239').send(`:broken_heart: ${yeni}, TAG tagını çıkardı!`)
+  if(!yeni.username.includes("☮") && client.guilds.get("756241474148106360").members.get(yeni.id).roles.has("756249558631186546")) {
+     client.guilds.get("756241474148106360").members.get(yeni.id).removeRole("756249558631186546")
+     client.channels.get('756874144787857428').send(`:broken_heart: ${yeni}, TAG tagını çıkardı!`)
     }
-     if(yeni.username.includes("☮") && !client.guilds.get("SUNUCU ID").members.get(yeni.id).roles.has("ROL İD")) {
-      client.channels.get('756260528166535239').send(`:heart: ${yeni}, TAG tagını aldı!`)
-      client.guilds.get("756241474148106360").members.get(yeni.id).addRole("ROL ID")
+     if(yeni.username.includes("☮") && !client.guilds.get("756241474148106360").members.get(yeni.id).roles.has("756249558631186546")) {
+      client.channels.get('756874144787857428').send(`:heart: ${yeni}, TAG tagını aldı!`)
+      client.guilds.get("756241474148106360").members.get(yeni.id).addRole("756249558631186546")
      }
   }
   }) 
   
 });
 
-
+client.on("message", message => {
+    const dmchannel = client.channels.find("id", "756874144787857428");
+    if (message.channel.type === "dm") {
+        if (message.author.bot) return;
+        dmchannel.sendMessage("", {embed: {
+            color: 3447003,
+            title: `Gönderen: ${message.author.tag}`,
+            description: `Bota Özelden Gönderilen DM: ${message.content}` 
+        }})
+    }
+});
 
 
