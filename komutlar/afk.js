@@ -10,7 +10,6 @@ exports.run = async (bot , message, args) => {
   
   let reason = args.slice(0).join(' ') 
      let rol = message.mentions.roles.first()
-
   if(reason.toLowerCase().includes(".com") || reason.toLowerCase().includes("youtube.com") || reason.toLowerCase().includes("discord.gg")|| reason.includes("http") || reason.includes(rol) || reason.includes("@here") || reason.includes("@everyone")) return  [message.delete(10),message.reply("Afk nedenine **link** veya **rol** giremezsin").then(msg => msg.delete(9000))]
   if(!reason) reason= "Şu an afkyım, en kısa sürede geri döneceğim.";
       setTimeout(function(){
