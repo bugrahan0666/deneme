@@ -26,7 +26,8 @@
     "snekfetch": "^4.0.4",
     "useful-tools": "^0.2.6",
     "weather-js": "^2.0.0",
-    "ytdl-core": "^3.2.0"
+    "ytdl-core": "^3.2.0",
+    "date-unit-ms": "^1.1.14"
   },
   "engines": {
     "node": "8.x"

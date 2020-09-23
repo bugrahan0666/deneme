@@ -1,4 +1,4 @@
-const Discord = require('discord.js')
+const Discord = require('discord.js');
 const ayarlar = require('../ayarlar.json');
 
 const fs = require('fs');
@@ -18,7 +18,13 @@ exports.run = async (bot , message, args) => {
   
   db.set(`afk-zaman_${message.author.id}, ${message.guild.id}`, Date.now())
       },500)
-  message.reply(`**${reason}** nedeniyle afk oldunuz.`).then(msg => msg.delete(9000))
+  message.channel.send(new Discord.Richembed())
+  .setdescription("Phentos")
+  .setColor("RANDOM")
+  .setTitle("Klavyeden Uzağa!")
+  .setFooter("Developer By Phentos")
+  .setAuthor(message.author.username,message.author.avatarURL)
+  message.reply(`**${reason}** nedeniyle afk oldunuz.`)
   if(!message.member.nickname) return message.member.setNickname("[AFK] " + message.member.user.username)
   message.member.setNickname("[AFK] " + message.member.nickname).catch(err => console.log(err));
     

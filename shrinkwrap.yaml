@@ -1,6 +1,7 @@
 dependencies:
   chalk: 4.1.0
   common-tags: 1.8.0
+  date-unit-ms: 1.1.14
   discord.js: 11.5.1
   express: 4.17.1
   jimp: 0.14.0
@@ -692,6 +693,10 @@ packages:
       node: '>=0.10'
     resolution:
       integrity: sha1-hTz6D3y+L+1d4gMmuN1YEDX24vA=
+  /date-unit-ms/1.1.14:
+    dev: false
+    resolution:
+      integrity: sha512-6vUHdMQkblV8lKYQqnTM2kUmWlFVG6F/0mzUbcnNygcR2vuUPeHAIE7BO7mj/brmgV1INSAG9D2GpgTLOEOHvg==
   /debug/2.6.9:
     dependencies:
       ms: 2.0.0
@@ -2361,6 +2366,7 @@ shrinkwrapVersion: 3
 specifiers:
   chalk: ^4.1.0
   common-tags: ^1.8.0
+  date-unit-ms: ^1.1.14
   discord.js: ^11.5.1
   express: ^4.17.1
   jimp: ^0.14.0
