@@ -520,7 +520,11 @@ client.on("message", async message => {
     db.delete(`afk-zaman_${message.author.id}, ${message.guild.id}`);
 
     message
-      .reply(`Artık afk değilsin. Tekrardan hoş geldin.`)
+      .setColor("RANDOM")
+    .setTitle("Bizden Uzakta!")
+    .addField(`Artık afk değilsin. Tekrardan hoş geldin.`)
+    .setFooter('Phentos / Yönetim Botu')
+    message.channel.send(embed)
       .then(msg => msg.delete(9000));
     try {
       let takma_ad = message.member.nickname.replace("[AFK]", "");

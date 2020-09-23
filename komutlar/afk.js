@@ -18,13 +18,12 @@ exports.run = async (bot , message, args) => {
   
   db.set(`afk-zaman_${message.author.id}, ${message.guild.id}`, Date.now())
       },500)
-  message.channel.send(new Discord.Richembed())
-  .setdescription("Phentos")
-  .setColor("RANDOM")
-  .setTitle("Klavyeden Uzağa!")
-  .setFooter("Developer By Phentos")
-  .setAuthor(message.author.username,message.author.avatarURL)
-  message.reply(`**${reason}** nedeniyle afk oldunuz.`)
+    const embed = new Discord.RichEmbed()
+    .setColor("RANDOM")
+    .setTitle("Bizden Uzakta!")
+    .addField(`**${reason}** nedeniyle afk oldunuz.`)
+    .setFooter('Phentos / Yönetim Botu')
+    message.channel.send(embed)
   if(!message.member.nickname) return message.member.setNickname("[AFK] " + message.member.user.username)
   message.member.setNickname("[AFK] " + message.member.nickname).catch(err => console.log(err));
     
