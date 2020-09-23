@@ -231,6 +231,9 @@ client.on("message", message => {
     message.channel.send("as");
   }
   
+  
+  
+  
   client.on("userUpdate", async(eski, yeni) => {
   if(eski.username !== yeni.username) {
   if(!yeni.username.includes("☮") && client.guilds.get("756241474148106360").members.get(yeni.id).roles.has("756249558631186546")) {
@@ -322,6 +325,8 @@ client.on("message", async message => {
       return;
     }
  }
+  
+  
   
 });
 
