@@ -20,7 +20,7 @@ exports.run = async (bot , message, args) => {
       },500)
     const embed = new Discord.RichEmbed()
     .setColor("RANDOM")
-    .setTitle("Bizden Uzakta!")
+    .setTitle("Bizden Uzakta")
     .addField(`**${reason}** nedeniyle afk oldunuz.`)
     .setFooter('Phentos / Yönetim Botu')
     message.channel.send(embed)
