@@ -1,44 +1,37 @@
-const Discord = require('discord.js');//GamerWolf
+const Discord = require("discord.js");
+const db = require("quick.db")
+exports.run = async (client, message, args) => {
+const db = require("quick.db")
+ if (!message.member.roles.has("756248067669360811")) return message.reply('Bu komutu kullanabilmek için <@&KULLANICAK ROL ID> rolüne sahip olmalısın.');
+let member = message.mentions.members.first();
+let isim = args.slice(1).join(" | ");
+let tag = "☮"
+if (!member) return message.channel.send("Bir Üye Etiketle!");
+if (!isim) return message.channel.send("Bir Isim Yaz!");
+member.setNickname(`${tag} ${isim}`);
+member.setNickname(`${tag} ${isim}`);
+member.addRole("756250050757263450")
+  member.removeRole("756255623422673058")
 
-exports.run = async (client, message, args) => {//GamerWolf
-//GamerWolf
-let kayityetkili = '756248067669360811' // KAYIT YETKİLİSİ İD //
-let ver = '756250050757263450' // VERİLECEK ROL ID 1 //
-let al = '756255623422673058' // ALINACAK ROL ID//
-let tag = '☮' //DEĞİŞTİRİLECEK İSMİN ÖNÜNE GELEN
+   message.react("✅")
+const embed = new Discord.RichEmbed()
 
-  if(!message.member.roles.has(kayityetkili)) //GamerWolf
-  if(!message.member.hasPermission("ADMINISTRATOR"))//GamerWolf
-  return message.channel.send(`Bu Komutu Sadece Ayarlanmış Yetkililer Kullanabilir. :x:`);//GamerWolf
-  let member = message.mentions.members.first()//GamerWolf
-  let isim = args.slice(1).join(" | ")//GamerWolf
-  if (!member) return message.channel.send('**Bir Üye Etiketlemelisin :x:**')//GamerWolf
-  if (!isim) return message.channel.send('**Bir İsim Yazmalısın :x:**')//GamerWolf
-  
-  setTimeout(function(){//GamerWolf
-  member.setNickname(`${tag}${isim}`)//GamerWolf
-  },500)//GamerWolf//GamerWolf//GamerWolf
-  setTimeout(function(){//GamerWolf//GamerWolf//GamerWolf//GamerWolf
-  member.addRole(ver)//GamerWolf//GamerWolf//GamerWolf//GamerWolf
-  },500)//GamerWolf//GamerWolf//GamerWolf
-  setTimeout(function(){//GamerWolf//GamerWolf//GamerWolf
-  member.removeRole(al)//GamerWolf//GamerWolf//GamerWolf//GamerWolf//GamerWolf
-  },500)//GamerWolf//GamerWolf//GamerWolf//GamerWolf
- //GamerWolf//GamerWolf//GamerWolf
-  const emoji = client.emojis.find(emoji => emoji.name === "");//GamerWolf
- let embed = new Discord.RichEmbed()//GamerWolf
- //GamerWolf
 
-}; 
 
-exports.conf = { //GamerWolf
-  enabled: true, //GamerWolf
-  guildOnly: true, //GamerWolf
-  aliases: ['erkek'], //GamerWolf
-  permLevel: 0
+
+.addField(`Artemus`,
+`\nKayıt Edilen Kullanıcı: ${member.user} \n\nKayıt Eden: \`${message.author.username}\`\n\n Verilen Roller <@&756250050757263450>`)
+client.channels.get('756257487279227051').send(embed)
 }
-exports.help = { //GamerWolf
-  name: 'e',//GamerWolf
-  description: "kayıt etme komutu.",//GamerWolf
-  usage: 'e <yeni nick>'//GamerWolf//GamerWolf//GamerWolf
-}
+
+exports.conf = {
+enabled: true,
+guildOnly: true,
+aliases: ['man','e'],
+permLevel: 0
+};
+exports.help = {
+name: "erkek",
+description: "Phentos Erkek Kayıt",
+usage: "Phentos Kayıt"
+};
