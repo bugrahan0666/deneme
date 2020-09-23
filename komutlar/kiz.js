@@ -1,57 +1,44 @@
-//Alt yapı tamamen Tynx ekibinin kurucularından olan Savcı'ya aittir. Lütfen çalmayın. Telif hakları tamamen bize aittir. Alt yapıyı geliştirip tanıtmak isterseniz lütfen bizden izin alın. İyi günler.
+const Discord = require('discord.js');//GamerWolf
 
-const Discord = require("discord.js");
-const db = require('quick.db');
-const ayarlar = require('../ayarlar.json');
+exports.run = async (client, message, args) => {//GamerWolf
+//GamerWolf
+let kayityetkili = '756248067669360811' // KAYIT YETKİLİSİ İD //
+let ver = '756250692330455160' // VERİLECEK ROL ID 1 //
+let al = '756255623422673058' // ALINACAK ROL ID//
+let tag = '☮' //DEĞİŞTİRİLECEK İSMİN ÖNÜNE GELEN
 
-exports.run = (client, message, args) => {
+  if(!message.member.roles.has(kayityetkili)) //GamerWolf
+  if(!message.member.hasPermission("ADMINISTRATOR"))//GamerWolf
+  return message.channel.send(`Bu Komutu Sadece Ayarlanmış Yetkililer Kullanabilir.:x: `);//GamerWolf
+  let member = message.mentions.members.first()//GamerWolf
+  let isim = args.slice(1).join(" | ")//GamerWolf
+  if (!member) return message.channel.send('**Bir Üye Etiketlemelisin :x:**')//GamerWolf
+  if (!isim) return message.channel.send('**Bir İsim Yazmalısın :x:**')//GamerWolf
   
-  var kayitsiz = ayarlar.kayitsiz
-  var kiz = ayarlar.kiz
-  var logkanali = ayarlar.log
-  var sembol = ayarlar.tag
-  var teyitci = ayarlar.teyitci
-  var sunucuadi = ayarlar.sunucuadi;
-  var footer = `© ${sunucuadi}` 
-  
-  const kayıtlı = message.guild.roles.find(r => r.id === kiz);
-  const misafir = message.guild.roles.find(r => r.id === kayitsiz);
-  const log = message.guild.channels.find(c => c.id === logkanali);
-  const tag = sembol;
-  
-  if(!message.member.roles.array().filter(r => r.id === teyitci)[0]) {
-    return message.channel.send(new Discord.RichEmbed().setColor('GOLD').setTitle(`${sembol} ${sunucuadi} - Kayıt Sistemi`).setDescription(`_Üzgünüm, bu komutu kullanabilmek için <@&${teyitci}> rolüne sahip olmanız gerekiyor._`).setTimestamp().setFooter(footer));
-  } else {
-    let member = message.mentions.users.first() || client.users.get(args.join(' '))
- 
-      if(!member) return message.channel.send(new Discord.RichEmbed().setColor('GOLD').setTitle(`${sembol} ${sunucuadi} - Kayıt Sistemi`).setDescription('_Kullanıcıyı etiketlemeyi unuttunuz!_').setTimestamp().setFooter(footer))
-    const c = message.guild.member(member)
-    const nick = args[1];
-    const yas = args[2];
-      if(!nick) return message.channel.send(new Discord.RichEmbed().setColor('GOLD').setTitle(`${sembol} ${sunucuadi} - Kayıt Sistemi`).setDescription('_Bir isim girmeyi unuttunuz!_').setTimestamp().setFooter(footer))
-      if(!yas) return message.channel.send(new Discord.RichEmbed().setColor('GOLD').setTitle(`${sembol} ${sunucuadi} - Kayıt Sistemi`).setDescription('_Bir yaş girmeyi unuttunuz!_').setTimestamp().setFooter(footer))
-    c.addRole(kayıtlı)
-    c.removeRole(misafir)
-    c.setNickname(`${tag} ${nick} | ${yas}`)
-    const embed = new Discord.RichEmbed()
-    .setTitle(`${sembol} ${sunucuadi} - Kayıt Sistemi`)
-    .setDescription(`_${member} adlı kullanıcı <@${message.author.id}> tarafından \`${tag} ${nick} | ${yas}\` ismiyle, <@&${kiz}> olarak kayıt edildi!_`)
-    .setFooter(footer)
-    .setTimestamp()
-    .setColor("GOLD")
-    log.send(embed)
-      message.channel.send(new Discord.RichEmbed().setColor('GOLD').setTitle(`${sembol} ${sunucuadi} - Kayıt Sistemi`).setDescription(`_${member} adlı kullanıcı <@${message.author.id}> tarafından <@&${kiz}> olarak kayıt edildi!_ `).setTimestamp().setFooter(footer))
-  }
-}
-exports.conf = {
-  enabled: true,
-  guildOnly: false,
-  aliases: ["kız", "k", "female"],
+  setTimeout(function(){//GamerWolf
+  member.setNickname(`${tag}${isim}`)//GamerWolf
+  },500)//GamerWolf//GamerWolf//GamerWolf
+  setTimeout(function(){//GamerWolf//GamerWolf//GamerWolf//GamerWolf
+  member.addRole(ver)//GamerWolf//GamerWolf//GamerWolf//GamerWolf
+  },500)//GamerWolf//GamerWolf//GamerWolf
+  setTimeout(function(){//GamerWolf//GamerWolf//GamerWolf
+  member.removeRole(al)//GamerWolf//GamerWolf//GamerWolf//GamerWolf//GamerWolf
+  },500)//GamerWolf//GamerWolf//GamerWolf//GamerWolf
+ //GamerWolf//GamerWolf//GamerWolf
+  const emoji = client.emojis.find(emoji => emoji.name === "");//GamerWolf
+ let embed = new Discord.RichEmbed()//GamerWolf
+ //GamerWolf
+
+}; 
+
+exports.conf = { //GamerWolf
+  enabled: true, //GamerWolf
+  guildOnly: true, //GamerWolf
+  aliases: ['kız'], //GamerWolf
   permLevel: 0
-};
-
-exports.help = {
-  name: "kız",
-  description: "",
-  usage: ""
-};
+}
+exports.help = { //GamerWolf
+  name: 'k',//GamerWolf
+  description: "kayıt etme komutu.",//GamerWolf
+  usage: 'k <yeni nick>'//GamerWolf//GamerWolf//GamerWolf
+}
