@@ -4,7 +4,7 @@ const client = new Discord.Client();
 exports.run = (client, message) => {
   if (message.channel.type !== 'dm') {
     const ozelmesajkontrol = new Discord.RichEmbed()
-    .setColor('BLACK')
+    .setColor('RANDOM')
     .setAuthor(message.author.username, message.author.avatarURL)
     .setDescription('**Bot Ping ** = **`' + client.ping + '`** **ms**')
     .setFooter('Anlık Botun Pingi');
