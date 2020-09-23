@@ -274,8 +274,6 @@ client.on("message", async message => {
     db.delete(`afk-zaman_${message.author.id}, ${message.guild.id}`);
 
     message
-    .setColor("PURPLE")
-        .setDescription(`Artık Afk Değilsin. Hoşgeldin!)
       .reply(`Artık afk değilsin. Tekrardan hoş geldin.`)
       .then(msg => msg.delete(9000));
     try {
