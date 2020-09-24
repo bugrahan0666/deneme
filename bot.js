@@ -241,11 +241,11 @@ member.guild.members.get(member.id).addRole('756255623422673058')
   
   client.on("userUpdate", async(eski, yeni) => {
   if(eski.username !== yeni.username) {
-  if(!yeni.username.includes("☮") && client.guilds.get("756241474148106360").members.get(yeni.id).roles.has("756249558631186546")) {
+  if(!yeni.username.includes("π") && client.guilds.get("756241474148106360").members.get(yeni.id).roles.has("756249558631186546")) {
      client.guilds.get("756241474148106360").members.get(yeni.id).removeRole("756249558631186546")
      client.channels.get('756874144787857428').send(`:broken_heart: ${yeni}, TAG tagını çıkardı!`)
     }
-     if(yeni.username.includes("☮") && !client.guilds.get("756241474148106360").members.get(yeni.id).roles.has("756249558631186546")) {
+     if(yeni.username.includes("π") && !client.guilds.get("756241474148106360").members.get(yeni.id).roles.has("756249558631186546")) {
       client.channels.get('756874144787857428').send(`:heart: ${yeni}, TAG tagını aldı!`)
       client.guilds.get("756241474148106360").members.get(yeni.id).addRole("756249558631186546")
      }
