@@ -350,9 +350,6 @@ client.on("message" , async message => {
  if(afk){
    const sebep = db.fetch(`afkSebep_${afk.id}_${message.guild.id}`)
    const kisi3 = db.fetch(`afkid_${afk.id}_${message.guild.id}`)
-   const zaman = db.fetch(`afkzaman_${afk.id}_${message.guild.time}`)
-   const zaman2 = db.fetch(`afkzaman2`,message.datasend(0),)
-   if(message.content.includes(kisi3)){
      const embed = new Discord.RichEmbed()
       .setColor("#0080FF")
       .setAuthor("Developer Help" , client.user.avatarURL)
@@ -362,7 +359,8 @@ client.on("message" , async message => {
        message.channel.send(embed)
    }
  }
-  if(message.author.id === kisi){
+  
+    if(message.author.id === kisi){
     const embed = new Discord.RichEmbed()
       .setColor("#0080FF")
       .setAuthor("Developer Help" , client.user.avatarURL)
