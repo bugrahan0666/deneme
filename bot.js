@@ -327,20 +327,23 @@ client.on("message", async message => {
  }
   
   client.on("guildMemberAdd", async member => {
-  let veri = db.get(`otorol.${member.guild.id}`);
-  if (!veri) return;
-  if(!member.guild.roles.has(veri.uyeRolu) || !member.guild.roles.has(veri.botRolu) || !member.guild.channels.has(veri.kanal)) return db.delete(`otorol.${member.guild.id}`);
   
-  if (member.user.bot) {
-    member.addRole(veri.botRolu);
-    member.guild.channels.get(veri.kanal).send(`${member} adlı bot sunucuya katıldı! Bot rolü verildi!`);
-  } else {
-    member.addRole(veri.uyeRolu);
-    member.guild.channels.get(veri.kanal).send(`${member} adlı kullanıcı sunucuya katıldı! Üye rolü verildi!`);
-  };
+ let kanal = db.fetch(`judgekanal_${member.guild.id}`)   
+ let rol = db.fetch(`judgerol_${member.guild.id}`)
+let mesaj = db.fetch(`judgemesaj_${member.guild.id}`)
+  
+if(!kanal) return
+member.addRole(rol)
+  if(!mesaj) {
+  client.channels.get(kanal).send(':loudspeaker: :inbox_tray: Otomatik Rol Verildi Seninle Beraber **`'+member.guild.memberCount+'`** Kişiyiz! <:evetlaa:718198275043492014> Hoşgeldin! **`'+member.user.username+'`**')
+} else {
+  
+      var mesajs = mesaj.replace("-uye-", `${member.author.tag}`).replace("-uyetag-", `${member.author.username}`) .replace("-server-", `${member.guild.name}`).replace("-rol-", member.guild.roles.get(db.fetch(`judgerol_${member.guild.id}`)).name).replace("-onlineuyesayısı-", member.guild.members.filter(s => s.presenceStatus === "online").size).replace("-botsayisi-", member.guild.members.filter(s => s.bot).size) .replace('-kanalsayisi-' ,member.guild.channels.size ).replace("-uyesayisi-", member.guild.memberCount).replace("-bolge-", member.guild.region)
+  
+  client.channels.get(kanal).send(mesajs)
+}
+
 });
-
-
   
 });
 
