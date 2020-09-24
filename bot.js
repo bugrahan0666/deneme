@@ -228,7 +228,7 @@ msg.react('🇸');
 
 client.on("message", message => {
   if(message.content.toLowerCase() === "sa") {
-    message.channel.send("as");
+    message.channel.send("Aleyküm Selam Hoşgeldin!");
   }
   
     client.on('guildMemberAdd', member => {
