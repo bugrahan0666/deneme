@@ -8,7 +8,7 @@ exports.run = function(client, message, args) {
   
   db.set(`afk_${USER.id}`, REASON);
   db.set(`afk_süre_${USER.id}`, Date.now());
-  message.channel.send("Başarıyla afk moduna girdiniz.")
+  message.channel.send(`${USER.tag} Artık Afk!. Afk Sebebi : \n **${REASON}**`)
   
 };  
 
