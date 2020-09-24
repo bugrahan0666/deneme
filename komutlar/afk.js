@@ -1,38 +1,26 @@
-const Discord = require('discord.js')
-const ayarlar = require('../ayarlar.json');
+ const db = require("quick.db")
 
-const fs = require('fs');
-const db = require("quick.db")
-const prefix = ayarlar.prefix;
-let yazı = JSON.parse(fs.readFileSync("./database.json", "utf8"));
-exports.run = async (bot , message, args) => {
-  //kapnıp açtığında hafızası siliniyorsa db den yapılcak
+exports.run = function(client, message, args) {
+
+  var USER = message.author;
+  var REASON = args.slice(0).join("  ");
+  if(!REASON) return message.channel.send("AFK olmak için bir sebep belirtin.");
   
-  let reason = args.slice(0).join(' ') 
-     let rol = message.mentions.roles.first()
-
-  if(reason.toLowerCase().includes(".com") || reason.toLowerCase().includes("youtube.com") || reason.toLowerCase().includes("discord.gg")|| reason.includes("http") || reason.includes(rol) || reason.includes("@here") || reason.includes("@everyone")) return  [message.delete(10),message.reply("Afk nedenine **link** veya **rol** giremezsin").then(msg => msg.delete(9000))]
-  if(!reason) reason= "Şu an afkyım, en kısa sürede geri döneceğim.";
-      setTimeout(function(){
-
-  db.set(`afk_${message.author.id}, ${message.guild.id}`, reason)
+  db.set(`afk_${USER.id}`, REASON);
+  db.set(`afk_süre_${USER.id}`, Date.now());
+  message.channel.send("Başarıyla afk moduna girdiniz.")
   
-  db.set(`afk-zaman_${message.author.id}, ${message.guild.id}`, Date.now())
-      },500)
-  message.reply(`**${reason}** nedeniyle afk oldunuz.`).then(msg => msg.delete(9000))
-  if(!message.member.nickname) return message.member.setNickname("[AFK] " + message.member.user.username)
-  message.member.setNickname("[AFK] " + message.member.nickname).catch(err => console.log(err));
-    
-  }
+};  
+
 exports.conf = {
-  enabled: true,
-  guildOnly: false,
+  enabled: true, 
+  guildOnly: true, 
   aliases: [],
-  permLevel: 0
+  permLevel: 0 
 };
 
 exports.help = {
-  name: 'afk',
-  description: 'Kullanıcıyı sunucudan yasaklar.',
-  usage: '&afk'
+  name: 'afk', 
+  description: 'Kullanıcııyı afk moduna sokar.',
+  usage: 'afk <sebep>'
 };
