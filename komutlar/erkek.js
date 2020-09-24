@@ -19,7 +19,7 @@ const embed = new Discord.RichEmbed()
 
 
 
-.addField(`Artemus`,
+.addField(`Phentos`,
 `\nKayıt Edilen Kullanıcı: ${member.user} \n\nKayıt Eden: \`${message.author.username}\`\n\n Verilen Roller <@&756250050757263450>`)
 client.channels.get('756257487279227051').send(embed)
 }

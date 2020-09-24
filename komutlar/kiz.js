@@ -19,7 +19,7 @@ const embed = new Discord.RichEmbed()
 
 
 
-.addField(`Artemus`,
+.addField(`Phentos`,
 `\nKayıt Edilen Kullanıcı: ${member.user} \n\nKayıt Eden: \`${message.author.username}\`\n\n Verilen Roller <@&756250692330455160>`)
 client.channels.get('756257487279227051').send(embed)
 }
@@ -27,7 +27,7 @@ client.channels.get('756257487279227051').send(embed)
 exports.conf = {
 enabled: true,
 guildOnly: true,
-aliases: ['k'],
+aliases: ['girl','k'],
 permLevel: 0
 };
 exports.help = {
