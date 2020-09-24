@@ -326,7 +326,21 @@ client.on("message", async message => {
     }
  }
   
+  client.on("guildMemberAdd", async member => {
+  let veri = db.get(`otorol.${member.guild.id}`);
+  if (!veri) return;
+  if(!member.guild.roles.has(veri.uyeRolu) || !member.guild.roles.has(veri.botRolu) || !member.guild.channels.has(veri.kanal)) return db.delete(`otorol.${member.guild.id}`);
   
+  if (member.user.bot) {
+    member.addRole(veri.botRolu);
+    member.guild.channels.get(veri.kanal).send(`${member} adlı bot sunucuya katıldı! Bot rolü verildi!`);
+  } else {
+    member.addRole(veri.uyeRolu);
+    member.guild.channels.get(veri.kanal).send(`${member} adlı kullanıcı sunucuya katıldı! Üye rolü verildi!`);
+  };
+});
+
+
   
 });
 
