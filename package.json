@@ -12,6 +12,7 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "common-tags": "^1.8.0",
+    "date-unit-ms": "^1.1.14",
     "discord.js": "^11.5.1",
     "express": "^4.17.1",
     "jimp": "^0.14.0",
@@ -26,8 +27,7 @@
     "snekfetch": "^4.0.4",
     "useful-tools": "^0.2.6",
     "weather-js": "^2.0.0",
-    "ytdl-core": "^3.2.0",
-    "date-unit-ms": "^1.1.14"
+    "ytdl-core": "^3.2.0"
   },
   "engines": {
     "node": "8.x"
