@@ -332,47 +332,63 @@ client.on("message", async message => {
  }
 });
 
+client.on("message", async message => {
+  if (message.author.bot || message.channel.type === "dm") return;
 
-//AFK KOMUTU
+  //return message.channel.send(`**${user_tag}** Şu anda afk.\nNedeni:${key.reason}`)
+  //return message.reply(`Artık afk değilsin. Tekrardan hoş geldin.`).then(msg => msg.delete(9000))
+  var afklar = await db.fetch(`afk_${message.author.id}, ${message.guild.id}`);
 
-client.on("message" , async message => {
-  const msg = message;
-  if(message.content.startsWith(ayarlar.prefix+"afk")) return; 
-  db.set(`afkSebep_${message.author.id}_${message.guild.id}`, "Sebep Girilmemiş")
-  db.set(`afkKisi_${message.author.id}_${message.guild.id}`, message.author.id)           
-  db.set(`afkAd_${message.author.id}_${message.guild.id}`, message.author.username)
-  
-  let afk = message.mentions.users.first()
-  
-  const kisi = db.fetch(`afkid_${message.author.id}_${message.guild.id}`)
-  
-  const isim = db.fetch(`afkAd_${message.author.id}_${message.guild.id}`)
- if(afk){
-   const sebep = db.fetch(`afkSebep_${afk.id}_${message.guild.id}`)
-   const kisi3 = db.fetch(`afkid_${afk.id}_${message.guild.id}`)
-     const embed = new Discord.RichEmbed()
-      .setColor("#0080FF")
-      .setAuthor("Developer Help" , client.user.avatarURL)
-      .setDescription(`Etiketlediğiniz Kişi Afk \n Sebep : ${sebep}`)
-      .setTimestamp()
-      .setFooter(`${message.author.username} Tarafından İstendi`)
-       message.channel.send(embed)
-   }
- }
-  
-    if(message.author.id === kisi){
-    const embed = new Discord.RichEmbed()
-      .setColor("#0080FF")
-      .setAuthor("Developer Help" , client.user.avatarURL)
-      .setDescription(`Afk'lıktan Çıktınız`)
-      .setTimestamp()
-      .setFooter(`${message.author.username} Tarafından İstendi`)
-       message.channel.send(embed)
-   db.delete(`afkSebep_${message.author.id}_${message.guild.id}`)
-   db.delete(`afkid_${message.author.id}_${message.guild.id}`)
-   db.delete(`afkAd_${message.author.id}_${message.guild.id}`)
-    message.member.setNickname(isim)
-    
+  if (afklar) {
+    db.delete(`afk_${message.author.id}, ${message.guild.id}`);
+    db.delete(`afk-zaman_${message.author.id}, ${message.guild.id}`);
+
+    message
+      .reply(`Artık afk değilsin. Tekrardan hoş geldin.`)
+      .then(msg => msg.delete(9000));
+    try {
+      let takma_ad = message.member.nickname.replace("[AFK]", "");
+      message.member.setNickname(takma_ad).catch(err => console.log(err));
+    } catch (err) {
+      console.log(err.message);
+    }
   }
-  
-})
+  var kullanıcı = message.mentions.users.first();
+  if (!kullanıcı) return;
+  let zaman = await db.fetch(`afk-zaman_${kullanıcı.id}, ${message.guild.id}`);
+
+  var süre = ms(Date.now() - zaman);
+
+  var sebep = await db.fetch(`afk_${kullanıcı.id}, ${message.guild.id}`);
+  if (
+    await db.fetch(
+      `afk_${message.mentions.users.first().id}, ${message.guild.id}`
+ )
+  ) {
+    if (süre.days !== 0) {
+      message.channel.send(
+        `**${kullanıcı}** Kullanıcısı **${süre.days}** Gün **${süre.hours}** Saat **${süre.minutes}** Dakika Önce **Afk** Oldu.\n Afk Nedeni: **${sebep}**`
+      );
+      return;
+    }
+
+    if (süre.hours !== 0) {
+      message.channel.send(
+        `**${kullanıcı}** Kullanıcısı **${süre.hours}** Saat **${süre.minutes}** Dakika Önce **Afk** Oldu.\n Afk Nedeni: **${sebep}**`
+      );
+      return;
+    }
+    if (süre.minutes !== 0) {
+      message.channel.send(
+        `**${kullanıcı}** Kullanıcısı **${süre.minutes}** Dakika Önce **Afk** Oldu.\n Afk Nedeni: **${sebep}**`
+      );
+      return;
+    }
+    if (süre.seconds !== 0) {
+      message.channel.send(
+        `**${kullanıcı}** Kullanıcısı **Bir Kaç Saniye** Önce **Afk** Oldu.\n Afk Nedeni: **${sebep}**`
+      );
+      return;
+    }
+  }
+});
