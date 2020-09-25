@@ -1,37 +1,45 @@
 const Discord = require("discord.js");
-const db = require("quick.db")
-exports.run = async (client, message, args) => {
-const db = require("quick.db")
- if (!message.member.roles.has("756248067669360811")) return message.reply('Bu komutu kullanabilmek için <@&756248067669360811> rolüne sahip olmalısın.');
-let member = message.mentions.members.first();
-let isim = args.slice(1).join(" | ");
-let tag = "π"
-if (!member) return message.channel.send("Bir Üye Etiketle!");
-if (!isim) return message.channel.send("Bir Isim Yaz!");
-member.setNickname(`${tag} ${isim}`);
-member.setNickname(`${tag} ${isim}`);
-member.addRole("756250050757263450")
-  member.removeRole("756255623422673058")
-
-   message.react("✅")
-const embed = new Discord.RichEmbed()
-
-
-
-
-.addField(`Phentos`,
-`\nKayıt Edilen Kullanıcı: ${member.user} \n\nKayıt Eden: \`${message.author.username}\`\n\n Verilen Roller <@&756250050757263450>`)
-client.channels.get('756257487279227051').send(embed)
+const db = require('quick.db');
+exports.run = (client, message, args) => {
+var toplam = db.fetch(`toplamKayit_${message.author.id}`)
+  const erkek = message.guild.roles.find(r => r.id === "756250050757263450");
+  const misafir = message.guild.roles.find(r => r.id === "756255623422673058"); 
+  const log = message.guild.channels.find(c => c.id === "756257487279227051"); 
+  const tag = "π";
+  if(!message.member.roles.array().filter(r => r.id === "756248067669360811")[0]) { 
+    return message.channel.send("**Bu İşlemi Gerçekleştirmek İçin Kayıt Sorumlusu Olman Gerekli!**");
+  } else {
+    let member = message.mentions.users.first() || client.users.get(args.join(' '))
+      if(!member) return message.channel.send("Bir kullanıcı girin.")
+    const c = message.guild.member(member)
+    const nick = args[1];
+    const yas = args[2];
+      if(!nick) return message.channel.send("Bir isim girin.")
+      if(!yas) return message.channel.send("Bir yaş girin.")
+    c.addRole(erkek)
+    c.removeRole(misafir)
+    c.setNickname(`${tag} ${nick} | ${yas}`)
+    db.add(`erkekKayit_${message.author.id}`, 1)
+    db.add(`toplamKayit_${message.author.id}`, 1)
+    const embed = new Discord.RichEmbed()
+    .setAuthor("Erkek Kayıt Yapıldı")
+    .addField(`<a:phentoselmas:758830318987378688> Kaydı yapılan\n`, `${c.user.tag}`)
+    .addField(`<a:phentoselmas:758830318987378688> Kaydı yapan\n`, `${message.author.tag}`)
+    .addField(`<a:phentoselmas:758830318987378688> Yeni isim\n`, `${tag} ${nick} , ${yas}`)
+    .addField(`<a:phentoselmas:758830318987378688> Toplam Kayıt\n`, toplam || 0)
+    .setFooter("Phentos Kayıt Sistemi | Developed By Phentos")
+    .setColor("RANDOM")
+    log.send(embed)
+  }
 }
-
 exports.conf = {
-enabled: true,
-guildOnly: true,
-aliases: ['man','e'],
-permLevel: 0
+  enabled: true,
+  guildOnly: false,
+  aliases: ["e"],
+  permLevel: 0
 };
 exports.help = {
-name: "erkek",
-description: "Phentos Erkek Kayıt",
-usage: "Phentos Kayıt"
+  name: "e",
+  description: "e",
+  usage: "e"
 };

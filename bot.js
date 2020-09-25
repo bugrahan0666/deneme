@@ -318,3 +318,38 @@ client.on("message", async message => {
   }
 });
 
+client.on('guildMemberAdd', async member => {
+  await member.addRole(`755055893812346950`) 
+let member2 = member.user 
+let zaman = new Date().getTime() - member2.createdAt.getTime()
+var user = member2 
+var takizaman = [];
+if(zaman < 604800000) {
+takizaman = '<a:pluton_red:754477230230601798> Tehlikeli'
+} else {
+takizaman = `<a:pluton_onay:754477642320838736> Güvenli`}require("moment-duration-format");
+ let zaman1 = new Date().getTime() - user.createdAt.getTime()
+ const gecen = moment.duration(zaman1).format(` YY [Yıl,] DD [Gün,] HH [Saat,] mm [Dakika,] ss [Saniye]`) 
+ let dbayarfalanfilan = await db.fetch(`takidbayar${member.guild.id}`)
+ let message = member.guild.channels.find(x => x.id === `755054429174104137`)
+  const taki = new Discord.RichEmbed()
+ .setTitle(
+     "Phentos Krallığına Hoşgeldin"
+   )
+   .setDescription(`<a:717781593132892303:755055135515869294>**・** **Sunucumuza Hoş geldin** ${member} 
+   
+<a:phentostag2:758826993285726208>**・Seninle Beraber** ${message.guild.memberCount} **Kişiyiz**
+
+<a:phentostag2:758826993285726208>**・** **Kaydının Yapılması İçin Register Odalarına Girebilirsin**
+
+<a:phentostag2:758826993285726208>**・**<@&756248067669360811> **Rolündeki Yetkililer Seninle İlgilenecektir**
+
+
+<a:phentostag2:758826993285726208>**・** **Hesap Açılalı** ${gecen} **Olmuş**
+<a:phentostag2:758826993285726208>*・** **Bu Kullanıcı** **|** **${takizaman}**
+`)
+.setColor("RANDOM")
+message.send(taki)
+ 
+         });
+
