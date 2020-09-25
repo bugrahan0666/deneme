@@ -29,6 +29,7 @@ exports.run = (client, message, args) => {
     .addField(`<a:phentoselmas:758830318987378688> Toplam Kayıt\n`, toplam || 0)
     .setFooter("Phentos Kayıt Sistemi | Developed By Phentos")
     .setColor("RANDOM")
+    log.send(embed)
   }
 }
 exports.conf = {
