@@ -269,9 +269,12 @@ client.on("message", message => {
 
 client.on(`guildMemberAdd`, async member => {
   const phentostag = client.emojis.get('758826993285726208')
+  const tac = client.emojis.get('757280968683028520')
+  const phentoselmas = client.emojis.get('758830318987378688')
   const jaus1embed = new Discord.RichEmbed()
     .setColor(`RED`)
-    .setDescription(':phentostag: Phentos Krallığına Hoşgeldin! :phentostag2: \n:tac:  Kuralları okumayı unutma! \n:tac:  Tag alıp bize destek olabilirsiniz!  \n:phentoselmas:   İyi eğlenceler! :phentoselmas:   ')
+    .setTitle("PHENTOS KRALLIĞI")
+    .setDescription(`${phentostag} Phentos Krallığına Hoşgeldin! ${phentostag} \n${tac}  Kuralları okumayı unutma! \n${tac}  Tag alıp bize destek olabilirsiniz!  \n${phentoselmas}   İyi eğlenceler! ${phentoselmas}`)
     .setFooter('Phentos | Developed By Phentos');
   member.send(jaus1embed);
 });
