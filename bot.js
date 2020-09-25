@@ -286,6 +286,10 @@ client.on("message", async message => {
   if(REASON) {
     let süre = await db.fetch(`afk_süre_${USER.id}`);
     let timeObj = ms(Date.now() - süre);
-    message.channel.send(`@${USER.tag} kullanıcısı ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s süredir **${REASON}** sebebiyle AFK!` )
+    let mesaj = `<@!${USER.id}> kullanıcısı ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s süredir **${REASON}** sebebiyle AFK!` 
+    message.channel.send(new Discord.RichEmbed()
+ .setColor("RANDOM")
+.setDescription(mesaj)
+)
   }
 });
