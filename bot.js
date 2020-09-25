@@ -267,33 +267,38 @@ client.on("message", message => {
 });
 
 
-/*  const ms = require("parse-ms");
+   const ms = require("parse-ms");
 client.on("message", async message => {
-
+  
   if(message.author.bot) return;
   if(!message.guild) return;
-  if(message.content.includes(${prefix}afk)) return;
-
-  if(await db.fetch(afk_${message.author.id})) {
-    db.delete(afk_${message.author.id});
-    db.delete(afk_süre_${message.author.id});
-    message.reply("Başarıyla afk modundan çıktınız.");
-  }
-
+  if(message.content.includes(`${prefix}afk`)) return;
   var USER = message.mentions.users.first();
+      let süre = await db.fetch(`afk_süre_${USER.id}`);
+      let timeObj = ms(Date.now() - süre);
+  if(await db.fetch(`afk_${message.author.id}`)) {
+    db.delete(`afk_${message.author.id}`);
+    db.delete(`afk_süre_${message.author.id}`);
+    message.channel.send(new Discord.RichEmbed()
+    .setTitle("Bizden Uzakta!")
+                         .setColor("RANDOM")
+                         .setDescription(`<@!message.author.id> AFK Modundan çıktı. `)
+                         .setFooter("Developed By Phentos")
+                         .setTimestamp())
+  }
+  //Tekrar Hoşgeldin! \n Kullanıcı ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s boyunca AFK modundaydı 
   if(!USER) return;
-  var REASON = await db.fetch(afk_${USER.id});
-
+  var REASON = await db.fetch(`afk_${USER.id}`);
+  
   if(REASON) {
-    let süre = await db.fetch(afk_süre_${USER.id});
-    let timeObj = ms(Date.now() - süre);
+
     let mesaj = `${USER.tag} kullanıcısı AFK\n AFK süresi: ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s\nSebep:\n **${REASON}** `
    
-    message.channel.send(new Discord.RichEmbed(
+    message.channel.send(new Discord.RichEmbed()
     .setTitle("Bizden Uzakta!")
                          .setColor("RANDOM")
                          .setDescription(mesaj)
                          .setFooter("Developed By Phentos")
-                         .setTimestamp()))
+                         .setTimestamp())
   }
-});*/
+});
