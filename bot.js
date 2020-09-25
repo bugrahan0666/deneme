@@ -289,7 +289,8 @@ client.on("message", async message => {
     new Discord.RichEmbed()
     .setTitle("Bizden Yakına!")
     .setColor("RANDOM")
-    .setDescription(``)
-    message.channel.send(`@${USER.tag} kullanıcısı ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s süredir **${REASON}** sebebiyle AFK!` )
+    .setDescription(`@${USER.tag} kullanıcısı ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s süredir **${REASON}** sebebiyle AFK!`)
+    .setFooter("Developed By Phentos")
+    .setTimestamp()
   }
 });
