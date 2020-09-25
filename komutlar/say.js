@@ -12,7 +12,7 @@ exports.run = async (client, message, args) => {
         .addField("🪐 Çevrimiçi üye sayısı", message.guild.members.filter(m => !m.user.bot && m.user.presence.status !== "offline").size)
         .addField("🎙️ Seslideki üye sayısı", count)
         .addField("<a:phentostag2:758826993285726208> Tagdaki üye sayısı", message.guild.members.filter(m => m.user.username.includes(tag)).size) // tagınız yoksa bu satrı silin
-        .setFooter(`${message.author.tag} tarafından istendi`, message.author.avatarURL)
+        .setFooter("Phentos | Yönetim Botu")
     message.channel.send(embed);
 
 }

@@ -68,7 +68,7 @@ exports.run = async (bot, msg, args) => {
         .addBlankField()
         .addField("Sunucuya Katılma Tarihi", `${userinfo.dctarihkatilma}`, true)
         .addField("Hesap Oluşturma Tarihi", `${userinfo.dctarih}`, true)
-        .setFooter('Salvo Code - Kullanıcı Bilgi')
+        .setFooter('Phentos Yönetim - Kullanıcı Bilgi')
         msg.channel.send(uembed)
     }
 exports.conf = {
