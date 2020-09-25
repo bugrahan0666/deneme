@@ -274,20 +274,10 @@ client.on("message", async message => {
   if(message.content.includes(`${prefix}afk`)) return;
   
   if(await db.fetch(`afk_${message.author.id}`)) {
-    
     db.delete(`afk_${message.author.id}`);
-    db.delete(`afk_süre_${message.author.id}`);
-      let süre = await db.fetch(`afk_süre_${USER.id}`);
-    let timeObj = ms(Date.now() - süre);
-    let mesajcik = `<@!${USER.id}> kullanıcısı AFK modundan çıktı! Tekrar hoşgeldin! Kullanıcı ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s süredir AFK'ydı`
-    message.channel.send(new Discord.Richembed()
-                        .setTitle("Bize Yakın!")
-                        .setColor("RANDOM")
-                        .setDescription(mesajcik)
-                        .setFooter("Phentos")
-                        .setTimestamp()
-                        )
-  }
+    db.delete(`afk_süre_${message.author.id}`);let timeObj = ms(Date.now() - süre);
+    let mesajcik = `bla bala kullanıcısı AFK modundan çıktı! Tekrar hoşgeldin! Kullanıcı ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s süredir AFK'ydı`
+    message.reply("AFK Modundan Çıktı. Tekrardan aramıza hoşgeldin!")
   
   var USER = message.mentions.users.first();
   if(!USER) return;
@@ -298,11 +288,11 @@ client.on("message", async message => {
     let timeObj = ms(Date.now() - süre);
     let mesaj = `<@!${USER.id}> kullanıcısı ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s süredir **${REASON}** sebebiyle AFK!` 
     message.channel.send(new Discord.RichEmbed()
-                         .setTitle("Bizden Uzakta!")
-                         .setColor("RANDOM")
+                        // .setTitle("Bizden Uzakta!")
+                         //.setColor("RANDOM")
                          .setDescription(mesaj)
-                         .setFooter("Developed By Phentos")
-                         .setTimestamp()
+                         //.setFooter("Developed By Phentos")
+                         //.setTimestamp()
 )
   }
 });
