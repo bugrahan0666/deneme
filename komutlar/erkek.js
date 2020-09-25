@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const db = require("quick.db")
 exports.run = async (client, message, args) => {
 const db = require("quick.db")
- if (!message.member.roles.has("756248067669360811")) return message.reply('Bu komutu kullanabilmek için <@&KULLANICAK ROL ID> rolüne sahip olmalısın.');
+ if (!message.member.roles.has("756248067669360811")) return message.reply('Bu komutu kullanabilmek için <@&756248067669360811> rolüne sahip olmalısın.');
 let member = message.mentions.members.first();
 let isim = args.slice(1).join(" | ");
 let tag = "π"

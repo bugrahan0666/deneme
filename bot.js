@@ -274,9 +274,19 @@ client.on("message", async message => {
   if(message.content.includes(`${prefix}afk`)) return;
   
   if(await db.fetch(`afk_${message.author.id}`)) {
+    
     db.delete(`afk_${message.author.id}`);
     db.delete(`afk_süre_${message.author.id}`);
-    message.reply("AFK Modundan Çıktı. Tekrardan aramıza hoşgeldin!");
+      let süre = await db.fetch(`afk_süre_${USER.id}`);
+    let timeObj = ms(Date.now() - süre);
+    let mesajcik = `<@!${USER.id}> kullanıcısı AFK modundan çıktı! Tekrar hoşgeldin! Kullanıcı ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s süredir AFK'ydı`
+    message.channel.send(new Discord.Richembed()
+                        .setTitle("Bize Yakın!")
+                        .setColor("RANDOM")
+                        .setDescription(mesajcik)
+                        .setFooter("Phentos")
+                        .setTimestamp()
+                        )
   }
   
   var USER = message.mentions.users.first();
