@@ -24,6 +24,13 @@ app.get("/", (request, response) => {
 
   response.sendStatus(200); 
 });
+
+   client.on('guildMemberAdd', member => {
+if(!member.guild.id === '756241474148106360') return;
+if(member.bot) return;
+member.guild.members.get(member.id).addRole('756255623422673058')
+})
+
 app.listen(process.env.PORT); 
 
 setInterval(() => {
@@ -231,11 +238,7 @@ client.on("message", message => {
     message.channel.send("Aleyküm Selam Hoşgeldin!");
   }
   
-    client.on('guildMemberAdd', member => {
-if(!member.guild.id === '756241474148106360') return;
-if(member.bot) return;
-member.guild.members.get(member.id).addRole('756255623422673058')
-})
+ 
   
   
   
@@ -319,7 +322,7 @@ client.on("message", async message => {
 });
 
 client.on('guildMemberAdd', async member => {
-  await member.addRole(`755055893812346950`) 
+  await member.addRole(`756255623422673058`) 
 let member2 = member.user 
 let zaman = new Date().getTime() - member2.createdAt.getTime()
 var user = member2 
