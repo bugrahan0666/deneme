@@ -276,7 +276,7 @@ client.on("message", async message => {
   if(await db.fetch(`afk_${message.author.id}`)) {
     db.delete(`afk_${message.author.id}`);
     db.delete(`afk_süre_${message.author.id}`);
-    message.reply("Tekrardan Hoşgeldin!");
+    message.reply("AFK Modundan Çıktı. Tekrardan aramıza hoşgeldin!");
   }
   
   var USER = message.mentions.users.first();
@@ -289,8 +289,8 @@ client.on("message", async message => {
     let mesaj = `<@!${USER.id}> kullanıcısı ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s süredir **${REASON}** sebebiyle AFK!` 
     message.channel.send(new Discord.RichEmbed()
                          .setTitle("Bizden Uzakta!")
- .setColor("RANDOM")
-.setDescription(mesaj)
+                         .setColor("RANDOM")
+                         .setDescription(mesaj)
                          .setFooter("Developed By Phentos")
                          .setTimestamp()
 )

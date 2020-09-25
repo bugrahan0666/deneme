@@ -1,4 +1,5 @@
  const db = require("quick.db")
+ const Discord = require("discord.js");
 
 exports.run = function(client, message, args) {
 
@@ -8,14 +9,14 @@ exports.run = function(client, message, args) {
   
   db.set(`afk_${USER.id}`, REASON);
   db.set(`afk_süre_${USER.id}`, Date.now());
-  let mesaj = `<@!${USER.id}> Artık Afk! Afk Sebebi : **${REASON}**`
+  let mesaj = `<@!${USER.id}> adlı kullanıcı **${REASON}** sebebiyle artık AFK!`
   message.channel.send(new Discord.RichEmbed()
                        .setTitle ("Bizden Uzakta!")
                        .setColor("RANDOM")
                        .setDescription(mesaj)
                        .setFooter("Developed By Phentos")
                        .setTimestamp()
-  
+  )
 };  
 
 exports.conf = {
