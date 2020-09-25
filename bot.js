@@ -267,6 +267,14 @@ client.on("message", message => {
 });
 
 
+client.on(`guildMemberAdd`, async member => {
+  const jaus1embed = new Discord.RichEmbed()
+    .setColor(`RED`)
+    .setDescription(':phentostag2: Phentos Krallığına Hoşgeldin! :phentostag2: \n:tac:  Kuralları okumayı unutma! \n:tac:  Tag alıp bize destek olabilirsiniz!  \n:phentoselmas:   İyi eğlenceler! :phentoselmas:   ')
+    .setFooter('Phentos | Developed By Phentos');
+  member.send(jaus1embed);
+});
+
    const ms = require("parse-ms");
 client.on("message", async message => {
   
@@ -305,3 +313,4 @@ client.on("message", async message => {
 
   }
 });
+
