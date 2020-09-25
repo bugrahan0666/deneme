@@ -286,11 +286,6 @@ client.on("message", async message => {
   if(REASON) {
     let süre = await db.fetch(`afk_süre_${USER.id}`);
     let timeObj = ms(Date.now() - süre);
-    new Discord.RichEmbed()
-    .setTitle("Bizden Yakına!")
-    .setColor("RANDOM")
-    .setDescription(`@${USER.tag} kullanıcısı ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s süredir **${REASON}** sebebiyle AFK!`)
-    .setFooter("Developed By Phentos")
-    .setTimestamp()
+    message.channel.send(`@${USER.tag} kullanıcısı ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s süredir **${REASON}** sebebiyle AFK!` )
   }
 });
