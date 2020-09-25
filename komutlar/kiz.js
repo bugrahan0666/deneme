@@ -5,7 +5,7 @@ const db = require("quick.db")
  if (!message.member.roles.has("756248067669360811")) return message.reply('Bu komutu kullanabilmek için <@&KULLANICAK ROL ID> rolüne sahip olmalısın.');
 let member = message.mentions.members.first();
 let isim = args.slice(1).join(" | ");
-let tag = "☮"
+let tag = "π"
 if (!member) return message.channel.send("Bir Üye Etiketle!");
 if (!isim) return message.channel.send("Bir Isim Yaz!");
 member.setNickname(`${tag} ${isim}`);
