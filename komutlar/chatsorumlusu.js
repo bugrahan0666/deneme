@@ -8,6 +8,7 @@ exports.run = (client, message, args) => {
     const kullanıcı = message.guild.member(member)
     kullanıcı.addRole("756248520662450272")//Chat Sorumlusu
     const embed = new Discord.RichEmbed()
+    .setTitle("PHENTOS YÖNETİM | ROL VERME")
     .setColor("RANDOM")
     .addField("Yetki Verildi", `<@!${kullanıcı.user.id}> Adlı Kullanıcıya Yetki Verildi`)
     .setFooter('Phentos / Yönetim Botu')

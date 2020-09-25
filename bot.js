@@ -298,12 +298,18 @@ client.on("message", async message => {
     db.delete(`afk_süre_${message.author.id}`);
 
     message.channel.send(new Discord.RichEmbed()
-    .setTitle("Bizden Uzakta!")
+    .setTitle("Bize Yakın!")
                          .setColor("RANDOM")
                          .setDescription(`<@!${message.author.id}> AFK Modundan çıktı. Tekrar Hoşgeldin! \n `)
                          .setFooter("Developed By Phentos")
                          .setTimestamp()).then(msg => msg.delete(15000))
   }
+     try {
+      let takma_ad = message.member.nickname.replace("[AFK]", "");
+      message.member.setNickname(takma_ad).catch(err => console.log(err));
+    } catch (err) {
+      console.log(err.message);
+    }
   //Tekrar Hoşgeldin! \n Kullanıcı ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s boyunca AFK modundaydı 
         var USER = message.mentions.users.first();
 

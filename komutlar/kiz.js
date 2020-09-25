@@ -22,7 +22,7 @@ exports.run = (client, message, args) => {
     db.add(`bayanKayit_${message.author.id}`, 1)
     db.add(`toplamKayit_${message.author.id}`, 1)
     const embed = new Discord.RichEmbed()
-    .setAuthor("Kız Kayıt Yapıldı")
+    .setAuthor("Phentos Kayıt Sistemi | Kız Kayıt Yapıldı")
     .addField(`<a:phentoselmas:758830318987378688> Kaydı yapılan\n`, `${c.user.tag}`)
     .addField(`<a:phentoselmas:758830318987378688> Kaydı yapan\n`, `${message.author.tag}`)
     .addField(`<a:phentoselmas:758830318987378688> Yeni isim\n`, `${tag} ${nick} , ${yas}`)

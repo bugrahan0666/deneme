@@ -11,7 +11,7 @@ module.exports = client => {
       name: `PHENTOS`,
       type: "WATCHING"
     },
-    status: "dnd"
+    status: "PHENTOS KRALLIĞI!"
   });
   console.log(`[BOT]: Giriş Yaptı! Komutlar Yüklendi! Phentos'a Aittir!`);
 };
