@@ -282,8 +282,12 @@ client.on(`guildMemberAdd`, async member => {
   member.send(jaus1embed);
 });
 
+
+
    const ms = require("parse-ms");
 client.on("message", async message => {
+  
+  
   
   if(message.author.bot) return;
   if(!message.guild) return;

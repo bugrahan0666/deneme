@@ -3,6 +3,10 @@
 
 exports.run = function(client, message, args) {
 
+  
+   if(!message.member.nickname) return message.member.setNickname("[AFK] " + message.member.user.username)
+  message.member.setNickname("[AFK] " + message.member.nickname).catch(err => console.log(err));
+  
   var USER = message.author;
   var REASON = args.slice(0).join("  ");
   if(!REASON) return message.channel.send("AFK olmak için bir sebep belirtin.");
