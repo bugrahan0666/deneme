@@ -31,6 +31,10 @@ if(member.bot) return;
 member.guild.members.get(member.id).addRole('756255623422673058')
 })
 
+client.on("guildMemberAdd", (member) => {
+member.setNickname ( "π İSİM | YAŞ ")
+})
+
 app.listen(process.env.PORT); 
 
 setInterval(() => {
