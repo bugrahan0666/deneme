@@ -362,7 +362,8 @@ takizaman = `<a:phentostik:759134613783183420>  Güvenli`}require("moment-durati
 
 <a:phentostag2:758826993285726208>*・** **Bu Kullanıcı** **|** **${takizaman}**
 `)
-  .setTitle("Phentos | Developed By Phentos")
+  .setFooter("Phentos | Developed By Phentos")
+  .setTimestamp()
 .setColor("RANDOM")
 message.send(taki)
  
