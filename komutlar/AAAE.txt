@@ -46,10 +46,13 @@ exports.run = (client, message, args) => {
       .setFooter("Phentos Kayıt Sistemi | Developed By Phentos")
       .setColor("RANDOM");
     log.send(embed);
-    if(member.roles.has("756250050757263450")) {
-  message.channel.send("bu kişi zaten kayıtlı");
-}
-  }
+    console.log(`buraya kadar geldim`)
+    console.log(member.id)
+    let id = "756250050757263450"
+    if (member.roles.has(id))
+    //if(member.roles.has("756250050757263450")) return message.channel.send("bu kişi zaten kayıtlı");
+//yav bune qkpwoeqwkeqop
+  } 
   
 };
 
@@ -61,4 +64,7 @@ exports.conf = {
   aliases: ["e"],
   permLevel: 0
 };
-exports.help = { name: "e", description: "e", usage: "e" };
+exports.help = { 
+name: "e", description: "e",
+ usage: "e"
+ };
