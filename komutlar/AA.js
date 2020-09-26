@@ -15,21 +15,32 @@ module.exports.run = async (client, message, args) => {
   if(!yaş) return message.channel.send('Bir yaş belirtmelisin.')
   let sayi = db.get(`erkeks_${message.author.id}`)
   
-  if (member.roles.has('erkek rol id')) {
+  if (member.roles.has('756250050757263450')) {
        message.reply('Bu kişi zaten sunucumuza **erkek** olarak kaydedilmiş.')
 
+
 }
-  setTimeOut(()=>{
+else {  
+  setTimeout(()=>{
+ member.addRole('756250050757263450')
     
   },400)
- member.addRole('756250050757263450')
-
-    member.removeRole('756255623422673058')
-
-    member.setNickname(`✦ ${isim} | ${yaş}`)
-    db.add(`erkeks_${message.author.id}`, +1)
-    message.channel.sendEmbed(new Discord.RichEmbed().setDescription(`${user} adlı üye **erkek** olarak sunucumuza kaydedilmiştir.`).setFooter(`${message.author.tag}, toplam ${sayi || '1'} erkek kaydın mevcut.`).setTimestamp().setColor("BLACK"))
+setTimeout(()=>{
  
+    member.removeRole('756255623422673058')
+   
+  },500)
+setTimeout(()=>{
+  member.setNickname(`✦ ${isim} | ${yaş}`)
+},600)
+    //tamamdır
+    db.add(`erkeks_${message.author.id}`, +1)
+  const embed = new Discord.RichEmbed() .setAuthor("Phentos Kayıt Sistemi | Erkek Kayıt Yapıldı") .addField(`<a:phentoselmas:758830318987378688> Kaydı yapılan\n`, `${member.user.tag}`) 
+        .addField(`<a:phentoselmas:758830318987378688> Kaydı yapan\n`, `${message.author.tag}`) 
+        .addField(`<a:phentoselmas:758830318987378688> Yeni isim\n`, `✦ ${isim} , ${yaş}`) 
+        
+    message.channel.sendEmbed(new Discord.RichEmbed().setDescription(`${user} adlı üye **erkek** olarak sunucumuza kaydedilmiştir.`).setFooter(`${message.author.tag}, toplam ${sayi || '1'} erkek kaydın mevcut.`).setTimestamp().setColor("BLACK"))
+ }
 
   
 
