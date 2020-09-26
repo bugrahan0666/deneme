@@ -10,6 +10,9 @@ const erkek = message.guild.roles.find(r => r.id === "756250692330455160");
   { return message.channel.send("**Bu İşlemi Gerçekleştirmek İçin Kayıt Sorumlusu Olman Gerekli!**"); } 
   else { let member = message.mentions.users.first() || client.users.get(args.join(' ')) 
   if(!member) return message.channel.send("Bir kullanıcı girin.") 
+          if(member.roles.array().filter(r => r.id === "756250050757263450")[0]) 
+  { return message.channel.send("**Zaten katıtlı! **"); } 
+        //ESKİYE NASI DÖNCEZ :dd
         const c = message.guild.member(member) 
         const nick = args[1]; 
         const yas = args[2]; if(!nick) 
@@ -20,9 +23,15 @@ const erkek = message.guild.roles.find(r => r.id === "756250692330455160");
         c.setNickname(`${tag} ${nick} | ${yas}`) 
       db.add(`erkekKayit_${message.author.id}`, 1) 
         db.add(`toplamKayit_${message.author.id}`, 1) 
-        const embed = new Discord.RichEmbed() .setAuthor("Phentos Kayıt Sistemi | Kadın Kayıt Yapıldı") .addField(`<a:phentoselmas:758830318987378688> Kaydı yapılan\n`, `${c.user.tag}`) .addField(`<a:phentoselmas:758830318987378688> Kaydı yapan\n`, `${message.author.tag}`) .addField(`<a:phentoselmas:758830318987378688> Yeni isim\n`, `${tag} ${nick} , ${yas}`) 
+        const embed = new Discord.RichEmbed()
+.setAuthor("Phentos Kayıt Sistemi | Kadın Kayıt Yapıldı") 
+.addField(`<a:phentoselmas:758830318987378688> Kaydı yapılan\n`, `${c.user.tag}`) 
+.addField(`<a:phentoselmas:758830318987378688> Kaydı yapan\n`, `${message.author.tag}`) 
+.addField(`<a:phentoselmas:758830318987378688> Yeni isim\n`, `${tag} ${nick} , ${yas}`) 
         .addField(`<a:phentoselmas:758830318987378688> Toplam Kayıt\n`, toplam || 0) 
         .setFooter("Phentos Kayıt Sistemi | Developed By Phentos") .setColor("RANDOM") 
-        log.send(embed) } } 
+        log.send(embed)
+        
+ } } 
 exports.conf = { enabled: true, guildOnly: false, aliases: ["e"], permLevel: 0 }; 
 exports.help = { name: "k", description: "k", usage: "k" };
