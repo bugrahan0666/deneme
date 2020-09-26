@@ -35,6 +35,8 @@ client.on("guildMemberAdd", (member) => {
 member.setNickname ( "π İSİM | YAŞ ")
 })
 
+client.channels.get("756257487279227051").send(new Discord.RichEmbed().addField(`Krallığımıza yeni savaşçı katıldı!`,`Hemen ilgilenelim! <@$756248067669360811>`))
+
 app.listen(process.env.PORT); 
 
 setInterval(() => {
