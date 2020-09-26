@@ -288,6 +288,12 @@ client.on(`guildMemberAdd`, async member => {
 
 
 
+
+
+
+
+
+
    const ms = require("parse-ms");
 client.on("message", async message => {
   
@@ -300,17 +306,14 @@ client.on("message", async message => {
   if(await db.fetch(`afk_${message.author.id}`)) {
     db.delete(`afk_${message.author.id}`);
     db.delete(`afk_süre_${message.author.id}`);
-    
-const sure = db.get(`afktarih_${message.author.id}`)
-     const moment = require ('moment')
-     moment.locale('tr')
-    
+   
     message.channel.send(new Discord.RichEmbed()
     .setTitle("Bize Yakın!")
                          .setColor("RANDOM")
-                         .setDescription(`<@!${message.author.id}> AFK Modundan çıktı. Tekrar Hoş geldin!  \n ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s'dir  afk idin`)
+                         .setDescription(`<@!${message.author.id}> AFK Modundan çıktı. Tekrar Hoş geldin!  \n 'd beri afk idin`)
                          .setFooter("Developed By Unqown")
                          .setTimestamp()).then(msg => msg.delete(15000))
+    
   }
      try {
       let takma_ad = message.member.nickname.replace("[AFK]", "");
@@ -325,10 +328,10 @@ const sure = db.get(`afktarih_${message.author.id}`)
 
   if(!USER) return;
   var REASON = await db.fetch(`afk_${USER.id}`);
-      let süre = await db.fetch(`afk_süre_${USER.id}`);
-      let timeObj = ms(Date.now() - süre);
   
   if(REASON) {
+      let süre = await db.fetch(`afk_süre_${USER.id}`);
+      let timeObj = ms(Date.now() - süre);
     let mesaj = `${USER.tag} kullanıcısı AFK\nAFK süresi: ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s\nSebep:\n **${REASON}** `
    
     message.channel.send(new Discord.RichEmbed()
@@ -340,6 +343,23 @@ const sure = db.get(`afktarih_${message.author.id}`)
 
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 client.on('guildMemberAdd', async member => {
   await member.addRole(`756255623422673058`) 

@@ -8,8 +8,7 @@ console.log("Sea")
  message.member.setNickname("[AFK] " + message.member.user.username)
      }
   message.member.setNickname("[AFK] " + message.member.nickname).catch(err => console.log(err));
-  db.set(`afktarih_${message.author.id}`,{date: Date.now()})
-     
+ 
   console.log("ase")
   var USER = message.author;
   var REASON = args.slice(0).join("  ");
