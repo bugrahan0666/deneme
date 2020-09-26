@@ -24,5 +24,10 @@ const erkek = message.guild.roles.find(r => r.id === "756250050757263450");
         .addField(`<a:phentoselmas:758830318987378688> Toplam Kayıt\n`, toplam || 0) 
         .setFooter("Phentos Kayıt Sistemi | Developed By Phentos") .setColor("RANDOM") 
         log.send(embed) } } 
+
+
+if (sync member.roles.has('erkek rol id'))
+message.channel.send('bu kişi zaten kayıtlı') return
+
 exports.conf = { enabled: true, guildOnly: false, aliases: ["e"], permLevel: 0 }; 
 exports.help = { name: "e", description: "e", usage: "e" };
