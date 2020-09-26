@@ -3,7 +3,7 @@ const moment = require('moment');
 const db = require('quick.db');
 module.exports.run = async (client, message, args) => {
 
-  if (!message.member.roles.has('kayıtçı rol id') && !message.member.hasPermission("ADMINISTRATOR")) return message.channel.send('Bu komudu kullanmak için yetkin yeterli değil.').then(m => m.delete(5000));
+  if (!message.member.roles.has('756248067669360811') && !message.member.hasPermission("ADMINISTRATOR")) return message.channel.send('Bu komudu kullanmak için yetkin yeterli değil.').then(m => m.delete(5000));
 
   let user = message.mentions.users.first() || message.guild.members.get(args[0]);
   let member = message.guild.member(user)
@@ -16,7 +16,8 @@ module.exports.run = async (client, message, args) => {
   let sayi = db.get(`erkeks_${message.author.id}`)
   
   if (member.roles.has('756250692330455160')) {
-       message.reply('Bu kişi zaten sunucumuza **erkek** olarak kaydedilmiş.')
+       message.reply('Bu kişi zaten sunucumuza **Atalante** olarak kaydedilmiş.')
+    .setTimestamp().then(msg => msg.delete(10000))
 
 
 }
@@ -31,19 +32,17 @@ setTimeout(()=>{
    
   },500)
 setTimeout(()=>{
-  member.setNickname(`✦ ${isim} | ${yaş}`)
+  member.setNickname(`π ${isim} | ${yaş}`)
 },600)
     //tamamdır
-    db.add(`erkeks_${message.author.id}`, +1)
-  const embed = new Discord.RichEmbed() .setAuthor("Phentos Kayıt Sistemi | Kayıt Kayıt Yapıldı") .addField(`<a:phentoselmas:758830318987378688> Kaydı yapılan\n`, `${member.user.tag}`) 
-        .addField(`<a:phentoselmas:758830318987378688> Kaydı yapan\n`, `${message.author.tag}`) 
-        .addField(`<a:phentoselmas:758830318987378688> Yeni isim\n`, `✦ ${isim} , ${yaş}`) 
+    db.add(`erkeks_${message.author.id}`, +1) 
+        
         
    message.channel.send(new Discord.RichEmbed()
-                        .setAuthor("Phentos Kayıt Sistemi | Erkek Kayıt Yapıldı") 
+                        .setAuthor("Phentos Kayıt Sistemi | Kadın Kayıt Yapıldı") 
                         .addField(`<a:phentoselmas:758830318987378688> Kaydı yapılan\n`, `${member.user.tag}`)
                         .addField(`<a:phentoselmas:758830318987378688> Kullanıcı'nın İsmi \n ${isim}`)
-                        .addField(`<a:phentoselmas:758830318987378688> Kullanıcı'nın Yaşı \n ${yaş}`)
+                        .addField(`<a:phentoselmas:758830318987378688> Kullanıcı'nın Yaşı  \n ${yaş}`)
                         .addField(`<a:phentoselmas:758830318987378688> Kaydı yapan Yetkili \n`, `${message.author.tag}`) 
                         .addField(`Yetkilinin Toplam Kaydı \n ${sayi || '1'}`)
                         .setTimestamp().setColor("RANDOM")  )

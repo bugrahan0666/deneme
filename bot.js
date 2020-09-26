@@ -363,10 +363,8 @@ takizaman = `<a:phentostik:759134613783183420>  Güvenli`}require("moment-durati
 
 <a:phentostag2:758826993285726208>**・**<@&756248067669360811> **Rolündeki Yetkililer Seninle İlgilenecektir**
 
-
-<a:phentostag2:758826993285726208>**・** **Hesap Açılalı** ${gecen} **Olmuş**
-
 <a:phentostag2:758826993285726208>*・** **Bu Kullanıcı** **|** **${takizaman}**
+<a:phentostag2:758826993285726208>**・** **Hesap Açılalı** ${gecen} **Olmuş**
 `)
   .setFooter("Phentos | Developed By Phentos")
   .setTimestamp()
