@@ -300,12 +300,16 @@ client.on("message", async message => {
   if(await db.fetch(`afk_${message.author.id}`)) {
     db.delete(`afk_${message.author.id}`);
     db.delete(`afk_süre_${message.author.id}`);
-
+    
+const sure = db.get(`afktarih_${message.author.id}`)
+     const moment = require ('moment')
+     moment.locale('tr')
+    
     message.channel.send(new Discord.RichEmbed()
     .setTitle("Bize Yakın!")
                          .setColor("RANDOM")
-                         .setDescription(`<@!${message.author.id}> AFK Modundan çıktı. Tekrar Hoşgeldin! \n `)
-                         .setFooter("Developed By Phentos")
+                         .setDescription(`<@!${message.author.id}> AFK Modundan çıktı. Tekrar Hoş geldin!  \n ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s'dir  afk idin`)
+                         .setFooter("Developed By Unqown")
                          .setTimestamp()).then(msg => msg.delete(15000))
   }
      try {
@@ -314,17 +318,17 @@ client.on("message", async message => {
     } catch (err) {
       console.log(err.message);
     }
-  // bir şey yokki bi zahmet hata versin ha
+  // bir şey yokki bi zahmet hata versin ha bi dk
 //Tekrar Hoşgeldin! \n Kullanıcı ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s boyunca AFK modundaydı bunu ekleyince bozuluyo biliyo musun ?
   
         var USER = message.mentions.users.first();
 
   if(!USER) return;
   var REASON = await db.fetch(`afk_${USER.id}`);
-  
-  if(REASON) {
       let süre = await db.fetch(`afk_süre_${USER.id}`);
       let timeObj = ms(Date.now() - süre);
+  
+  if(REASON) {
     let mesaj = `${USER.tag} kullanıcısı AFK\nAFK süresi: ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s\nSebep:\n **${REASON}** `
    
     message.channel.send(new Discord.RichEmbed()

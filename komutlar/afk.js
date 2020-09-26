@@ -4,8 +4,12 @@
 exports.run = function(client, message, args) {
 console.log("Sea")
   
-   if(!message.member.nickname) return message.member.setNickname("[AFK] " + message.member.user.username)
+   if(!message.member.nickname){
+ message.member.setNickname("[AFK] " + message.member.user.username)
+     }
   message.member.setNickname("[AFK] " + message.member.nickname).catch(err => console.log(err));
+  db.set(`afktarih_${message.author.id}`,{date: Date.now()})
+     
   console.log("ase")
   var USER = message.author;
   var REASON = args.slice(0).join("  ");
