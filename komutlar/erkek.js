@@ -3,7 +3,7 @@ const moment = require('moment');
 const db = require('quick.db');
 module.exports.run = async (client, message, args) => {
 
-  if (!message.member.roles.has('kayıtçı rol id') && !message.member.hasPermission("ADMINISTRATOR")) return message.channel.send('Bu komudu kullanmak için yetkin yeterli değil.').then(m => m.delete(5000));
+  if (!message.member.roles.has('kayıtçı rol id') && !message.member.roles.has('kayıtçı rol id') &&   !message.member.hasPermission("ADMINISTRATOR")) return message.channel.send('Bu komudu kullanmak için yetkin yeterli değil.').then(m => m.delete(5000));
 
   let user = message.mentions.users.first() || message.guild.members.get(args[0]);
   let member = message.guild.member(user)
@@ -15,10 +15,9 @@ module.exports.run = async (client, message, args) => {
   if(!yaş) return message.channel.send('Bir yaş belirtmelisin.')
   let sayi = db.get(`erkeks_${message.author.id}`)
   
-  if (!member.roles.has('erkek rol id')) {
-    member.addRole('erkek rolü id')
-    member.addRole('ikinci erkek rol id')
-    member.removeRole('kayıtsız rol id')
+  if (!member.roles.has('756250050757263450')) {
+    member.addRole('756250050757263450')
+    member.removeRole('756255623422673058')
     member.setNickname(`✦ ${isim} | ${yaş}`)
     db.add(`erkeks_${message.author.id}`, +1)
     message.channel.sendEmbed(new Discord.RichEmbed().setDescription(`${user} adlı üye **erkek** olarak sunucumuza kaydedilmiştir.`).setFooter(`${message.author.tag}, toplam ${sayi || '1'} erkek kaydın mevcut.`).setTimestamp().setColor("BLACK"))
