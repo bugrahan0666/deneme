@@ -33,6 +33,8 @@ var toplam = db.fetch(`toplamKayit_${message.author.id}`)
   }
 }
 
+
+
 exports.conf = {
   enabled: true,
   guildOnly: false,
