@@ -33,9 +33,6 @@ var toplam = db.fetch(`toplamKayit_${message.author.id}`)
   }
 }
 
-if (member.roles.has('756250050757263450')) 
-return message.channel.send('bu kişi zaten kayıtlı')
-
 exports.conf = {
   enabled: true,
   guildOnly: false,
