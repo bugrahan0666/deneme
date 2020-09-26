@@ -28,5 +28,5 @@ const erkek = message.guild.roles.find(r => r.id === "756250050757263450");
           let sayi = db.get(`erkeks_${message.author.id}`)
     message.channel.sendEmbed(new Discord.RichEmbed().setDescription(`${member} adlı üye **erkek** olarak sunucumuza kaydedilmiştir.`).setFooter(`${message.author.tag}, toplam ${sayi || '1'} erkek kaydın mevcut.`).setTimestamp().setColor("BLACK"))
         log.send(embed) } } 
-exports.conf = { enabled: true, guildOnly: false, aliases: ["e"], permLevel: 0 }; 
-exports.help = { name: "e", description: "e", usage: "e" };
+exports.conf = { enabled: true, guildOnly: false, aliases: ["eee"], permLevel: 0 }; 
+exports.help = { name: "eee", description: "e", usage: "e" };

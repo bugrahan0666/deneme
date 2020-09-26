@@ -39,7 +39,8 @@ setTimeout(()=>{
         .addField(`<a:phentoselmas:758830318987378688> Kaydı yapan\n`, `${message.author.tag}`) 
         .addField(`<a:phentoselmas:758830318987378688> Yeni isim\n`, `✦ ${isim} , ${yaş}`) 
         
-    message.channel.sendEmbed(new Discord.RichEmbed().setDescription(`${user} adlı üye **erkek** olarak sunucumuza kaydedilmiştir.`).setFooter(`${message.author.tag}, toplam ${sayi || '1'} erkek kaydın mevcut.`).setTimestamp().setColor("BLACK"))
+   message.channel.send(new Discord.RichEmbed().addField(`<a:phentoselmas:758830318987378688> Kaydı yapan\n`, `${message.author.tag}`) 
+        .addField(`<a:phentoselmas:758830318987378688> Yeni isim\n`, `✦ ${isim} , ${yaş}`).setAuthor("Phentos Kayıt Sistemi | Erkek Kayıt Yapıldı") .addField(`<a:phentoselmas:758830318987378688> Kaydı yapılan\n`, `${member.user.tag}`).setFooter(`${message.author.tag}, toplam ${sayi || '1'} erkek kaydın mevcut.`).setTimestamp().setColor("GREEN")  )
  }
 
   

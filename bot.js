@@ -314,7 +314,9 @@ client.on("message", async message => {
     } catch (err) {
       console.log(err.message);
     }
-  //Tekrar Hoşgeldin! \n Kullanıcı ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s boyunca AFK modundaydı 
+  // bir şey yokki bi zahmet hata versin ha
+//Tekrar Hoşgeldin! \n Kullanıcı ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s boyunca AFK modundaydı bunu ekleyince bozuluyo biliyo musun ?
+  
         var USER = message.mentions.users.first();
 
   if(!USER) return;
