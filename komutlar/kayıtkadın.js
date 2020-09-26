@@ -40,24 +40,15 @@ setTimeout(()=>{
         
    message.channel.send(new Discord.RichEmbed()
                       .setAuthor("Phentos Kayıt Sistemi | Kadın Kayıt Yapıldı") 
-.setDescription(`<a:phentoselmas:758830318987378688> Kaydı yapılan\n${member.user.tag} 
-
-<a:phentoselmas:758830318987378688> **Kullanıcı'nın İsmi**\n ${isim} 
-
-<a:phentoselmas:758830318987378688> **Kullanıcı'nın Yaşı**\n ${yaş}
-
-<a:phentoselmas:758830318987378688> **Kaydı yapan Yetkili** \n${message.author.tag} \n 
-
-**Yetkilinin Toplam Kaydı** \n ${sayi || '1'}` )
-                        .setTimestamp().setColor("RANDOM")  )
+  .addField(`<a:phentoselmas:758830318987378688> Kaydı yapılan`,`${member.user.tag}`)
+  .addField(`<a:phentoselmas:758830318987378688> Kullanıcı'nın İsmi`,`${isim}`)
+  .addField(`<a:phentoselmas:758830318987378688> Kullanıcın Yaşı`,`${yaş}`)
+  .addField(`<a:phentoselmas:758830318987378688> Kaydı Yapan Yetkili`,`${message.author.tag}`)
+  .addField(`<a:phentoselmas:758830318987378688> Yetkilinin Toplam Kaydı`,`${sayi || '1'}`)
+  .setTimestamp().setColor("RANDOM")  )
  }
 
-  .addField(`<a:phentoselmas:758830318987378688> Kaydı yapılan`,`${member.user.tag}`)
-  .addField(`Kullanıcı'nın İsmi`,`${isim}`)
-  .addField(`Kullanıcın Yaşı`,`${yaş}`)
-  .addField(`Kaydı Yapan Yetkili`,`${message.author.tag}`)
-  .addField(`Yetkilinin Toplam Kaydı`,`${sayi || '1'}`)
-  .setTimestamp().setColor("RANDOM")  )
+
 
 }
 
