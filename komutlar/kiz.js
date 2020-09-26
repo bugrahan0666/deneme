@@ -20,9 +20,9 @@ const erkek = message.guild.roles.find(r => r.id === "756250692330455160");
         c.setNickname(`${tag} ${nick} | ${yas}`) 
       db.add(`erkekKayit_${message.author.id}`, 1) 
         db.add(`toplamKayit_${message.author.id}`, 1) 
-        const embed = new Discord.RichEmbed() .setAuthor("Phentos Kayıt Sistemi | Erkek Kayıt Yapıldı") .addField(`<a:phentoselmas:758830318987378688> Kaydı yapılan\n`, `${c.user.tag}`) .addField(`<a:phentoselmas:758830318987378688> Kaydı yapan\n`, `${message.author.tag}`) .addField(`<a:phentoselmas:758830318987378688> Yeni isim\n`, `${tag} ${nick} , ${yas}`) 
+        const embed = new Discord.RichEmbed() .setAuthor("Phentos Kayıt Sistemi | Kız Kayıt Yapıldı") .addField(`<a:phentoselmas:758830318987378688> Kaydı yapılan\n`, `${c.user.tag}`) .addField(`<a:phentoselmas:758830318987378688> Kaydı yapan\n`, `${message.author.tag}`) .addField(`<a:phentoselmas:758830318987378688> Yeni isim\n`, `${tag} ${nick} , ${yas}`) 
         .addField(`<a:phentoselmas:758830318987378688> Toplam Kayıt\n`, toplam || 0) 
         .setFooter("Phentos Kayıt Sistemi | Developed By Phentos") .setColor("RANDOM") 
         log.send(embed) } } 
-exports.conf = { enabled: true, guildOnly: false, aliases: ["e"], permLevel: 0 }; 
+exports.conf = { enabled: true, guildOnly: false, aliases: ["k"], permLevel: 0 }; 
 exports.help = { name: "k", description: "k", usage: "k" };
