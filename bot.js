@@ -288,12 +288,6 @@ client.on(`guildMemberAdd`, async member => {
 
 
 
-
-
-
-
-
-
    const ms = require("parse-ms");
 client.on("message", async message => {
   
@@ -306,14 +300,13 @@ client.on("message", async message => {
   if(await db.fetch(`afk_${message.author.id}`)) {
     db.delete(`afk_${message.author.id}`);
     db.delete(`afk_süre_${message.author.id}`);
-   
+
     message.channel.send(new Discord.RichEmbed()
     .setTitle("Bize Yakın!")
                          .setColor("RANDOM")
-                         .setDescription(`<@!${message.author.id}> AFK Modundan çıktı. Tekrar Hoş geldin!  \n 'd beri afk idin`)
-                         .setFooter("Developed By Unqown")
+                         .setDescription(`<@!${message.author.id}> AFK Modundan çıktı. Tekrar Hoşgeldin! \n `)
+                         .setFooter("Developed By Phentos")
                          .setTimestamp()).then(msg => msg.delete(15000))
-    
   }
      try {
       let takma_ad = message.member.nickname.replace("[AFK]", "");
@@ -321,7 +314,7 @@ client.on("message", async message => {
     } catch (err) {
       console.log(err.message);
     }
-  // bir şey yokki bi zahmet hata versin ha bi dk
+  // bir şey yokki bi zahmet hata versin ha
 //Tekrar Hoşgeldin! \n Kullanıcı ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s boyunca AFK modundaydı bunu ekleyince bozuluyo biliyo musun ?
   
         var USER = message.mentions.users.first();
@@ -343,23 +336,6 @@ client.on("message", async message => {
 
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 client.on('guildMemberAdd', async member => {
   await member.addRole(`756255623422673058`) 
