@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const db = require('quick.db'); 
 exports.run = (client, message, args) => { 
 var toplam = db.fetch(`toplamKayit_${message.author.id}`) 
-const erkek = message.guild.roles.find(r => r.id === "756250692330455160"); 
+const erkek = message.guild.roles.find(r => r.id === "756250050757263450"); 
   const misafir = message.guild.roles.find(r => r.id === "756255623422673058"); 
   const log = message.guild.channels.find(c => c.id === "756257487279227051"); 
   const tag = "π"; 
@@ -25,4 +25,4 @@ const erkek = message.guild.roles.find(r => r.id === "756250692330455160");
         .setFooter("Phentos Kayıt Sistemi | Developed By Phentos") .setColor("RANDOM") 
         log.send(embed) } } 
 exports.conf = { enabled: true, guildOnly: false, aliases: ["e"], permLevel: 0 }; 
-exports.help = { name: "k", description: "k", usage: "k" };
+exports.help = { name: "e", description: "e", usage: "e" };
