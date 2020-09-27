@@ -397,7 +397,7 @@ client.on("roleDelete", async(role , channel , message , guild) => {
 })
 
 
-
+//KANAL KORUMA
 client.on("channelCreate", async (channel, member, guild) => {
   let kanal = await db.fetch(`kanalk_${channel.guild.id}`);
   if (kanal == "acik") {
