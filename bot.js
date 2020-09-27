@@ -325,7 +325,7 @@ client.on("message", async message => {
   if(REASON) {
       let süre = await db.fetch(`afk_süre_${USER.id}`);
       let timeObj = ms(Date.now() - süre);
-    let mesaj = `${USER.tag} kullanıcısı AFK\nAFK süresi: ${timeObj.hours}h ${timeObj.minutes}m ${timeObj.seconds}s\nSebep:\n **${REASON}** `
+    let mesaj = `${USER.tag} kullanıcısı AFK\nAFK süresi: ${timeObj.hours} Saat ${timeObj.minutes} Dakika ${timeObj.seconds}s\nSebep:\n **${REASON}** `
    
     message.channel.send(new Discord.RichEmbed()
     .setTitle("Bizden Uzakta!")
