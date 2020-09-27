@@ -382,3 +382,34 @@ client.on("message", async message => {
     if (message.deletable) message.delete();
     message.channel.send(`Hey ${message.author}, sunucuda link paylaşamazsın!`)
 })
+
+
+
+//--------------------------------------ROL-BOT KORUMA-----------------------------------------//
+client.on("roleDelete", async(role , channel , message , guild) => {
+  let rolkoruma = await db.fetch(`rolk_${role.guild.id}`);
+    if (rolkoruma == "acik") {
+  role.guild.createRole({name: role.name, color: role.color,  permissions: role.permissions}) 
+        role.guild.owner.send(`**${role.name}** Adlı Rol Silindi Ve Ben Rolü Tekrar Oluşturdum  :white_check_mark:`)
+
+  
+}
+})
+
+
+
+client.on("channelCreate", async (channel, member, guild) => {
+  let kanal = await db.fetch(`kanalk_${channel.guild.id}`);
+  if (kanal == "acik") {
+    channel.delete();
+    const embed = new Discord.RichEmbed()
+      .setDescription(
+        "Sunucunuzda yeni bir kanal oluşturuludu! fakat geri silindi! (Phentos Kanal Koruma Sistemi) "
+      )
+      .setColor("BLACK");
+    channel.guild.owner.send(embed);
+    return;
+  } else {
+    return;
+  }
+});
