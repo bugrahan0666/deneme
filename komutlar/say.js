@@ -46,11 +46,16 @@ exports.run = function(client, message, args) {
       .map(c => mapping[c] || c)
       .join("")
    let tag = "π" 
-   let
+   let tagd=  '**Tagdaki üye sayısı**' +
+       `${tag}`
+   .split("")
+   .map (c => mapping[c] || c)
+   .join("")
+   
 const embed = new Discord.RichEmbed()
 .setTitle('Sunucu İstatistikleri')
 .setColor('BLACK')
-.setDescription('' + sunucu + '\n \n' + online + '\n \n' + offline + '')
+.setDescription('' + sunucu + '\n \n' + online + '\n \n' + offline + ' \n \n ' + tag)
 
 
   message.channel.send(embed)
