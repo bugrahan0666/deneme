@@ -26,7 +26,7 @@ exports.run = function(client, message, args) {
   let offlinesayi = message.guild.members.filter(
     m => m.user.presence.status === "offline"
   ).size; 
-  let offline = '**Çevrimdışı Kişi Sayısı** ' +
+  let offline = '**<a:phentoskanat:759699989315584030> Çevrimdışı Kişi Sayısı** ' +
      `${offlinesayi}`
      .split("")
      .map(c => mapping[c] || c)
@@ -45,6 +45,8 @@ exports.run = function(client, message, args) {
       .split("")
       .map(c => mapping[c] || c)
       .join("")
+   let tag = "π" 
+   let
 const embed = new Discord.RichEmbed()
 .setTitle('Sunucu İstatistikleri')
 .setColor('BLACK')
