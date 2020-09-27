@@ -242,6 +242,7 @@ client.on("message", message => {
     message.channel.send("Aleyküm Selam Hoşgeldin!");
   }
   
+  
  
   
   
@@ -413,3 +414,10 @@ client.on("channelCreate", async (channel, member, guild) => {
     return;
   }
 });
+
+
+client.on("message", message => {
+  if(message.content.toLowerCase() === "tag" ) {
+    message.channel.send("π");
+  }
+  });
