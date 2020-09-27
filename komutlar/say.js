@@ -32,7 +32,7 @@ exports.run = function(client, message, args) {
      .map(c => mapping[c] || c)
      .join(" ")
   let toplam = message.guild.memberCount;
-  let sunucu = '**Sunucudaki Kişi Sayısı:** ' + 
+  let sunucu = '**<a:phentoskanat:759699989315584030>  Sunucudaki Kişi Sayısı:** ' + 
       `${toplam}`
       .split("")
       .map(c => mapping[c] || c)
@@ -40,22 +40,17 @@ exports.run = function(client, message, args) {
   let onlinesayi = message.guild.members.filter(
     only => only.presence.status != "offline"
   ).size;
-  let online = '**Çevrimiçi Kişi Sayısı:** ' +
-      `${onlinesayi}`
+  let online = '**<a:phentoskanat:759699989315584030>  Sunucumuzda Toplam Aktif Sayısı** ' + `${onlinesayi}`
+      
       .split("")
       .map(c => mapping[c] || c)
       .join("")
-   let tag = "π" 
-   let tagd=  '**Tagdaki üye sayısı**' +
-       `${tag}`
-   .split("")
-   .map (c => mapping[c] || c)
-   .join("")
+  
    
 const embed = new Discord.RichEmbed()
-.setTitle('Sunucu İstatistikleri')
-.setColor('BLACK')
-.setDescription('' + sunucu + '\n \n' + online + '\n \n' + offline + ' \n \n ' + tag)
+.setTitle('PHENTOS KİNGDOM | SUNUCU İSTATİSTİKLERİ')
+.setColor('RANDOM')
+.setDescription('' + sunucu + '\n \n' + online + '\n \n' + offline + '')
 
 
   message.channel.send(embed)
