@@ -1,31 +1,69 @@
-const Discord = require('discord.js');
+ const Discord = require("discord.js");
 
-exports.run = async (client, message, args) => {
-    let tag = "π" // tagınız
-    const voiceChannels = message.guild.channels.filter(c => c.type === 'voice');
-    let count = 0;
-    for (const [id, voiceChannel] of voiceChannels) count += voiceChannel.members.size;
+const mapping = {
+  " ": "   ",
+  "0": "0️⃣",
+  "1": "1️⃣",
+  "2": "2️⃣",
+  "3": "3️⃣",
+  "4": "4️⃣",
+  "5": "5️⃣",
+  "6": "6️⃣",
+  "7": "7️⃣",
+  "8": "8️⃣",
+  "9": "9️⃣", 
+  "!": "❕",
+  "?": "❔",
+  "#": "#️⃣",
+  "*": "*️⃣"
+};
 
-    const embed = new Discord.RichEmbed()
-        .setColor("RANDOM")
-        .addField("🧒 Sunucudaki üye sayısı", message.guild.memberCount)
-        .addField("🪐 Çevrimiçi üye sayısı", message.guild.members.filter(m => !m.user.bot && m.user.presence.status !== "offline").size)
-        .addField("🎙️ Seslideki üye sayısı", count)
-        .addField("<a:phentostag2:758826993285726208> Tagdaki üye sayısı", message.guild.members.filter(m => m.user.username.includes(tag)).size) // tagınız yoksa bu satrı silin
-        .setFooter("Phentos | Yönetim Botu")
-    message.channel.send(embed);
+"abcdefghıijklmnoprstşuüvyz".split("").forEach(c => {
+  mapping[c] = mapping[c.toUpperCase()] = `:regional_indicator_${c}:`;
+});
 
-}
+exports.run = function(client, message, args) {
+  let offlinesayi = message.guild.members.filter(
+    m => m.user.presence.status === "offline"
+  ).size; 
+  let offline = '**Çevrimdışı Kişi Sayısı** ' +
+     `${offlinesayi}`
+     .split("")
+     .map(c => mapping[c] || c)
+     .join(" ")
+  let toplam = message.guild.memberCount;
+  let sunucu = '**Sunucudaki Kişi Sayısı:** ' + 
+      `${toplam}`
+      .split("")
+      .map(c => mapping[c] || c)
+      .join(" ")
+  let onlinesayi = message.guild.members.filter(
+    only => only.presence.status != "offline"
+  ).size;
+  let online = '**Çevrimiçi Kişi Sayısı:** ' +
+      `${onlinesayi}`
+      .split("")
+      .map(c => mapping[c] || c)
+      .join("")
+const embed = new Discord.RichEmbed()
+.setTitle('Sunucu İstatistikleri')
+.setColor('BLACK')
+.setDescription('' + sunucu + '\n \n' + online + '\n \n' + offline + '')
+
+
+  message.channel.send(embed)
+ 
+};
 
 exports.conf = {
-    enabled: true,
-    guildOnly: false,
-    aliases: ['sayı'],
-    permLevel: 0
+  enabled: true,
+  guildOnly: false,
+  aliases: ["onlinesayi"],
+  permLevel: 0
 };
 
 exports.help = {
-    name: 'say',
-    description: 'Say',
-    usage: 'say'
-};
+  name: "say",
+  usage: "Sunucudaki Online Kişileri Sayar",
+  desscription: "say"
+}; 
